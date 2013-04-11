@@ -1,0 +1,58 @@
+-- table leden:
+id : int
+naam : text
+voornaam : text
+geslacht : enum(m, v)
+straat : text
+nummer : int
+woonplaats: text
+postcode : int
+telefoon : int (regex)
+geboortedatum : date
+email adres : text (regex)
+beroep (ouders) : text
+medische opmerkingen (voor trainer) : text
+registratie : date
+
+-- table leden_activiteiten
+user_id : int (fk -> leden)
+activiteit_cat : text (fk -> activiteiten | enum)
+
+-- table activiteit_cat (aqua, recr, comp, watergew, zwemles)
+naam : text
+
+-- table activiteiten
+id : int
+naam : text
+datum : date
+plaats : text
+inschrijven : bool
+uiterlijk_inschrijven : date
+type : enum (wedstrijd, ...)
+
+-- table activiteiten_wedstrijd
+id : int (pk + fk -> activiteiten)
+ingericht_door : text (eventueel hier ook een tabel voorzien?)
+aanwezig : time
+inzwemmen : time
+eerste_start : time
+vertrek_zwembad : time
+notes : text (eventueel een default voorzien)
+
+-- table activiteiten_wedstrijd_reeksen
+id : int
+omschrijving : text
+
+-- table activiteiten_wedstrijd_reeksen_wedstrijd
+wedstrijd : int (fk -> activiteiten_wedstrijd)
+reeks : int (fk -> activiteiten_wedstrijd_reeksen)
+
+-- activiteiten_inschrijving (TODO: voorzien voor niet geauth leden)
+id : int
+lid : int (fk -> leden)
+eigenvervoer : bool
+mensen_mee : int
+
+-- activiteiten_wedstrijd_reeksen_inschrijving
+id : int (pk + fk -> activiteiten_inschrijving)
+reeks : int (fk -> activiteiten_wedstrijd_reeksen)
