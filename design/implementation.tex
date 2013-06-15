@@ -17,9 +17,110 @@
 
 \begin{document}
 
+\maketitle
+
 \begin{section}{Subsystems}
     \begin{subsection}{Authentication}
-        aaa
+        Login with username and password or create account with Facebook. A regular
+        account will be created if the user chooses to sign in with Facebook with a
+        password that can later easily be changed.
+        
+        Regular account are linkable with Facebook id's to be able to login with them.
+        They are also unlinkable.
+        
+        This system will use RBAC (Role Based Access Control). So each user will
+        be part of a certain role group upon registration.
+        Roles:
+        \begin{itemize}
+            \item Gast
+            \item Geregistreerd
+            \item Trainer
+            \item Bestuur
+            \item Admin
+        \end{itemize}
+        These role groups have a specific set of roles.
+        Role groups can be created, edited and removed on runtime. They can be used to
+        assign certain parts of the application to a certain group of users.
+        User can only have one role group.
+    \end{subsection}
+    
+    \begin{subsection}{Super Accounts}
+        Each registered user has the option to select a user account that also has access
+        to this user's account. This can be usefull for parents to be able to do stuff
+        for this user.
+    \end{subsection}
+    
+    \begin{subsection}{Pages}
+        Pages are created by admins and can be assigned to certain role groups or one
+        user. Pages consist of a set of widgets.
+        Widgets:
+        \begin{itemize}
+            \item Nieuws items: These can contain a category or a set of tags from the
+            news feed.
+            \item Foto's: These can contain a category or a set of tags from the
+            images feed.
+            \item Documenten: A customizable list of documents. They can also be selected
+            by category or tags.
+            \item Tekst: A regular rich-text holder (with a WYSIWYG editor)-
+            \item Links: Customizable set of external links.
+            \item Formulier links: Buttons that refer to forms.
+            \item Kalender: A filterable display of events
+        \end{itemize}
+        Each widget also has a customisable title.
+    \end{subsection}
+    
+    \begin{subsection}{Item Management}
+        All media items (news, images, files, forms, events) can have one category and
+        multiple tags. Categories can be creation by the users, as can tags.
+        When a media item is created or edited, an autocomplete is available for tags
+        and categories.
+        On the media item overview a list of all the categories and tags are visible.
+        The overview displays a list of a fixed amount of items that are pageable and
+        searchable (text input and filter by category and/or tags).
+        Each item contains the CRUD (Create, Read, Update, Delete) actions.
+    \end{subsection}
+    
+    \begin{subsection}{News}
+        News items are part of a category and can have any number of tags. They also have
+        one author stored. Only the author can edit the post, except for roles that have
+        a higher priority. Date of creation and last edit is also included.
+    \end{subsection}
+    
+    \begin{subsection}{Images}
+        A photo album that contains categories and tags. They also have a title, author
+        and date of creation. Images are searchable by their meta data.
+    \end{subsection}
+    
+    \begin{subsection}{Files}
+        Role 'Trainer' and higher has access to the files part of the application.
+        They can upload any file that can be used across the application. RBAC role order
+        also applies for these files. Files also can have categories (folders) and tags.
+    \end{subsection}
+    
+    \begin{subsection}{Forms}
+        Forms that can easily be created and are submitted to the database that will
+        allow easy extraction of the data in csv or regular text.
+    \end{subsection}
+    
+    \begin{subsection}{Events}
+        A calendar can hold events for certain dates.
+        Events can hold the following data:
+        \begin{itemize}
+            \item Date + Time
+            \item Title
+            \item Description
+            \item Category
+            \item Tags
+            \item References:
+            \begin{itemize}
+                \item Documents
+                \item Images
+                \item Form
+                \item News
+            \end{itemize}
+        \end{itemize}
+        When references are made, the referenced item will recognise this and display
+        a cross-reference to the event.
     \end{subsection}
 \end{section}
 
