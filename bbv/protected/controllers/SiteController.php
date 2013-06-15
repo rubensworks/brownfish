@@ -2,6 +2,8 @@
 
 class SiteController extends Controller
 {
+	private $_authManager;
+	
 	/**
 	 * Declares class-based actions.
 	 */
@@ -20,6 +22,39 @@ class SiteController extends Controller
 			),
 		);
 	}
+	
+	/**
+	 * Method for generating the authentication rules with the AuthManager
+	 * Only call this when changes were made to the roles
+	 */
+	protected function generateAuthRules()
+	{
+		$this->_authManager=Yii::app()->authManager;
+		$this->_authManager->clearAll();
+	
+		$this->_authManager->createOperation("createUser","create a new user");
+		$this->_authManager->createOperation("readUser","read user profile information");
+		$this->_authManager->createOperation("updateUser","update a users information");
+		$this->_authManager->createOperation("deleteUser","delete user");
+		$this->_authManager->createOperation("registerUser","let a guest register himself");
+		$this->_authManager->createOperation("dashboardUser","allow access to the user dashboard");
+	
+		//non-authenticated users
+		$bizRule='return Yii::app()->user->isGuest;';
+		$role=$this->_authManager->createRole("guest", "guest user", $bizRule);
+		$role->addChild("readUser");
+		$role->addChild("registerUser");
+	
+		//authenticated users
+		$bizRule='return !Yii::app()->user->isGuest;';
+		$role=$this->_authManager->createRole("registered", "authenticated user", $bizRule);
+		$role->addChild("readUser");
+		$role->addChild("dashboardUser");
+	
+		//assign basic roles
+		$this->_authManager->assign('admin',3);
+	
+	}
 
 	/**
 	 * This is the default 'index' action that is invoked
@@ -27,6 +62,7 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
+		$this->generateAuthRules();
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
 		$this->render('index');
@@ -69,10 +105,9 @@ class SiteController extends Controller
 	/**
 	 * Displays the login page
 	 */
-	public function actionLogin()
+public function actionLogin()
 	{
 		$model=new LoginForm;
-
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
 		{

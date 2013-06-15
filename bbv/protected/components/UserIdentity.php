@@ -7,27 +7,40 @@
  */
 class UserIdentity extends CUserIdentity
 {
-	/**
-	 * Authenticates a user.
-	 * The example implementation makes sure if the username and password
-	 * are both 'demo'.
-	 * In practical applications, this should be changed to authenticate
-	 * against some persistent user identity storage (e.g. database).
-	 * @return boolean whether authentication succeeds.
+	const ERROR_USERNAME_NOTACTIVATED=3;
+	private $_id;
+	
+	/*
+	 * Authentication trough the User model
+	 * @param fb if authentication will go via facebook
+	 * @return boolean if the authentication succeeds.
 	 */
-	public function authenticate()
+	public function authenticate($fb=false)
 	{
-		$users=array(
-			// username => password
-			'demo'=>'demo',
-			'admin'=>'admin',
-		);
-		if(!isset($users[$this->username]))
+		$user=User::model()->findByAttributes(array('name'=>$this->username));
+		if($user===null)
+		{
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		else if($users[$this->username]!==$this->password)
-			$this->errorCode=self::ERROR_PASSWORD_INVALID;
+		}
 		else
-			$this->errorCode=self::ERROR_NONE;
+		{
+			if($user->pwd!==$user->encode($this->password))
+			{
+				$this->errorCode=self::ERROR_PASSWORD_INVALID;
+			}
+			else
+			{
+				$this->_id=$user->id;
+				$this->setState('fbid', $user->fbid);
+				$this->errorCode=self::ERROR_NONE;
+			}
+		}
+		
 		return !$this->errorCode;
+	}
+	
+	public function getId()
+	{
+		return $this->_id;
 	}
 }

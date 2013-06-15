@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'Bredense Bruinvissen',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -48,18 +48,20 @@ return array(
 		),
 		*/
 		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
-		// uncomment the following to use a MySQL database
-		/*
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+			'connectionString' => 'mysql:host=localhost;dbname=db_bbv',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'root',
 			'charset' => 'utf8',
+			//'schemaCachingDuration'=>3600,   TODO: Enable
+			'enableProfiling'=>true,
 		),
-		*/
+		'authManager'=>array(
+				'class'=>'CDbAuthManager', // Database driven Yii-Auth Manager
+				'connectionID'=>'db', // db connection as above
+				'defaultRoles'=>array('registered','guest'), // default Role for logged in users
+				'showErrors'=>true, // show eval()-errors in buisnessRules
+		),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
             'errorAction'=>'site/error',
