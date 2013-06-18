@@ -1,0 +1,11 @@
+# We don't want the compiled assets files
+bbv/assets/*
+
+# Remove system specific files
+.DS_Store
+.project
+
+# Remove LaTeX compilation stuff
+*.aux
+*.log
+*.pdf
