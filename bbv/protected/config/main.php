@@ -36,6 +36,8 @@ return array(
 		),
 		*/
 	),
+		
+	'theme'=>'bootstrap',
 
 	// application components
 	'components'=>array(
