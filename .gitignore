@@ -1,3 +1,6 @@
+# DON'T SEND THE CREDENTIALS FILE TO GIT
+bbv/protected/config/credentials.php
+
 # We don't want the compiled assets files
 bbv/assets/*
 

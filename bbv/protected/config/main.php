@@ -7,6 +7,10 @@
 // In this example we assume that you unzipped the extension under protected/extensions.
 Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 
+// Require the credentials file
+define( 'CREDENTIALS_PATH', dirname(__FILE__) . "/credentials.php" ); // cache it for multiple use
+require_once(CREDENTIALS_PATH);
+
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
@@ -57,10 +61,10 @@ return array(
 		),
 		*/
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=db_bbv',
+			'connectionString' => 'mysql:host='.DB_HOST.';dbname='.DB_NAME,
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => 'root',
+			'username' => DB_USERNAME,
+			'password' => DB_PASSWORD,
 			'charset' => 'utf8',
 			//'schemaCachingDuration'=>3600,   TODO: Enable
 			'enableProfiling'=>true,
