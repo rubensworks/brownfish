@@ -38,20 +38,31 @@ class SiteController extends Controller
 		$this->_authManager->createOperation("deleteUser","delete user");
 		$this->_authManager->createOperation("registerUser","let a guest register himself");
 		$this->_authManager->createOperation("dashboardUser","allow access to the user dashboard");
+		
+		$this->_authManager->createOperation("manageItems","manage the various items");
 	
-		//non-authenticated users
+		// non-authenticated users
 		$bizRule='return Yii::app()->user->isGuest;';
 		$role=$this->_authManager->createRole("guest", "guest user", $bizRule);
 		$role->addChild("readUser");
 		$role->addChild("registerUser");
 	
-		//authenticated users
+		// authenticated users
 		$bizRule='return !Yii::app()->user->isGuest;';
 		$role=$this->_authManager->createRole("registered", "authenticated user", $bizRule);
 		$role->addChild("readUser");
 		$role->addChild("dashboardUser");
+		
+		// admins
+		$role=$this->_authManager->createRole("admin", "administrator");
+		$role->addChild("createUser");
+		$role->addChild("readUser");
+		$role->addChild("updateUser");
+		$role->addChild("deleteUser");
+		$role->addChild("dashboardUser");
+		$role->addChild("manageItems");
 	
-		//assign basic roles
+		// assign basic roles
 		$this->_authManager->assign('admin',3);
 	
 	}

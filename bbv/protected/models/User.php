@@ -80,17 +80,17 @@ class User extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => Yii::t('form', 'ID: '),
-			'name' => Yii::t('form', 'Naam: '),
-			'mail' => Yii::t('form', 'E-Mail: '),
-			'datereg' => Yii::t('form', 'Datum van registratie: '),
-			'pwd' => Yii::t('form', 'Wachtwoord: '),
-			'pwd_repeat' => Yii::t('form', 'Wachtwoord (herhaling): '),
-			'newPwd' => Yii::t('form', 'Nieuw wachtwoord: '),
-			'newPwd_repeat' => Yii::t('form', 'Nieuw wachtwoord (herhaling): '),
-			'gender' => Yii::t('form', 'Geslacht: '),
-			'verifyCode' => Yii::t('form', 'Verificatie Code: '),
-			'fbid' => Yii::t('form', 'Facebook ID: '),
+			'id' => Yii::t('form', 'ID'),
+			'name' => Yii::t('form', 'Naam'),
+			'mail' => Yii::t('form', 'E-Mail'),
+			'datereg' => Yii::t('form', 'Datum van registratie'),
+			'pwd' => Yii::t('form', 'Wachtwoord'),
+			'pwd_repeat' => Yii::t('form', 'Wachtwoord (herhaling)'),
+			'newPwd' => Yii::t('form', 'Nieuw wachtwoord'),
+			'newPwd_repeat' => Yii::t('form', 'Nieuw wachtwoord (herhaling)'),
+			'gender' => Yii::t('form', 'Geslacht'),
+			'verifyCode' => Yii::t('form', 'Verificatie Code'),
+			'fbid' => Yii::t('form', 'Facebook ID'),
 		);
 	}
 
