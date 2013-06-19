@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 
 ?>
 <div class="section">
-<h1>List of Items</h1>
+<h1>List of DummyItems</h1>
 
 <?php
 if(Yii::app()->user->checkAccess('admin'))
@@ -44,7 +44,6 @@ $this->widget('bootstrap.widgets.TbGridView', array( //Old: zii.widgets.CListVie
 		        ),
 		),
 		'template'=>"{items}",
-	//'itemView'=>'_view',
 )); 
 
 ?>

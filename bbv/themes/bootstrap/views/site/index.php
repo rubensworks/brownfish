@@ -16,7 +16,6 @@ Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
 should you have any questions.</p>
 
 <?php $this->widget('bootstrap.widgets.TbButton', array(
-    'label'=>'Primary',
-    'type'=>'primary', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-    'size'=>'large', // null, 'large', 'small' or 'mini'
-)); ?>
+    		'label'=>'Items',
+    		'url'=>array('item/index'),
+    )); ?>
