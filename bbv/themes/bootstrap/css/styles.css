@@ -1,3 +1,12 @@
 #page {
     padding-top: 60px;
 }
+
+ul.tagit {
+	min-height:26px;
+	font-size:12px;
+}
+
+ul.tagit li {
+	height:15px;
+}

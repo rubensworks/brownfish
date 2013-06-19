@@ -9,7 +9,18 @@
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
-	<?php Yii::app()->bootstrap->register(); ?>
+	<?php
+		Yii::app()->bootstrap->register();
+		
+		$baseUrl = Yii::app()->baseUrl;
+		$cs = Yii::app()->getClientScript();
+		
+		Yii::app()->getClientScript()->registerCoreScript('jquery.ui');
+		$cs->registerCssFile($cs->getCoreScriptUrl().'/jui/css/base/jquery-ui.css');
+		
+		$cs->registerScriptFile($baseUrl.'/js/tag-it.min.js');
+		$cs->registerCssFile($baseUrl.'/css/jquery.tagit.css');
+	?>
 </head>
 
 <body>

@@ -51,7 +51,7 @@ $notNew = !$model->isNewRecord;
 	
 	<div class="span6 row-fluid">
 		<?php echo $form->labelEx($model, 'item.tags'); ?>
-	    <?php echo $form->textField($model, 'item.tags', array('class'=>'span12', 'maxlength'=>100)); ?>
+	    <?php echo $form->textField($model, 'item.tags', array('class'=>'span12 input_tags', 'maxlength'=>100)); ?>
 	    <?php echo $form->error($model, 'item.tags'); ?>
 	</div>
 	</div>

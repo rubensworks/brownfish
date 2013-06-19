@@ -22,6 +22,9 @@ class ItemForm extends CWidget
 	}
 	
 	public function run(){
+		Yii::app()->clientScript->registerScript('logoFix','$(document).ready(function() {
+        $(".input_tags").tagit();
+    });');
 		$this->render('itemForm',array(
 			'model'=>$this->model,
 			'view'=>$this->view,
