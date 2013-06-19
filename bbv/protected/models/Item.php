@@ -7,13 +7,13 @@
  * The followings are the available columns in table 'tbl_item':
  * @property integer $id
  * @property string $name
- * @property string $author
+ * @property string $author_id
  * @property integer $date_created
  * @property integer $date_changed
- * @property integer $category
+ * @property integer $category_id
  * @property string $tags
  */
-abstract class Item extends CActiveRecord
+class Item extends WActiveRecord
 {
 	// The content that doesn't need to be saved in the database
 	public $content;
@@ -21,7 +21,9 @@ abstract class Item extends CActiveRecord
 	/**
 	 * Return a string representation of the type of the item
 	 */
-	abstract protected function getItemName();
+	public function getItemName() {
+		return "Item";
+	}
 	
 	/**
 	 * Returns the static model of the specified AR class.
@@ -48,7 +50,7 @@ abstract class Item extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, author, category', 'required'),
+			array('name, author_id, category_id', 'required'),
 			array('name', 'length', 'max'=>50),
 			array('tags', 'length', 'max'=>100),
 			// The following rule is used by search().
@@ -65,6 +67,9 @@ abstract class Item extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'dummy'=>array(self::HAS_MANY, 'DummyItem', 'id'),
+			'category'=>array(self::BELONGS_TO, 'Category', 'category_id'),
+			'author'=>array(self::BELONGS_TO, 'User', 'author_id'),
 		);
 	}
 
@@ -76,11 +81,12 @@ abstract class Item extends CActiveRecord
 		return array(
 			'id' => Yii::t('form', 'ID'),
 			'name' => Yii::t('form', 'Naam'),
-			'author' => Yii::t('form', 'Auteur'),
+			'author_id' => Yii::t('form', 'Auteur'),
 			'date_created' => Yii::t('form', 'Datum van aanmaak'),
 			'date_changed' => Yii::t('form', 'Laatste bewerking'),
-			'category' => Yii::t('form', 'Categorie'),
+			'category_id' => Yii::t('form', 'Categorie'),
 			'tags' => Yii::t('form', 'Tags'),
+			'content' => Yii::t('form', 'Inhoud'),
 		);
 	}
 
@@ -96,8 +102,8 @@ abstract class Item extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('author',$this->author,true);
-		$criteria->compare('category',$this->category,true);
+		$criteria->compare('author_id',$this->author_id,true);
+		$criteria->compare('category_id',$this->category->id,true);
 		$criteria->compare('tags',$this->tags,true);
 
 		return new CActiveDataProvider($this, array(
@@ -106,13 +112,13 @@ abstract class Item extends CActiveRecord
 	}
 	
 	/**
-	 * Prepares datereg, lastip, admin, confirm, fbid, ofb and avat
+	 * Prepares values
 	 */
 	 protected function beforeValidate()
 	 {
-	 	if ($this->isNewRecord) {
+	 	if($this->isNewRecord) {
 	 		$this->date_created = time();
-	 		$this->author = Yii::app()->user->getId(); 
+	 		$this->author_id = Yii::app()->user->getId(); 
 	 	}
 		$this->date_changed=time();
 		
@@ -155,6 +161,21 @@ abstract class Item extends CActiveRecord
 	 }
 	 
 	 /**
+	  * Fetches the contents of this item
+	  */
+	 public function fetchContents()
+	 {
+	 	$location=Item::getFile($this->id);
+	 	if(file_exists($location)){
+	 		$data=file_get_contents($location);
+	 		$this->content = $data;
+	 	}
+	 	else{
+	 		return "An error has occured while loading the post.";
+	 	}
+	 }
+	 
+	 /**
 	  * Remove a file
 	  * @param integer $id
 	  */
@@ -170,8 +191,29 @@ abstract class Item extends CActiveRecord
 	  */
 	 public function saveContents()
 	 {
+	 	// Make items data directory if it does not exist yet.
+	 	$dir = Yii::getPathOfAlias('webroot.protected.data.items');
+	 	if (!file_exists($dir) and !is_dir($dir))
+	 		mkdir($dir);
+	 	
 	 	$fh = fopen(Item::getFile($this->id), 'w') or die("can't open file");
 	 	fwrite($fh, $this->content);
 	 	fclose($fh);
+	 }
+	 
+	 public function behaviors() {
+	 	return array(
+	 			// attach wform behavior
+	 			'wform_category' => array(
+	 					'class' => 'ext.wform.WFormBehavior',
+	 					// define relations which would be processed
+	 					'relations' => array('category'),
+	 			),
+	 			'wform_author' => array(
+	 					'class' => 'ext.wform.WFormBehavior',
+	 					// define relations which would be processed
+	 					'relations' => array('author'),
+	 			),
+	 	);
 	 }
 }

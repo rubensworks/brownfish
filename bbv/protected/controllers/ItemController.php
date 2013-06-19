@@ -46,21 +46,22 @@ class ItemController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Item();
+		$model=new DummyItem();
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Item']))
+		if(isset($_POST['DummyItem']))
 		{
-			$model->attributes=$_POST['Item'];
-			//$model->content=$_POST['Item']['content'];
+			$model->attributes=$_POST['DummyItem'];
+			$model->item->content=$_POST['DummyItem']['item']['content'];
 			if($model->save())	
-				$this->redirect(array('view','name'=>$model->title));
+				$this->redirect(array('index'));
+				//$this->redirect(array('view','name'=>$model->title));
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model' => $model,
 		));
 	}
 
@@ -71,23 +72,24 @@ class ItemController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		/*$model=$this->loadModel($id);
-		$model->content=Posts::getContents($model->id,false,false);
+		$model=DummyItem::model()->findByPk($id);
+		$model->item->fetchContents();
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Posts']))
+		if(isset($_POST['DummyItem']))
 		{
-			$model->attributes=$_POST['Posts'];
-			$model->content=$_POST['Posts']['content'];
+			$model->attributes=$_POST['DummyItem'];
+			$model->item->content=$_POST['DummyItem']['item']['content'];
 			if($model->save())
-				$this->redirect(array('view','name'=>$model->title));
+				$this->redirect(array('index'));
+				//$this->redirect(array('view','name'=>$model->id));
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
-		));*/
+			'model' => $model,
+		));
 	}
 
 	/**
@@ -97,20 +99,18 @@ class ItemController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		/*if(Yii::app()->request->isPostRequest || true)
+		if(Yii::app()->request->isPostRequest || true)
 		{
 			// we only allow deletion via POST request
-			$m=$this->loadModel($id);
-			GameList::deleteAll($m->gamelist);
-			$m->delete();
-			Posts::rmFile($id);
+			$model=DummyItem::model()->findByPk($id);
+			$model->delete();
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 		}
 		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');*/
+			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
 
 	/**

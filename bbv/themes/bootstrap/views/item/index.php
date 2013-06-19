@@ -11,13 +11,41 @@ $this->breadcrumbs=array(
 <?php
 if(Yii::app()->user->checkAccess('admin'))
 {
-    echo CHtml::link("Admin", array('admin'));
+    $this->widget('bootstrap.widgets.TbButton', array(
+    		'label'=>'Admin',
+    		'url'=>array('admin'),
+    ));
+    echo " ";
+    $this->widget('bootstrap.widgets.TbButton', array(
+    		'label'=>'Create',
+    		'type'=>'primary',
+    		'url'=>array('create'),
+    ));
 }
+
+//$dataProvider->pagination->pageSize=2;
+//$dataProvider->pagination->currentPage=1;
 
 $this->widget('bootstrap.widgets.TbGridView', array( //Old: zii.widgets.CListView
 		'type'=>'striped bordered condensed',
 		'dataProvider'=>$dataProvider,
+		'columns'=>array(
+				'id',
+				'value',
+				'item.name',
+				array('name'=>'item.author', 'value'=>'$data->item->author->name'),
+				array('name'=>'item.date_created', 'value'=>'Utils::displayDate($data->item->date_created)'),
+				array('name'=>'item.date_changed', 'value'=>'Utils::displayDate($data->item->date_changed)'),
+				'item.category.name',
+				'item.tags',
+				array(
+		            'class'=>'bootstrap.widgets.TbButtonColumn',
+		            'htmlOptions'=>array('style'=>'width: 50px'),
+		        ),
+		),
 		'template'=>"{items}",
 	//'itemView'=>'_view',
-)); ?>
+)); 
+
+?>
 </div>
