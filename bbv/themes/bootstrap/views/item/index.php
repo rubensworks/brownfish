@@ -43,7 +43,9 @@ $this->widget('bootstrap.widgets.TbGridView', array( //Old: zii.widgets.CListVie
 		            'htmlOptions'=>array('style'=>'width: 50px'),
 		        ),
 		),
-		'template'=>"{items}",
+		'template'=>"{summary}{items}<div class='text-center'>{pager}</div>",
+		'summaryText'=>"<span class='muted'>Toont {start}-{end} van de {count} resultaten</span>.",
+		'enablePagination' => true,
 )); 
 
 ?>
