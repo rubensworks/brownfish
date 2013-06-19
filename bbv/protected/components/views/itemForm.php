@@ -3,7 +3,7 @@
 <?php
 $form = $this->beginWidget('WForm', array(
 	'id'=>'item-form',
-	'htmlOptions'=>array('class'=>'well row-fluid'),
+	'htmlOptions'=>array('class'=>'well'),
 ));
 $notNew = !$model->isNewRecord;
 ?>
@@ -58,7 +58,7 @@ $notNew = !$model->isNewRecord;
 	
 	<div class="row-fluid">
 	    <?php echo $form->labelEx($model, 'item.content'); ?>
-	    <?php echo $form->textArea($model, 'item.content', array('class'=>'span12', 'rows'=>15)); ?>
+	    <?php echo $form->textArea($model, 'item.content', array('class'=>'span12', 'rows'=>10)); ?>
 	    <?php echo $form->error($model, 'item.content'); ?>
 	</div>
 	

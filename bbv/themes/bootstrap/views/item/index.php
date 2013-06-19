@@ -23,11 +23,7 @@ if(Yii::app()->user->checkAccess('admin'))
     ));
 }
 
-//$dataProvider->pagination->pageSize=2;
-//$dataProvider->pagination->currentPage=1;
-
-$this->widget('bootstrap.widgets.TbGridView', array( //Old: zii.widgets.CListView
-		'type'=>'striped bordered condensed',
+$this->widget('ItemTable', array(
 		'dataProvider'=>$dataProvider,
 		'columns'=>array(
 				'id',
@@ -38,15 +34,8 @@ $this->widget('bootstrap.widgets.TbGridView', array( //Old: zii.widgets.CListVie
 				array('name'=>'item.date_changed', 'value'=>'Utils::displayDate($data->item->date_changed)'),
 				'item.category.name',
 				'item.tags',
-				array(
-		            'class'=>'bootstrap.widgets.TbButtonColumn',
-		            'htmlOptions'=>array('style'=>'width: 50px'),
-		        ),
 		),
-		'template'=>"{summary}{items}<div class='text-center'>{pager}</div>",
-		'summaryText'=>"<span class='muted'>Toont {start}-{end} van de {count} resultaten</span>.",
-		'enablePagination' => true,
-)); 
+));
 
 ?>
 </div>
