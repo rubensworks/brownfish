@@ -17,7 +17,7 @@ class ItemTable extends TbGridView
 				array('name'=>'date_created_search', 'value'=>'Utils::displayDate($data->item->date_created)'),
 				array('name'=>'date_changed_search', 'value'=>'Utils::displayDate($data->item->date_changed)'),
 				array('name'=>'category_search', 'value'=>'$data->item->category->name'),
-				array('name'=>'tags_search', 'value'=>'strlen($data->item->tags)<20?$data->item->tags:substr($data->item->tags, 0, 17)."..."'),
+				array('name'=>'tags_search', 'value'=>'Utils::limitLength($data->item->tags, 20)'),
 			);
 
 	public function init()
