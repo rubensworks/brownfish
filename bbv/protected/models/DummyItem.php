@@ -9,8 +9,8 @@
  * @property string $value
  *
  */
-class DummyItem extends WActiveRecord
-{
+class DummyItem extends AbstractItem
+{	
 	/**
 	 * Return a string representation of the type of the item
 	 */
@@ -27,7 +27,20 @@ class DummyItem extends WActiveRecord
 		// will receive user inputs.
 		return array(
 				array('value', 'length', 'max'=>20),
+				array('id, name, item_search, author_search, category_search, tags_search', 'safe', 'on'=>'search'),
 		);
+	}
+	
+	/**
+	 * @return array customized attribute labels (name=>label)
+	 */
+	public function attributeLabels()
+	{
+		return array_merge(
+				array(
+				'id' => Yii::t('form', 'ID'),
+				'value' => Yii::t('form', 'Waarde'),
+		), parent::attributeLabels());
 	}
 	
 	/**
@@ -48,30 +61,13 @@ class DummyItem extends WActiveRecord
 	}
 	
 	/**
-	 * @return array relational rules.
+	 * Override of the default CDbCriteria for the Abstract Item
+	 * @return CDbCriteria
 	 */
-	public function relations()
-	{
-		return array(
-			'item'=>array(self::BELONGS_TO, 'Item', 'id'),
-		);
-	}
-	
-	public function behaviors() {
-		return array(
-				// attach wform behavior
-				'wform' => array(
-						'class' => 'ext.wform.WFormBehavior',
-						// define relations which would be processed
-						'relations' => array('item'),
-				),
-				// or you could allow to skip some relation saving if it was submitted empty
-				'wform' => array(
-						'class' => 'ext.wform.WFormBehavior',
-						'relations' => array(
-								'item' => array('required' => true),
-						),
-				),
-		);
+	public function makeDbCriteria() {
+		$criteria = parent::makeDbCriteria();
+		$criteria->compare('id',$this->id,true);
+		$criteria->compare('value',$this->value,true);
+		return $criteria;
 	}
 }

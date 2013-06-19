@@ -2,7 +2,7 @@
 
 /**
  * This is the model class for table "tbl_item".
- * This model is abstract, so this can't be used without any extensions.
+ * This model shouldn't be used without any extension tables.
  *
  * The followings are the available columns in table 'tbl_item':
  * @property integer $id

@@ -118,10 +118,19 @@ class ItemController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('DummyItem');
+		$model=new DummyItem('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['DummyItem'])){
+			$model->attributes=$_GET['DummyItem'];
+		}
+		
+		$this->render('index',array(
+				'model'=>$model,
+		));
+		/*$dataProvider=new CActiveDataProvider('DummyItem');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
-		));
+		));*/
 	}
 
 	/**
