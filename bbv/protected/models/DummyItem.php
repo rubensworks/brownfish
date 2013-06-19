@@ -19,6 +19,18 @@ class DummyItem extends WActiveRecord
 	}
 	
 	/**
+	 * @return array validation rules for model attributes.
+	 */
+	public function rules()
+	{
+		// NOTE: you should only define rules for those attributes that
+		// will receive user inputs.
+		return array(
+				array('value', 'length', 'max'=>20),
+		);
+	}
+	
+	/**
 	 * Returns the static model of the specified AR class.
 	 * @return User the static model class
 	 */
