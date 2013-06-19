@@ -4,6 +4,9 @@ bbv/protected/config/credentials.php
 # We don't want the compiled assets files
 bbv/assets/*
 
+# Do not include the saved items files, since these will be different on each system.
+bbv/protected/data/items/*
+
 # Remove system specific files
 .DS_Store
 .project
