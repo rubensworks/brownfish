@@ -11,6 +11,16 @@ Yii::import('bootstrap.widgets.TbGridView');
 class ItemTable extends TbGridView
 {
 	public $buttonColumn = true;
+	
+	public static $TYPE = "striped bordered condensed hover";
+	public static $TEMPLATE = "{summary}{items}<div class='text-center'>{pager}</div>";
+	public static $SUMMARYTEXT = "<span class='muted'>Toont {start}-{end} van de {count} resultaten.</span>";
+	public static $BUTTONCOLUMN = array(
+					'class'=>'bootstrap.widgets.TbButtonColumn',
+					'htmlOptions'=>array('style'=>'width: 20px'),//{view}
+					'template'=>'{update}{delete}'
+			);
+	
 	private $commonColumns = array(
 				array('name'=>'item_search', 'value'=>'$data->item->name'),
 				array('name'=>'author_search', 'value'=>'$data->item->author->name'),
@@ -23,16 +33,13 @@ class ItemTable extends TbGridView
 	public function init()
 	{
 		$this->dataProvider = $this->filter->search();
-		$this->type = 'striped bordered condensed hover';
-		$this->template = "{summary}{items}<div class='text-center'>{pager}</div>";
-		$this->summaryText = "<span class='muted'>Toont {start}-{end} van de {count} resultaten</span>.";
+		$this->type = ItemTable::$TYPE;
+		$this->template = ItemTable::$TEMPLATE;
+		$this->summaryText = ItemTable::$SUMMARYTEXT;
 		$this->enablePagination = true;
 		if($this->buttonColumn) {
 			$this->columns = array_merge($this->columns, $this->commonColumns);
-			$this->columns[] = array(
-					'class'=>'bootstrap.widgets.TbButtonColumn',
-					'htmlOptions'=>array('style'=>'width: 50px'),
-			);
+			$this->columns[] = ItemTable::$BUTTONCOLUMN;
 		}
 		parent::init();
 	}
