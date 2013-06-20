@@ -1,5 +1,6 @@
 <?php
 $this->breadcrumbs=array(
+	'Dashboard'=>array('user/dashboard'),
 	'Categorien'=>array('index'),
 	'Update categorie' . $model->name ,
 );

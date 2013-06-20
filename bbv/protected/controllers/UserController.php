@@ -55,6 +55,10 @@ class UserController extends Controller
 				'actions'=>array('captcha'),
 				'users'=>array('*'),
 			),
+			array('allow', // show the (personalised) dashboard
+				'actions'=>array('dashboard', 'changePassword'),
+				'roles'=>array('dashboardUser'),
+			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -80,22 +84,22 @@ class UserController extends Controller
 					'username' => $model->name,
 					'email' => $model->mail,
 				));
+				return;
 			}
 		}
-
 		$this->render('register',array(
 			'model'=>$model,
 		));
 	}
 	
 	/**
-	 * Shows a form that let's a user enter his username, the next step in the form shows a secret question the user has to answer
+	 * Shows a form that let's a user enter his username
 	 *  and after that a new randomly generated password will be sent to the user's email adress
 	 */
 	public function actionRecoverPassword()
 	{
-		$model=new User;
-
+		$model=new User('recoverPassword');
+	
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
@@ -105,41 +109,93 @@ class UserController extends Controller
 			$user=User::model()->find($criteria);
 			if($user!=NULL)
 			{
-				if(isset($model->secrq))
+				if(isset($model->name))
 				{
 					if($user->secra==$model->secra && ($model->secra!='' || $user->secra==''))
 					{
-						$model->mailNewPassword($user->name,$user->mail,$model->generateNewPassword($user->name));
-						$this->success('recoverPasswordSuccess', array(
-							'username' => $user->name,
-							'email' => $user->mail,
+						if(!$model->mailNewPassword(
+								$user->name,$user->mail,
+								$model->generateNewPassword($user->name))
+						)
+							$model->addError('secrq', Yii::t('error', 'Er is iets misgelopen bij het versturen van Uw nieuw wachtwoord.'));
+						$this->render('recoverPasswordSuccess', array(
+								'username' => $user->name,
+								'email' => $user->mail,
 						));
+						return;
 					}
 					else if($model->secra!='')
 					{
-						$model->addError('secra', Yii::t('error', 'Incorrect answer.'));	
+						$model->addError('secra', Yii::t('error', 'Verkeerd antwoord.'));
 					}
 				}
 				$model->secrq=$user->secrq;
 				$model->name=$user->name;
 				$this->render('recoverPassword_1',array(
 						'model'=>$model,
-					));
+				));
 			}
 			else
 			{
-				$model->addError('name', Yii::t('error', 'Username is incorrect.'));
+				$model->addError('name', Yii::t('error', 'Ongeldige gebruikersnaam.'));
 				$this->render('recoverPassword',array(
-					'model'=>$model,
+						'model'=>$model,
 				));
 			}
 		}
 		else
 		{
 			$this->render('recoverPassword',array(
-				'model'=>$model,
+					'model'=>$model,
 			));
 		}
+	}
+	
+	/**
+	 * Generate tabs for the dashboard based on the signed in user's roles
+	 */
+	public function generateDashboardTabs() {
+		$tabs=array(
+				array(
+						'active'=>true,
+						'label'=>"Account",
+						'content'=>$this->renderPartial('dashboard_account', array(), true),
+				),
+				array(
+						'active'=>false,
+						'label'=>"Wijzig wachtwoord",
+						'content'=>$this->renderPartial('dashboard_change_password', array(), true),
+				),
+		);
+	
+		if(Yii::app()->user->checkAccess('managePages'))
+		{
+			$tabs[]=array(
+					'active'=>false,
+					'label'=>"Pagina's",
+					'content'=>$this->renderPartial('dashboard_pages', array(), true),
+			);
+		}
+	
+		if(Yii::app()->user->checkAccess('manageItems'))
+		{
+			$tabs[]=array(
+					'active'=>false,
+					'label'=>"Inhoud",
+					'content'=>$this->renderPartial('dashboard_items', array(), true),
+			);
+		}
+		return $tabs;
+	}
+	
+	/**
+	 * Personalised dashboard
+	 */
+	public function actionDashboard()
+	{	
+		$this->render('dashboard',array(
+				'tabs' => $this->generateDashboardTabs(),
+		));
 	}
 	
 	/**
@@ -152,9 +208,8 @@ class UserController extends Controller
 		$this->performAjaxValidation($model);
 		
 		$cpwd=$this->beginWidget('ChangePassword', array(
-	'id'=>'cpwd-wdgt'
-	));
-
+			'id'=>'cpwd-wdgt'
+			));
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
@@ -163,20 +218,20 @@ class UserController extends Controller
 			{
 				$user->pwd=$model->encode($model->newPwd);
 				$user->save(false);
-				Yii::app()->user->setFlash('successChangePassword',Yii::t('success', 'Your new password is saved.'));
+				Yii::app()->user->setFlash('successChangePassword',Yii::t('success', 'Uw wachtwoord is aangepast.'));
 			}
 			else
 			{
 				$cpwd->getModel()->addErrors($model->getErrors());
 				if($model->pwd!=$user->pwd)//no encoding anymore because pwd is already encoded now
 				{
-					$cpwd->getModel()->addError('pwd', Yii::t('error', 'Your old password is incorrect.'));
+					$cpwd->getModel()->addError('pwd', Yii::t('error', 'Uw huidig wachtwoord is verkeerd.'));
 				}
 			}
 		}
 		$this->endWidget('ChangePassword', array(
-	'id'=>'cpwd-wdgt'
-	));
+			'id'=>'cpwd-wdgt'
+			));
 
     }
 

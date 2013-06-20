@@ -26,6 +26,7 @@ class SiteController extends Controller
 	/**
 	 * Method for generating the authentication rules with the AuthManager
 	 * Only call this when changes were made to the roles
+	 * TODO: disable on deploy
 	 */
 	protected function generateAuthRules()
 	{
@@ -40,6 +41,7 @@ class SiteController extends Controller
 		$this->_authManager->createOperation("dashboardUser","allow access to the user dashboard");
 		
 		$this->_authManager->createOperation("manageItems","manage the various items");
+		$this->_authManager->createOperation("managePages","manage the various pages");
 	
 		// non-authenticated users
 		$bizRule='return Yii::app()->user->isGuest;';
@@ -55,12 +57,12 @@ class SiteController extends Controller
 		
 		// admins
 		$role=$this->_authManager->createRole("admin", "administrator");
+		$role->addChild("registered");
 		$role->addChild("createUser");
-		$role->addChild("readUser");
 		$role->addChild("updateUser");
 		$role->addChild("deleteUser");
-		$role->addChild("dashboardUser");
 		$role->addChild("manageItems");
+		$role->addChild("managePages");
 	
 		// assign basic roles
 		$this->_authManager->assign('admin',3);

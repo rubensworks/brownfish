@@ -1,5 +1,4 @@
-<div class="form">
-
+<div class="form well">
 <?php Yii::import('application.data.Data');
 $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'user-form',
@@ -10,31 +9,43 @@ $form=$this->beginWidget('CActiveForm', array(
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'name'); ?>
 		<?php echo $form->textField($model,'name',array('size'=>50,'maxlength'=>20)); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'mail'); ?>
 		<?php echo $form->textField($model,'mail',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'mail'); ?>
 	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'pwd'); ?>
 		<?php echo $form->passwordField($model,'pwd',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'pwd'); ?>
 	</div>
     
-    <div class="row">
+    <div class="">
 		<?php echo $form->labelEx($model,'pwd_repeat'); ?>
 		<?php echo $form->passwordField($model,'pwd_repeat',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'pwd_repeat'); ?>
 	</div>
+	
+	<div class="">
+		<?php echo $form->labelEx($model,'secrq'); ?>
+		<?php echo $form->textField($model,'secrq',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->error($model,'secrq'); ?>
+	</div>
+	
+	<div class="">
+		<?php echo $form->labelEx($model,'secra'); ?>
+		<?php echo $form->textField($model,'secra',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->error($model,'secra'); ?>
+	</div>
 
-	<div class="row">
+	<div class="">
 		<?php echo $form->labelEx($model,'gender'); ?>
 		<?php echo $form->dropDownList($model,'gender',array('m' => 'Male', 'f' => 'Female')); ?>
 		<?php echo $form->error($model,'gender'); ?>

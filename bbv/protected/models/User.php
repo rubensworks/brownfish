@@ -9,6 +9,8 @@
  * @property string $mail
  * @property string $datereg
  * @property string $pwd
+ * @property string $secrq
+ * @property string $secra
  * @property string $gender
  * @property string $fbid
  */
@@ -54,9 +56,11 @@ class User extends CActiveRecord
 			array('name, pwd, pwd_repeat, mail', 'required', 'on'=>'register'),
 			array('mail', 'email','checkMX'=>true, 'on'=>'register'), //check if domain exists
 			array('name', 'length', 'max'=>50, 'on'=>'register'),
-			array('mail, pwd', 'length', 'max'=>50, 'on'=>'register'),
+			array('mail, pwd, secra, secrq', 'length', 'max'=>50, 'on'=>'register'),
 			array('gender', 'length', 'max'=>1, 'on'=>'register'),
 			array('pwd_repeat', 'safe', 'on'=>'register'),
+			array('name', 'required', 'on'=>'recoverPassword'),
+			array('name, secra, secrq', 'safe', 'on'=>'recoverPassword'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('name, mail, pwd, gender', 'safe', 'on'=>'search'),
@@ -86,6 +90,8 @@ class User extends CActiveRecord
 			'mail' => Yii::t('form', 'E-Mail'),
 			'datereg' => Yii::t('form', 'Datum van registratie'),
 			'pwd' => Yii::t('form', 'Wachtwoord'),
+			'secrq' => Yii::t('form', 'Geheime vraag'),
+			'secra' => Yii::t('form', 'Geheim antwoord'),
 			'pwd_repeat' => Yii::t('form', 'Wachtwoord (herhaling)'),
 			'newPwd' => Yii::t('form', 'Nieuw wachtwoord'),
 			'newPwd_repeat' => Yii::t('form', 'Nieuw wachtwoord (herhaling)'),
@@ -154,15 +160,15 @@ class User extends CActiveRecord
 	  */
 	 public function mailNewPassword($name, $mail, $pwd)
 	 {
-		$subject = 'TGC Games Password Recovery';
-		$message = "Hi ".$name.",\r\n\r\n".
-					"You have just recovered your account.\r\nBelow you can see your newly generated password. Keep it if you like it, or change it if you don't.\r\nPassword: ".$pwd."\r\n\r\nIf you didn't want to change your password, that means someone else knows your secret answer.\r\nIn that case, log in to your account with this new password and change your secret question and answer as fast as possible.\r\n\r\n".
-					"Friendly regards,\r\nTGC Games";
-		$headers = 'From:  TGC Games Password Recovery <register@tgcgames.com>' . "\r\n" .
-			'Reply-To: info&@tgcgames.com' . "\r\n" .
+		$subject = 'Nieuw BBV wachtwoord';
+		$message = "Dag ".$name.",\r\n\r\n".
+					"U heeft uw wachtwoord veranderd.\r\nHieronder kan U uw nieuw wachtwoord zien. U kan dit aanpassen indien nodig.\r\nWachtwoord: ".$pwd."\r\nr\n\r\n".
+					"Dit is een geautomatiseerd bericht, hierop antwoorden heeft geen zin.";
+		$headers = 'From: BBV Wachtwoord <no-reply@bruinvissen.be>' . "\r\n" .
+			'Reply-To: info@bruinvissen.be' . "\r\n" .
 			'X-Mailer: PHP/' . phpversion();
 		
-		mail($mail, $subject, $message, $headers); 
+		return mail($mail, $subject, $message, $headers); 
 	 }
 	 
 	 /**

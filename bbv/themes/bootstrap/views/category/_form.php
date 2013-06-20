@@ -34,7 +34,7 @@ $notNew = !$model->isNewRecord;
 				array(
 					'buttonType'=>'submit',
 					'type'=>'primary',
-					'label'=>($model->isNewRecord ? 'Create' : 'Save')
+					'label'=>($model->isNewRecord ? 'Maak' : 'Pas aan')
 					)
 				); ?>
 	</div>

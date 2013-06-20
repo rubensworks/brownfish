@@ -1,12 +1,12 @@
 <?php
 $this->breadcrumbs=array(
-	'Register',
+	'Registreer',
 );
 ?>
 <div class="section">
-<h1>Register</h1>
+<h1>Registreer</h1>
 
-Your account, <b><? echo $username; ?></b> was successfully created.<br />
-You can now login.
+Uw account, <b><? echo $username; ?></b> is nu aangemaakt.<br />
+Je kan nu inloggen.
 </div>
 <br />

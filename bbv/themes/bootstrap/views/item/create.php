@@ -1,5 +1,6 @@
 <?php
 $this->breadcrumbs=array(
+	'Dashboard'=>array('user/dashboard'),
 	'Items'=>array('index'),
 	'Create ' .  $model->getItemName(),
 );

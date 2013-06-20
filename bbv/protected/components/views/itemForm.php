@@ -42,16 +42,11 @@ $notNew = !$model->isNewRecord;
 	<?php } ?>
 	
 	<div class="<?php echo $notNew?"span3":"span6"; ?> row-fluid">
-		<div class="span11 row-fluid">
-			<?php $categories = Category::model()->findAll();
-			$categoryList = CHtml::listData($categories, 'category_id', 'name'); ?>
-			<?php echo $form->labelEx($model,'item.category_id'); ?>
-			<?php echo $form->dropDownList($model, 'item.category_id', $categoryList, array('class'=>'span12')); ?>
-			<?php echo $form->error($model,'item.category_id'); ?>
-		</div>
-		<div class="span1" style="margin-top:25px;">
-			<a href="#categoryModal" role="button" class="btn" data-toggle="modal"><i class="icon-plus"></i></a>
-		</div>
+		<?php $categories = Category::model()->findAll();
+		$categoryList = CHtml::listData($categories, 'category_id', 'name'); ?>
+		<?php echo $form->labelEx($model,'item.category_id'); ?>
+		<?php echo $form->dropDownList($model, 'item.category_id', $categoryList, array('class'=>'span12')); ?>
+		<?php echo $form->error($model,'item.category_id'); ?>
 	</div>
 	
 	<div class="span6 row-fluid">
@@ -81,7 +76,7 @@ $notNew = !$model->isNewRecord;
 				array(
 					'buttonType'=>'submit',
 					'type'=>'primary',
-					'label'=>($model->isNewRecord ? 'Create' : 'Save')
+					'label'=>($model->isNewRecord ? 'Maak' : 'Pas aan')
 					)
 				); ?>
 	</div>
