@@ -1,22 +1,20 @@
 <?php
+
 /**
  * 
  * @author Ruben Taelman
  *
- * This is just a test/debug model TODO: delete this
- *
- * The followings are the available columns in table 'tbl_item_dummy':
+ * The followings are the available columns in table 'tbl_item_news':
  * @property integer $id
- * @property string $value
  *
  */
-class DummyItem extends AbstractItem
+class NewsItem extends AbstractItem
 {	
 	/**
 	 * Return a string representation of the type of the item
 	 */
 	public function getItemName() {
-		return "DummyItem";
+		return "Nieuws Item";
 	}
 	
 	/**
@@ -27,20 +25,7 @@ class DummyItem extends AbstractItem
 		return array_merge(
 				array(
 				'id' => Yii::t('form', 'ID'),
-				'value' => Yii::t('form', 'Waarde'),
 		), parent::attributeLabels());
-	}
-	
-	/**
-	 * @return array validation rules for model attributes.
-	 */
-	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array_merge(array(
-				array('value', 'length', 'max'=>20),
-		), parent::rules());
 	}
 	
 	/**
@@ -57,7 +42,7 @@ class DummyItem extends AbstractItem
 	 */
 	public function tableName()
 	{
-		return 'tbl_item_dummy';
+		return 'tbl_item_news';
 	}
 	
 	/**
@@ -67,7 +52,6 @@ class DummyItem extends AbstractItem
 	public function makeDbCriteria() {
 		$criteria = parent::makeDbCriteria();
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('value',$this->value,true);
 		return $criteria;
 	}
 }

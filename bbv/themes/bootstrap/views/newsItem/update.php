@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
 	'Dashboard'=>array('user/dashboard'),
-	'Items'=>array('index'),
+	'Nieuws'=>array('admin'),
 	'Update ' . $model->getItemName() . " " . $model->item->name ,
 );
 

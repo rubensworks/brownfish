@@ -28,7 +28,6 @@ abstract class AbstractItem extends WActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-				array('value', 'length', 'max'=>20),
 				array('id, name, item_search, author_search, category_search, tags_search', 'safe', 'on'=>'search'),
 		);
 	}

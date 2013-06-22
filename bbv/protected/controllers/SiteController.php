@@ -41,6 +41,7 @@ class SiteController extends Controller
 		$this->_authManager->createOperation("dashboardUser","allow access to the user dashboard");
 		
 		$this->_authManager->createOperation("manageItems","manage the various items");
+		$this->_authManager->createOperation("manageNews","manage the news");
 		$this->_authManager->createOperation("managePages","manage the various pages");
 	
 		// non-authenticated users
@@ -62,6 +63,7 @@ class SiteController extends Controller
 		$role->addChild("updateUser");
 		$role->addChild("deleteUser");
 		$role->addChild("manageItems");
+		$role->addChild("manageNews");
 		$role->addChild("managePages");
 	
 		// assign basic roles

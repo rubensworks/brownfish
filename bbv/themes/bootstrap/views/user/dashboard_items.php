@@ -5,6 +5,7 @@
     'items'=>array(
         array('label'=>'Categorien', 'url'=>'../category'),
         array('label'=>'DummyItems', 'url'=>'../item'),
+    	array('label'=>'Nieuws', 'url'=>'../newsitem/admin'),
     ),
 )); ?>
 </div>

@@ -122,8 +122,6 @@ class Item extends WActiveRecord
 	 	}
 		$this->date_changed=time();
 		
-		$this->saveContents();
-		
 		return parent::beforeValidate();
 	 }
 	 
@@ -133,6 +131,14 @@ class Item extends WActiveRecord
 	 protected function afterValidate()
 	 {
 		parent::afterValidate();
+	 }
+	
+	 /**
+	  * We want to save the content after we have generated an id
+	  */
+	 protected function afterSave() {
+	 	parent::afterSave();
+	 	$this->saveContents();
 	 }
 	 
 	 /**
