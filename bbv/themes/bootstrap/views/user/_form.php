@@ -47,7 +47,7 @@ $form=$this->beginWidget('CActiveForm', array(
 
 	<div class="">
 		<?php echo $form->labelEx($model,'gender'); ?>
-		<?php echo $form->dropDownList($model,'gender',array('m' => 'Male', 'f' => 'Female')); ?>
+		<?php echo $form->dropDownList($model,'gender',array('m' => 'Man', 'f' => 'Vrouw')); ?>
 		<?php echo $form->error($model,'gender'); ?>
 	</div>
     
