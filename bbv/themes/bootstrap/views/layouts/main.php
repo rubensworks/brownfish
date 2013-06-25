@@ -15,11 +15,19 @@
 		$baseUrl = Yii::app()->baseUrl;
 		$cs = Yii::app()->getClientScript();
 		
+		// Jquery UI
 		Yii::app()->getClientScript()->registerCoreScript('jquery.ui');
 		$cs->registerCssFile($cs->getCoreScriptUrl().'/jui/css/base/jquery-ui.css');
 		
+		// Tag it
 		$cs->registerScriptFile($baseUrl.'/js/tag-it.min.js');
 		$cs->registerCssFile($baseUrl.'/css/jquery.tagit.css');
+		
+		// Bootstrap WYSIHTML5
+		$cs->registerScriptFile($baseUrl.'/js/wysihtml5-0.3.0_rc2.min.js');
+		$cs->registerScriptFile($baseUrl.'/js/bootstrap-wysihtml5.js');
+		$cs->registerCssFile($baseUrl.'/css/wysihtml5.css');
+		$cs->registerCssFile($baseUrl.'/css/bootstrap-wysihtml5.css');
 	?>
 </head>
 

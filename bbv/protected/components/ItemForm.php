@@ -22,9 +22,16 @@ class ItemForm extends CWidget
 	}
 	
 	public function run(){
-		Yii::app()->clientScript->registerScript('logoFix','$(document).ready(function() {
-        $(".input_tags").tagit();
-    });');
+		Yii::app()->clientScript->registerScript('tagging','$(document).ready(function() {
+	        $(".input_tags").tagit();
+	    });');
+		Yii::app()->clientScript->registerScript('wysihtml5','$(document).ready(function() {
+	        $(".item_content").wysihtml5({
+					"html": true,
+					"color": true,
+					"stylesheets": ["'.Yii::app()->createAbsoluteUrl('/css/wysihtml5.css').'"]
+				});
+	    });');
 		$this->render('itemForm',array(
 			'model'=>$this->model,
 			'view'=>$this->view,

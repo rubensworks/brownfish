@@ -23,13 +23,28 @@ class NewsItemController extends AbstractItemController
 				'actions'=>array('create','update','admin','delete'),
 				'roles'=>array('manageNews'),
 			),
-			array('allows',  // allow all users
-					'actions'=>array('index','view'),
-					'users'=>array('*'),
+			array('allow',  // allow all users
+				'actions'=>array('index','view'),
+				'users'=>array('*'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
 		);
+	}
+	
+	/**
+	 * View a particular model.
+	 * @param integer $id the ID of the model to be viewed
+	 */
+	public function actionView($id)
+	{
+		$class = $this->getItemClassName();
+		$model=$class::model()->findByPk($id);
+		$model->item->fetchContents();
+
+		$this->render('view',array(
+			'model' => $model,
+		));
 	}
 }
