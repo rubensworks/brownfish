@@ -8,11 +8,12 @@ class Utils {
 		
 	/**
 	 * Creates a display date for the given timestamp
-	 * @param unknown $timestamp unix timestamp
+	 * @param integer $timestamp unix timestamp
+	 * @param boolean $extended if the date should included h,m,s
 	 * @return date
 	 */
-	public static function displayDate($timestamp) {
-		return date("d-m-Y", $timestamp);
+	public static function displayDate($timestamp, $extended=false) {
+		return date("d-m-Y".($extended?" H:m:s":""), $timestamp);
 	}
 	
 	/**

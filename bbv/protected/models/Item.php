@@ -68,8 +68,10 @@ class Item extends WActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'dummy'=>array(self::HAS_MANY, 'DummyItem', 'id'),
+			'newsitem'=>array(self::HAS_MANY, 'NewsItem', 'id'),
 			'category'=>array(self::BELONGS_TO, 'Category', 'category_id'),
 			'author'=>array(self::BELONGS_TO, 'User', 'author_id'),
+			'comment'=>array(self::HAS_MANY, 'Comment', 'id'),
 		);
 	}
 

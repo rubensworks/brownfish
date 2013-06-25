@@ -43,6 +43,7 @@ class SiteController extends Controller
 		$this->_authManager->createOperation("manageItems","manage the various items");
 		$this->_authManager->createOperation("manageNews","manage the news");
 		$this->_authManager->createOperation("managePages","manage the various pages");
+		$this->_authManager->createOperation("deleteComment","delete comments from other users");
 	
 		// non-authenticated users
 		$bizRule='return Yii::app()->user->isGuest;';
@@ -65,6 +66,7 @@ class SiteController extends Controller
 		$role->addChild("manageItems");
 		$role->addChild("manageNews");
 		$role->addChild("managePages");
+		$role->addChild("deleteComment");
 	
 		// assign basic roles
 		$this->_authManager->assign('admin',3);
