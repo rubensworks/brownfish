@@ -41,7 +41,6 @@ class NewsItemController extends AbstractItemController
 	{
 		$class = $this->getItemClassName();
 		$model=$class::model()->findByPk($id);
-		$model->item->fetchContents();
 
 		$this->render('view',array(
 			'model' => $model,

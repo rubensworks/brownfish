@@ -74,7 +74,6 @@ abstract class AbstractItemController extends Controller
 	{
 		$class = $this->getItemClassName();
 		$model=$class::model()->findByPk($id);
-		$model->item->fetchContents();
 
 		if(isset($_POST[$class]))
 		{
@@ -124,6 +123,23 @@ abstract class AbstractItemController extends Controller
 		}
 		
 		$this->render('admin',array(
+				'model'=>$model,
+		));
+	}
+	
+	/**
+	 * Lists all models.
+	 */
+	public function actionIndex()
+	{
+		$class = $this->getItemClassName();
+		$model=new $class('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET[$class])){
+			$model->attributes=$_GET[$class];
+		}
+	
+		$this->render('index',array(
 				'model'=>$model,
 		));
 	}

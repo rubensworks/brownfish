@@ -169,6 +169,15 @@ class Item extends WActiveRecord
 	 }
 	 
 	 /**
+	  * Load stuff after the model has been loaded
+	  * @param unknown $event
+	  */
+	 public function onAfterFind($event) {
+	 	$this->fetchContents();
+	 	return parent::onAfterFind($event);
+	 }
+	 
+	 /**
 	  * Fetches the contents of this item
 	  */
 	 public function fetchContents()

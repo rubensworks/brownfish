@@ -18,7 +18,7 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-	<p class="hint muted">Nog geen account? <? echo CHtml::link('Registreer hier!', '../user/register') ?></p>
+	<p class="hint muted">Nog geen account? <? echo CHtml::link('Registreer hier!', array('user/register')) ?></p>
 
 	<p class="muted">Velden met een <span class="required">*</span> zijn verplicht.</p>
 
@@ -40,7 +40,7 @@ $this->breadcrumbs=array(
 		<?php echo $form->error($model,'rememberMe'); ?>
 	</div>
 	
-	<p class="hint muted"><? echo CHtml::link('Wachtwoord vergeten?', '../user/recoverPassword') ?></p>
+	<p class="hint muted"><? echo CHtml::link('Wachtwoord vergeten?', array('user/recoverPassword')) ?></p>
 
 	<div class="buttons">
 		<?php $this->widget(

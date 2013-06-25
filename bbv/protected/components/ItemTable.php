@@ -4,7 +4,7 @@ Yii::import('bootstrap.widgets.TbGridView');
  * 
  * @author Ruben Taelman
  *
- * The default item-list display widget.
+ * The default item management list display widget.
  * if buttonColumn=true, then a default button column will be appended at the end for RUD actions.
  *
  */
