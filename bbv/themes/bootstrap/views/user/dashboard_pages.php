@@ -1,3 +1,10 @@
 <div class="well">
-TODO
+<?php $this->widget('bootstrap.widgets.TbMenu', array(
+    'type'=>'pills',
+    'stacked'=>true, // whether this is a stacked menu
+    'items'=>array(
+        array('label'=>'Pagina\'s', 'url'=>array('page/admin')),
+        array('label'=>'Navigatie', 'url'=>array('navigation/')),
+    ),
+)); ?>
 </div>

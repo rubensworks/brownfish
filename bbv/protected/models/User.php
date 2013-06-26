@@ -77,6 +77,7 @@ class User extends CActiveRecord
 		return array(
 			'item'=>array(self::HAS_MANY, 'Item', 'id'),
 			'comment'=>array(self::HAS_MANY, 'Comment', 'id'),
+			'page'=>array(self::HAS_MANY, 'Page', 'id'),
 		);
 	}
 
