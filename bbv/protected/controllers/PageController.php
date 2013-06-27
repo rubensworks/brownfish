@@ -75,7 +75,7 @@ class PageController extends Controller
 		{
 			$model->attributes=$_POST['Page'];
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('update', 'id'=>$model->id));
 		}
 
 		$this->render('update',array(

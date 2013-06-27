@@ -7,6 +7,7 @@
  * @property integer $id
  * @property string $name
  * @property integer $author_id
+ * @property integer $columns
  */
 class Page extends WActiveRecord
 {
@@ -38,7 +39,7 @@ class Page extends WActiveRecord
 		return array(
 			array('name', 'required'),
 			array('name', 'length', 'max'=>50),
-			array('name, author_id', 'safe'),
+			array('name, author_id, columns', 'safe'),
 		);
 	}
 
@@ -64,6 +65,7 @@ class Page extends WActiveRecord
 			'id' => Yii::t('form', 'ID'),
 			'name' => Yii::t('form', 'Titel'),
 			'author_id' => Yii::t('form', 'Auteur'),
+			'columns' => Yii::t('form', 'Kolommen'),
 		);
 	}
 	

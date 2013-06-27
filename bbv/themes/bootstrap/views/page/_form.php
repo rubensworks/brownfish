@@ -37,6 +37,12 @@ $notNew = !$model->isNewRecord;
 		<?php echo $form->error($model,'author_id'); ?>
 	</div>
 	<?php } ?>
+	
+	<div class="row-fluid">
+		<?php echo $form->labelEx($model,'columns'); ?>
+		<?php echo $form->dropDownList($model, 'columns', array(1=>1, 2=>2, 3=>3, 4=>4), array('class'=>'span12')); ?>
+		<?php echo $form->error($model,'columns'); ?>
+	</div>
 
 	<div>
 		<?php $this->widget(

@@ -30,18 +30,15 @@ $this->breadcrumbs=array(
 </div>
 
 <h3>Widgets</h3>
-
+<p class="muted">Onderstaande veranderingen worden automatisch opgeslaan.</p>
 <div class="row-fluid">
-	<div id="sortable-left" class="span6 sortable well well-small">
+<?php for($i = 0 ; $i < $model->columns ; $i++){ ?>
+	<div id="column_<?php echo $i; ?>" class="span<?php echo 12/$model->columns; ?> sortable well well-small">
 	
-		<?php $widget=new Widget();$widget->id=3;$widget->name="aa";$this->renderPartial('_widget_admin', array('widget'=>$widget)) ?>
+		<?php $widget=new Widget();$widget->id=$i;$widget->name="aa";$this->renderPartial('_widget_admin', array('widget'=>$widget)) ?>
 		
 	</div>
-	<div id="sortable-right" class="span6 sortable well well-small">
-	
-		
-		
-	</div>
+<?php } ?>
 </div>
 
 </div>
@@ -56,18 +53,21 @@ $this->breadcrumbs=array(
     	handle: ".icon-hand-up",
       	revert: true,
       	stop: function(event, ui) {
-			saveWidget(event.toElement.parentNode.parentNode.parentNode.id);
+			saveWidget(event.toElement.parentNode.parentNode.parentNode.id, event.target.id, ui.item.index());
         }
     });
     $(".widget-drag").disableSelection();
   });
 
-  function saveWidget(id) {
+  function saveWidget(id, col_id, row_order) {
 	u_pos = id.indexOf("_");
 	real_id = id.substring(u_pos+1);
 	console.log(real_id);
-	//$("#"+id).parent();
+	
+	u_pos_col = col_id.indexOf("_");
+	real_col_id = col_id.substring(u_pos_col+1);
 
-	// Todo: determine column and row_order
+	console.log(real_id+" "+real_col_id+" "+row_order);
+	// Save that stuff!
   }
   </script>
