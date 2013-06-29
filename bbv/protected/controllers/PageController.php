@@ -77,6 +77,21 @@ class PageController extends Controller
 			if($model->save())
 				$this->redirect(array('update', 'id'=>$model->id));
 		}
+		
+		$baseUrl = Yii::app()->baseUrl;
+		$cs = Yii::app()->getClientScript();
+		$cs->registerScriptFile($baseUrl.'/js/widgets_admin.js');
+		
+		Yii::app()->clientScript->registerScript('widget_variables',"
+			var changes = false;
+	  		var saving = false;
+	  
+	  		var model_id = ".$model->id.";
+	  		var current_columns = ".$model->columns.";
+	  		var url_create = \"".CHtml::normalizeUrl(array("/widget/create"))."\";
+	  		var url_update = \"".CHtml::normalizeUrl(array("/widget/update"))."\";
+	  		var url_delete = \"".CHtml::normalizeUrl(array("/widget/delete"))."\";
+		", CClientScript::POS_END);
 
 		$this->render('update',array(
 			'model' => $model,
