@@ -2,7 +2,7 @@
 
 <?php
 $form = $this->beginWidget('WForm', array(
-	'id'=>'category-form',
+	'id'=>'page-form',
 	'htmlOptions'=>array('class'=>'well'),
 ));
 $notNew = !$model->isNewRecord;
@@ -40,7 +40,7 @@ $notNew = !$model->isNewRecord;
 	
 	<div class="row-fluid">
 		<?php echo $form->labelEx($model,'columns'); ?>
-		<?php echo $form->dropDownList($model, 'columns', array(1=>1, 2=>2, 3=>3, 4=>4), array('class'=>'span12')); ?>
+		<?php echo $form->dropDownList($model, 'columns', array(1=>1, 2=>2, 3=>3, 4=>4), array('class'=>'span12', 'id'=>'columns')); ?>
 		<?php echo $form->error($model,'columns'); ?>
 	</div>
 

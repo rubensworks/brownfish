@@ -7,7 +7,7 @@
  * @property integer $id
  * @property string $name
  * @property integer $page_id
- * @property integer $column
+ * @property integer $col_id
  * @property integer $row_order
  */
 class Widget extends WActiveRecord
@@ -65,7 +65,7 @@ class Widget extends WActiveRecord
 			'id' => Yii::t('form', 'ID'),
 			'name' => Yii::t('form', 'Titel'),
 			'page' => Yii::t('form', 'Pagina'),
-			'column' => Yii::t('form', 'Kolom'),
+			'col_id' => Yii::t('form', 'Kolom'),
 			'row_order' => Yii::t('form', 'Rij volgorde'),
 		);
 	}

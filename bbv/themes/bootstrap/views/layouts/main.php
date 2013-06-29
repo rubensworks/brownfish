@@ -28,6 +28,9 @@
 		$cs->registerScriptFile($baseUrl.'/js/bootstrap-wysihtml5.js');
 		$cs->registerCssFile($baseUrl.'/css/wysihtml5.css');
 		$cs->registerCssFile($baseUrl.'/css/bootstrap-wysihtml5.css');
+		
+		// Spin
+		$cs->registerScriptFile($baseUrl.'/js/spin.min.js');
 	?>
 </head>
 

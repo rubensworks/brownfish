@@ -53,3 +53,15 @@ ul.tagit li {
 .widget-controls{
 	margin:8px;
 }
+
+.move_widget{
+	cursor:move;
+}
+
+.delete_widget{
+	cursor:pointer;
+}
+
+#saving{
+	float:left;
+}
