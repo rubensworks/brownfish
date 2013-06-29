@@ -65,3 +65,7 @@ ul.tagit li {
 #saving{
 	float:left;
 }
+
+.content{
+	min-height:20px;
+}

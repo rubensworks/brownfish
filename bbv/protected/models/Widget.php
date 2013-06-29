@@ -9,10 +9,14 @@
  * @property integer $page_id
  * @property integer $col_id
  * @property integer $row_order
- * @property string $type
+ * @property integer $filter_category
+ * @property integer $category_id
+ * @property integer $filter_tags
+ * @property string $tags
  */
 class Widget extends WActiveRecord
 {
+	public $type;
 	
 	/**
 	 * Returns the static model of the specified AR class.
@@ -39,6 +43,7 @@ class Widget extends WActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('type', 'safe'),
 			array('name', 'required'),
 			array('name', 'length', 'max'=>50),
 			array('name', 'safe', 'on'=>'search'),
@@ -54,6 +59,7 @@ class Widget extends WActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'page'=>array(self::BELONGS_TO, 'Page', 'id'),
+			'category'=>array(self::BELONGS_TO, 'Category', 'category_id'),
 		);
 	}
 
@@ -69,6 +75,10 @@ class Widget extends WActiveRecord
 			'col_id' => Yii::t('form', 'Kolom'),
 			'row_order' => Yii::t('form', 'Rij volgorde'),
 			'type' => Yii::t('form', 'Type'),
+			'filter_category' => Yii::t('form', 'Filter op categorie'),
+			'category' => Yii::t('form', 'Categorie'),
+			'filter_tags' => Yii::t('form', 'Filter op tags'),
+			'tags' => Yii::t('form', 'Tags'),
 		);
 	}
 

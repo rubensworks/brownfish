@@ -50,6 +50,7 @@ class Category extends WActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'item'=>array(self::HAS_MANY, 'Item', 'category_id'),
+			'widget'=>array(self::HAS_MANY, 'Widget', 'category_id'),
 		);
 	}
 

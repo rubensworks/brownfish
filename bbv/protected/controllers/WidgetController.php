@@ -48,7 +48,6 @@ class WidgetController extends Controller
 		$model->page_id = $_GET['page_id'];
 		$model->col_id = $_GET['col_id'];
 		$model->row_order = $_GET['row_order'];
-		$model->type = $_GET['type'];
 		
 		$model->save();
 		
@@ -68,7 +67,10 @@ class WidgetController extends Controller
 		if(isset($_GET['page_id'])) $model->page_id = $_GET['page_id'];
 		if(isset($_GET['col_id'])) $model->col_id = $_GET['col_id'];
 		if(isset($_GET['row_order'])) $model->row_order = $_GET['row_order'];
-		if(isset($_GET['type'])) $model->type = $_GET['type'];
+		if(isset($_GET['filter_category'])) $model->filter_category = $_GET['filter_category'];
+		if(isset($_GET['category_id'])) $model->category_id = $_GET['category_id'];
+		if(isset($_GET['filter_tags'])) $model->filter_tags = $_GET['filter_tags'];
+		if(isset($_GET['tags'])) $model->tags = $_GET['tags'];
 		
 		$model->save();
 		

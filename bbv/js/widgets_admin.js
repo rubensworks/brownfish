@@ -30,11 +30,15 @@
   });
 
   // Save a moved widget
-  function saveWidget(id, col_id, row_order, name) {
+  function saveWidget(id, col_id, row_order, name, filter_category, category_id, filter_tags, tags) {
 	real_id = chop_id(id);
 	real_col_id = chop_id(col_id);
 	
 	if(typeof(name)==='undefined') name = $("#"+id).find(".name").val();
+	if(typeof(filter_category)==='undefined') filter_category = $("#"+id).find(".filter_category").is(":checked")?1:0;
+	if(typeof(category_id)==='undefined') name = $("#"+id).find(".category_id").val();
+	if(typeof(filter_tags)==='undefined') name = $("#"+id).find(".filter_tags").is(":checked")?1:0;
+	if(typeof(tags)==='undefined') name = $("#"+id).find(".tags").val();
 
 	var req = $.ajax({
 		url: url_update+"/"+real_id,
@@ -42,18 +46,20 @@
 			page_id: model_id,
 			col_id: real_col_id,
 			row_order: row_order,
-			name: name
+			name: name,
+			filter_category: filter_category,
+			category_id: category_id,
+			filter_tags: filter_tags,
+			tags: tags
 		},
 		invokedata: {
-		    real_id: real_id,
-		    name: name
+		    real_id: real_id
 		}
 	});
 
 	disable_widget(real_id);
 
 	req.done(function(data, textStatus, jqXHR) {
-		$("#widget_"+this.invokedata.real_id).find(".name").val(this.invokedata.name);
 		enable_widget(this.invokedata.real_id);
 	});
 
@@ -84,6 +90,8 @@
 		$widget.find(".name").val(result.name);
 
 		$(".sortable").sortable("refresh");
+		
+		$widget.find(".tags").addClass("input_tags").tagit();
 	});
 
 	req.fail(function(jqXHR, textStatus, errorThrown) {
@@ -111,12 +119,32 @@
 		});
 	}
   }
+  
+  //Enable/disable checkboxes with auto-save
+  function toggle_setup(type) {
+  	$("."+type).live("change", function() {
+  		  $widget = $(this).parent().parent().parent();
+  		  real_id = chop_id($widget.attr('id'));
+  		  var data = {};
+  		  data[type] = $widget.find("."+type).is(":checked")?1:0;
+  		  update_widget(real_id, data);
+  		  
+  		  if($widget.find("."+type).is(":checked"))
+  			  $widget.find("."+type+"_setup").show("fast");
+  		  else
+  			  $widget.find("."+type+"_setup").hide("fast");
+  	  });
+  }
 
   // Disable a widget while saving
   function disable_widget(id) {
 	saving = true;
 	$("#widget_"+id).fadeTo(0.7);
 	$("#widget_"+id).find(".name").prop('disabled', true);
+	$("#widget_"+id).find(".filter_category").prop('disabled', true);
+	$("#widget_"+id).find(".category_id").prop('disabled', true);
+	$("#widget_"+id).find(".filter_tags").prop('disabled', true);
+	$("#widget_"+id).find(".tags").prop('disabled', true);
 	$("#widget_"+id).find(".move_widget").removeClass("move_widget").addClass("move_widget_disabled");
 	$("#widget_"+id).find(".delete_widget").removeClass("delete_widget").addClass("delete_widget_disabled");
   }
@@ -126,6 +154,10 @@
 	saving = false;
 	$("#widget_"+id).fadeTo(1);
 	$("#widget_"+id).find(".name").prop('disabled', false);
+	$("#widget_"+id).find(".filter_category").prop('disabled', false);
+	$("#widget_"+id).find(".category_id").prop('disabled', false);
+	$("#widget_"+id).find(".filter_tags").prop('disabled', false);
+	$("#widget_"+id).find(".tags").prop('disabled', false);
 	$("#widget_"+id).find(".move_widget_disabled").removeClass("move_widget_disabled").addClass("move_widget");
 	$("#widget_"+id).find(".delete_widget_disabled").removeClass("delete_widget_disabled").addClass("delete_widget");
   }
@@ -139,6 +171,24 @@
 	  for(var i=0;i<rows;i++) {
 		deleteWidget(chop_id(items[i]), false);
 	  }
+  }
+  
+  // Update a widget with a certain data set
+  function update_widget(real_id, data) {
+	  var req = $.ajax({
+			url: url_update+"/"+real_id,
+			data: data
+	  });
+
+	  disable_widget(real_id);
+
+      req.done(function(data, textStatus, jqXHR) {
+		enable_widget(real_id);
+	  });
+
+	  req.fail(function(jqXHR, textStatus, errorThrown) {
+		alert("Er is iets misgelopen, probeer het later opnieuw.");
+	  });
   }
 
 $(document).ready(function() {
@@ -189,7 +239,7 @@ $(document).ready(function() {
   });
 
   // Set changes true if a name has been changed
-  $(".name").live("keyup", function() {
+  $(".name, .tags").live("keyup", function() {
 	changes = true;
   });
 
@@ -199,22 +249,8 @@ $(document).ready(function() {
 	  
 	  var id = $(this).parent().parent().parent().attr("id");
 	  real_id = chop_id(id);
-	  var req = $.ajax({
-			url: url_update+"/"+real_id,
-			data: {
-				name: $(this).parent().parent().find(".name").val()
-			}
-	  });
-
-	  disable_widget(real_id);
-
-      req.done(function(data, textStatus, jqXHR) {
-		enable_widget(real_id);
-	  });
-
-	  req.fail(function(jqXHR, textStatus, errorThrown) {
-		alert("Er is iets misgelopen, probeer het later opnieuw.");
-	  });
+	  
+	  update_widget(real_id, {name: $(this).parent().parent().find(".name").val()});
   });
   
   // Build the spinner and show it if an ajax request is going on
@@ -227,4 +263,31 @@ $(document).ready(function() {
 	  .ajaxStop(function() {
 	      $(this).hide();
 	  });
+  
+  // Register toggle checkbox listeners
+  toggle_setup("filter_category");
+  toggle_setup("filter_tags");
+  
+  // Save on category change
+  $(".category_id").live("change", function() {
+	  $widget = $(this).parent().parent().parent().parent();
+	  real_id = chop_id($widget.attr('id'));
+	  var data = {category_id: $widget.find(".category_id").val()};
+	  update_widget(real_id, data);
+  });
+  
+  // Save tags of a widget on focus out
+  $(".tags").live("focusout", function() {
+	  changes = false;
+	  
+	  $widget = $(this).parent().parent().parent().parent();
+	  real_id = chop_id($widget.attr('id'));
+	  var data = {tags: $widget.find(".tags").val()};
+	  console.log($widget.find(".tags").val());
+	  update_widget(real_id, data);
+  });
+  
+  $(".input_tags").tagit({
+	  // TODO: make sure they also get saved
+  });
 });
