@@ -81,3 +81,31 @@ $this->renderPartial('_widget_admin', array('widget'=>NULL))
 </div>
 
 </div>
+
+<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'newWidget')); ?>
+<div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+    <h4>Nieuwe widget</h4>
+</div>
+ 
+<div class="modal-body">
+    <p class="muted">Selecteer het type widget die je wilt toevoegen.</p>
+    <input type="radio" name="widget_type" value="dummy" checked="checked"/>&nbsp;Dummy (TMP)<br />
+    <input type="radio" name="widget_type" value="text" />&nbsp;Tekst<br />
+    <input type="radio" name="widget_type" value="news" />&nbsp;Nieuws<br />
+</div>
+ 
+<div class="modal-footer">
+    <?php $this->widget('bootstrap.widgets.TbButton', array(
+        'type'=>'primary',
+        'label'=>'Voeg toe',
+        'url'=>'',
+        'htmlOptions'=>array('data-dismiss'=>'modal', 'id'=>'confirm_add_widget'),
+    )); ?>
+    <?php $this->widget('bootstrap.widgets.TbButton', array(
+        'label'=>'Sluit',
+        'url'=>'',
+        'htmlOptions'=>array('data-dismiss'=>'modal'),
+    )); ?>
+</div>
+<?php $this->endWidget(); ?>

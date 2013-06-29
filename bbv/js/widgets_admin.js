@@ -63,13 +63,14 @@
   }
 
   // Make a new widget and save it at the database
-  function newWidget(col_id) {
+  function newWidget(col_id, type) {
 	var req = $.ajax({
 		url: url_create,
 		data: {
 			page_id: model_id,
 			col_id: col_id,
-			row_order: $("#column_"+col_id).find(".content").sortable("toArray").length
+			row_order: $("#column_"+col_id).find(".content").sortable("toArray").length,
+			type: type
 		}
 	});
 
@@ -168,9 +169,16 @@ $(document).ready(function() {
 	  deleteWidget(chop_id(id));
   });
   
-  // Make a new widget onclick
+  // Open the widget selection modal
   $(".add_widget").live("click", function() {
-	newWidget(chop_id($(this).attr('id')));
+	  $('#newWidget').modal('toggle');
+	  $('#newWidget').data("col_id", chop_id($(this).attr('id')));
+  });
+  
+  // Add the selected widget to the selected column
+  $("#confirm_add_widget").live("click", function() {
+	  var type = $('input:radio[name=widget_type]:checked').val();
+	  newWidget($('#newWidget').data("col_id"), type);
   });
 
   // Show an alert if there are changes or savings
