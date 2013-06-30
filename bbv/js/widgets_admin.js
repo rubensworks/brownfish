@@ -14,7 +14,7 @@
     	handle: ".move_widget",
       	revert: true,
       	stop: function(event, ui) {
-          	var col_id = $(ui.item).parent().parent().attr("id");
+          	var col_id = $(ui.item).closest('.content').parent().attr("id");
           	var row_order = ui.item.index();
           	var id = event.toElement.parentNode.parentNode.parentNode.id;
 
@@ -36,9 +36,9 @@
 	
 	if(typeof(name)==='undefined') name = $("#"+id).find(".name").val();
 	if(typeof(filter_category)==='undefined') filter_category = $("#"+id).find(".filter_category").is(":checked")?1:0;
-	if(typeof(category_id)==='undefined') name = $("#"+id).find(".category_id").val();
-	if(typeof(filter_tags)==='undefined') name = $("#"+id).find(".filter_tags").is(":checked")?1:0;
-	if(typeof(tags)==='undefined') name = $("#"+id).find(".tags").val();
+	if(typeof(category_id)==='undefined') category_id = $("#"+id).find(".category_id").val();
+	if(typeof(filter_tags)==='undefined') filter_tags = $("#"+id).find(".filter_tags").is(":checked")?1:0;
+	if(typeof(tags)==='undefined') tags = $("#"+id).find(".tags").val();
 
 	var req = $.ajax({
 		url: url_update+"/"+real_id,
@@ -123,7 +123,7 @@
   //Enable/disable checkboxes with auto-save
   function toggle_setup(type) {
   	$("."+type).live("change", function() {
-  		  $widget = $(this).parent().parent().parent();
+  		  $widget = $(this).closest('.widget-drag');
   		  real_id = chop_id($widget.attr('id'));
   		  var data = {};
   		  data[type] = $widget.find("."+type).is(":checked")?1:0;
@@ -190,6 +190,14 @@
 		alert("Er is iets misgelopen, probeer het later opnieuw.");
 	  });
   }
+  
+  // Common save tags code from the starting tag-it node
+  function save_tags($node) {
+	  $widget = $($node).closest('.widget-drag');
+	  real_id = chop_id($widget.attr('id'));
+	  var data = {tags: $widget.find(".tags").val()};
+	  update_widget(real_id, data);
+  }
 
 $(document).ready(function() {
   // Check the amount of columns and ask for deletion if the amount has decreased
@@ -215,7 +223,7 @@ $(document).ready(function() {
   
   // Delete widget onclick
   $(".delete_widget").live("click", function() {
-	  var id = $(this).parent().parent().parent().attr("id");
+	  var id = $(this).closest('.widget-drag').attr("id");
 	  deleteWidget(chop_id(id));
   });
   
@@ -239,7 +247,7 @@ $(document).ready(function() {
   });
 
   // Set changes true if a name has been changed
-  $(".name, .tags").live("keyup", function() {
+  $(".name").live("keyup", function() {
 	changes = true;
   });
 
@@ -247,10 +255,10 @@ $(document).ready(function() {
   $(".name").live("focusout", function() {
 	  changes = false;
 	  
-	  var id = $(this).parent().parent().parent().attr("id");
+	  var id = $(this).closest('.widget-drag').attr("id");
 	  real_id = chop_id(id);
 	  
-	  update_widget(real_id, {name: $(this).parent().parent().find(".name").val()});
+	  update_widget(real_id, {name: $(this).closest('.widget-drag').find(".name").val()});
   });
   
   // Build the spinner and show it if an ajax request is going on
@@ -270,24 +278,22 @@ $(document).ready(function() {
   
   // Save on category change
   $(".category_id").live("change", function() {
-	  $widget = $(this).parent().parent().parent().parent();
+	  $widget = $(this).closest('.widget-drag');
 	  real_id = chop_id($widget.attr('id'));
 	  var data = {category_id: $widget.find(".category_id").val()};
 	  update_widget(real_id, data);
   });
   
-  // Save tags of a widget on focus out
-  $(".tags").live("focusout", function() {
-	  changes = false;
-	  
-	  $widget = $(this).parent().parent().parent().parent();
-	  real_id = chop_id($widget.attr('id'));
-	  var data = {tags: $widget.find(".tags").val()};
-	  console.log($widget.find(".tags").val());
-	  update_widget(real_id, data);
-  });
-  
+  // Save tags on add and remove
   $(".input_tags").tagit({
-	  // TODO: make sure they also get saved
+	  singleField: true,
+	  singleFieldNode: $('.tags'),
+	  afterTagAdded: function() {
+		  save_tags($(this));
+	  },
+	  afterTagRemoved: 
+		  function() {
+		  save_tags($(this));
+	  }
   });
 });
