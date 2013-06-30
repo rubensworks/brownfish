@@ -136,4 +136,12 @@ abstract class AbstractItem extends WActiveRecord
 				),
 		));
 	}
+	
+	/**
+	 * Cascade delete the related models
+	 */
+	public function afterDelete(){
+		$this->item->delete();
+		return parent::afterDelete();
+	}
 }

@@ -159,7 +159,7 @@ class Item extends WActiveRecord
 	  */
 	 public function getContents()
 	 {
-	 	$location=Item::getFile($this->id);
+	 	$location=$this->getFile();
 	 	if(file_exists($location)){
 	 		$data=file_get_contents($location);
 	 		return $data;
@@ -183,7 +183,7 @@ class Item extends WActiveRecord
 	  */
 	 public function fetchContents()
 	 {
-	 	$location=Item::getFile($this->id);
+	 	$location=$this->getFile();
 	 	if(file_exists($location)){
 	 		$data=file_get_contents($location);
 	 		$this->content = $data;
@@ -199,9 +199,9 @@ class Item extends WActiveRecord
 	  */
 	 public function rmFile()
 	 {
-	 	$location=Item::getFile($this->id);
-	 	if(file_exists($uri))
-	 		unlink(Item::getFile($this->id));
+	 	$location=$this->getFile();
+	 	if(file_exists($location))
+	 		unlink($location);
 	 }
 	 
 	 /**
@@ -219,6 +219,10 @@ class Item extends WActiveRecord
 	 	fclose($fh);
 	 }
 	 
+	 /**
+	  * Behaviours for wform
+	  * @return multitype:multitype:string multitype:string
+	  */
 	 public function behaviors() {
 	 	return array(
 	 			// attach wform behavior
@@ -233,5 +237,15 @@ class Item extends WActiveRecord
 	 					'relations' => array('author'),
 	 			),
 	 	);
+	 }
+	 
+	 /**
+	  * Cascade delete the related models and the item file
+	  */
+	 public function afterDelete(){
+	 	$this->rmFile();
+	 	Comment::model()->deleteAll(array('condition' => 'item_id = :item_id', 'params'=> array(':item_id' => $this->id)));
+	 	Widget::model()->deleteAll(array('condition' => 'item_id = :item_id', 'params'=> array(':item_id' => $this->id)));
+	 	return parent::afterDelete();
 	 }
 }

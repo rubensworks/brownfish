@@ -6,7 +6,7 @@
  * @property int $id
  * @property int $date_created
  * @property int $author_id
- * @property int $item 
+ * @property int $item_id
  * @property string $content
  */
 class Comment extends CActiveRecord
