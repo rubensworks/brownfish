@@ -90,9 +90,12 @@ $this->renderPartial('_widget_admin', array('widget'=>NULL))
  
 <div class="modal-body">
     <p class="muted">Selecteer het type widget die je wilt toevoegen.</p>
-    <input type="radio" name="widget_type" value="dummy" checked="checked"/>&nbsp;Dummy (TMP)<br />
-    <input type="radio" name="widget_type" value="text" />&nbsp;Tekst<br />
-    <input type="radio" name="widget_type" value="news" />&nbsp;Nieuws<br />
+    <?php
+    	foreach(Utils::getItemTypes() as $type) {
+			$instance = new $type();
+			?><input type="radio" name="widget_type" value="<?php echo $type; ?>" />&nbsp;<?php echo $instance->getItemName(); ?><br /><?php
+		}
+    ?>
 </div>
  
 <div class="modal-footer">

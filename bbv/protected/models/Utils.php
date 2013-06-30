@@ -25,5 +25,16 @@ class Utils {
 	public static function limitLength($value, $length) {
 		return strlen($value)<$length?$value:substr($value, 0, $length-3)."...";
 	}
+	
+	/**
+	 * Return all the available Item types in the application
+	 * @return multitype:string list of Item types
+	 */
+	public static function getItemTypes() {
+		return array(
+				"DummyItem",
+				"NewsItem",
+		);
+	}
 }
 ?>

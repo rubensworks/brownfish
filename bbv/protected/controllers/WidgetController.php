@@ -48,10 +48,24 @@ class WidgetController extends Controller
 		$model->page_id = $_GET['page_id'];
 		$model->col_id = $_GET['col_id'];
 		$model->row_order = $_GET['row_order'];
+		$model->item_type = $_GET['item_type'];
+		
+		$class = $model->item_type;
+		$instance = new $class();
+		$model->item_type_display = $instance->getItemName();
 		
 		$model->save();
 		
-		echo CJSON::encode($model->getAttributes());
+		echo CJSON::encode($model->getAttributes($model->safeAttributeNames));
+	}
+	
+	/**
+	 * Update fields of a model only if they are set in the GET parameters
+	 * @param model $model model to update
+	 * @param string $field name of the field
+	 */
+	private static function updateIfNeeded($model, $field) {
+		if(isset($_GET[$field])) $model[$field] = $_GET[$field];
 	}
 
 	/**
@@ -62,15 +76,12 @@ class WidgetController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=Widget::model()->findByPk($id);
-
-		if(isset($_GET['name'])) $model->name = $_GET['name'];
-		if(isset($_GET['page_id'])) $model->page_id = $_GET['page_id'];
-		if(isset($_GET['col_id'])) $model->col_id = $_GET['col_id'];
-		if(isset($_GET['row_order'])) $model->row_order = $_GET['row_order'];
-		if(isset($_GET['filter_category'])) $model->filter_category = $_GET['filter_category'];
-		if(isset($_GET['category_id'])) $model->category_id = $_GET['category_id'];
-		if(isset($_GET['filter_tags'])) $model->filter_tags = $_GET['filter_tags'];
-		if(isset($_GET['tags'])) $model->tags = $_GET['tags'];
+		
+		// Get all the attributes (also non-set) and update them if needed
+		$attributes = $model->attributeNames();
+		foreach($attributes as $attribute) {
+			WidgetController::updateIfNeeded($model, $attribute);
+		}
 		
 		$model->save();
 		

@@ -9,14 +9,20 @@
  * @property integer $page_id
  * @property integer $col_id
  * @property integer $row_order
+ * @property string $item_type
+ * @property string $widget_type
  * @property integer $filter_category
  * @property integer $category_id
  * @property integer $filter_tags
  * @property string $tags
+ * @property integer $amount
+ * @property integer $item_id
  */
 class Widget extends WActiveRecord
 {
-	public $type;
+	public static $TYPE_LIST = "LIST";
+	public static $TYPE_SINGLE = "SINGLE";
+	public $item_type_display;
 	
 	/**
 	 * Returns the static model of the specified AR class.
@@ -43,7 +49,7 @@ class Widget extends WActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('type', 'safe'),
+			array('item_type_display, id, item_type', 'safe'),
 			array('name', 'required'),
 			array('name', 'length', 'max'=>50),
 			array('name', 'safe', 'on'=>'search'),
@@ -58,8 +64,9 @@ class Widget extends WActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'page'=>array(self::BELONGS_TO, 'Page', 'id'),
+			'page'=>array(self::BELONGS_TO, 'Page', 'page_id'),
 			'category'=>array(self::BELONGS_TO, 'Category', 'category_id'),
+			'item'=>array(self::BELONGS_TO, 'Item', 'item_id'),
 		);
 	}
 
@@ -74,11 +81,15 @@ class Widget extends WActiveRecord
 			'page' => Yii::t('form', 'Pagina'),
 			'col_id' => Yii::t('form', 'Kolom'),
 			'row_order' => Yii::t('form', 'Rij volgorde'),
-			'type' => Yii::t('form', 'Type'),
+			'item_type' => Yii::t('form', 'Item Type'),
+			'widget_type' => Yii::t('form', 'Widget Type'),
 			'filter_category' => Yii::t('form', 'Filter op categorie'),
 			'category' => Yii::t('form', 'Categorie'),
 			'filter_tags' => Yii::t('form', 'Filter op tags'),
 			'tags' => Yii::t('form', 'Tags'),
+			'amount' => Yii::t('form', 'Amount'),
+			'item_id' => Yii::t('form', 'Item ID'),
+			'item_type_display' => Yii::t('form', 'Item Type'),
 		);
 	}
 

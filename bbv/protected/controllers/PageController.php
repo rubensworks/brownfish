@@ -91,6 +91,7 @@ class PageController extends Controller
 	  		var url_create = \"".CHtml::normalizeUrl(array("/widget/create"))."\";
 	  		var url_update = \"".CHtml::normalizeUrl(array("/widget/update"))."\";
 	  		var url_delete = \"".CHtml::normalizeUrl(array("/widget/delete"))."\";
+	  		var url_autocomplete = \"".CHtml::normalizeUrl(array('item/aclist', array('item_type'=>"")))."\";
 		", CClientScript::POS_END);
 
 		$this->render('update',array(

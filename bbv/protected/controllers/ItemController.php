@@ -31,7 +31,7 @@ class ItemController extends Controller
 	{
 		return array(
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('create','update','index','delete'),
+				'actions'=>array('create','update','index','delete', 'aclist'),
 				'roles'=>array('manageItems'),
 			),
 			array('deny',  // deny all users
@@ -127,10 +127,32 @@ class ItemController extends Controller
 		$this->render('index',array(
 				'model'=>$model,
 		));
-		/*$dataProvider=new CActiveDataProvider('DummyItem');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));*/
+	}
+	
+	/**
+	 * Autocomplete for all types of items
+	 */
+	public function actionAclist()
+	{
+		$results = array();
+		if(isset($_GET[0]['item_type'])) {
+            $criteria = new CDbCriteria();
+            $criteria->with = array(
+            		'item',
+            );
+            $criteria->compare('item.name', $_GET['term'], true);
+            $model = new $_GET[0]['item_type']('search');
+            foreach($model->findAll($criteria) as $m)
+            {
+                $results[] = array(
+                		'label'=>$m->item->name,
+                		'value'=>$m->item->name,
+                		'id'=>$m->id,
+                );
+            }
+ 
+        }
+        echo CJSON::encode($results);
 	}
 
 	/**

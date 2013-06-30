@@ -69,29 +69,57 @@
   }
 
   // Make a new widget and save it at the database
-  function newWidget(col_id, type) {
+  function newWidget(col_id, item_type) {
 	var req = $.ajax({
 		url: url_create,
 		data: {
 			page_id: model_id,
 			col_id: col_id,
 			row_order: $("#column_"+col_id).find(".content").sortable("toArray").length,
-			type: type
+			item_type: item_type
 		}
 	});
 
 	req.done(function(data, textStatus, jqXHR) {
 		var result = $.parseJSON(data);
 		
+		// Clone from template
 		var $widget = $("#widget_template").clone();
 		
+		// Set correct id
 		$widget.attr("id", "widget_"+result.id);
+		
+		// Set correct widget type radio names
+		$widget.find(".widget_type_list").attr("name", "widget_type_"+result.id);
+		$widget.find(".widget_type_single").attr("name", "widget_type_"+result.id);
+		
+		// Set correct widget item_id autocomplete id
+		$widget.find("#item_id_").attr("id", "item_id_"+result.id);
+		
+		// Append to given column
 		$("#column_"+col_id).find(".content").append($widget);
+		
+		// Set the given name
 		$widget.find(".name").val(result.name);
+		
+		// Display the correct item type
+		$widget.find(".item_type").text(result.item_type_display);
 
+		// Refresh the sortable column
 		$(".sortable").sortable("refresh");
 		
+		// Enable tagging
 		$widget.find(".tags").addClass("input_tags").tagit();
+		
+		// Enable item_id autocomplete
+		$('#item_id_'+result.id).autocomplete({
+			'minLength':'3',
+			'showAnim':'fold',
+			'select': function(event, ui) {
+				update_item_id($(this), ui.item['id']);
+			},
+			'source':url_autocomplete+result.item_type,
+		});
 	});
 
 	req.fail(function(jqXHR, textStatus, errorThrown) {
@@ -133,6 +161,21 @@
   			  $widget.find("."+type+"_setup").show("fast");
   		  else
   			  $widget.find("."+type+"_setup").hide("fast");
+  	  });
+  }
+  
+  //Enable/disable radio's with auto-save
+  function toggle_setup_radio(type, field, values) {
+  	$("."+field+"_"+type).live("change", function() {
+  		  $widget = $(this).closest('.widget-drag');
+  		  real_id = chop_id($widget.attr('id'));
+  		  var data = {};
+  		  data[field] = values[$widget.find("."+field+"_"+type).is(":checked")?1:0];
+  		  update_widget(real_id, data);
+  		  
+  		  $widget.find("."+field+"_setup").hide("fast");
+  		  if($widget.find("."+field+"_"+type).is(":checked"))
+  			  $widget.find("."+field+"_"+type+"_setup").show("fast");
   	  });
   }
 
@@ -198,6 +241,15 @@
 	  var data = {tags: $widget.find(".tags").val()};
 	  update_widget(real_id, data);
   }
+  
+  // Update the item id
+  function update_item_id($node, id) {
+	  console.log(id);
+	  $widget = $node.closest('.widget-drag');
+	  real_id = chop_id($widget.attr('id'));
+	  var data = {item_id: id};
+	  update_widget(real_id, data);
+  }
 
 $(document).ready(function() {
   // Check the amount of columns and ask for deletion if the amount has decreased
@@ -235,8 +287,8 @@ $(document).ready(function() {
   
   // Add the selected widget to the selected column
   $("#confirm_add_widget").live("click", function() {
-	  var type = $('input:radio[name=widget_type]:checked').val();
-	  newWidget($('#newWidget').data("col_id"), type);
+	  var item_type = $('input:radio[name=widget_type]:checked').val();
+	  newWidget($('#newWidget').data("col_id"), item_type);
   });
 
   // Show an alert if there are changes or savings
@@ -272,9 +324,11 @@ $(document).ready(function() {
 	      $(this).hide();
 	  });
   
-  // Register toggle checkbox listeners
+  // Register toggle checkbox and radio listeners
   toggle_setup("filter_category");
   toggle_setup("filter_tags");
+  toggle_setup_radio("list", "widget_type", ["SINGLE", "LIST"]);
+  toggle_setup_radio("single", "widget_type", ["LIST", "SINGLE"]);
   
   // Save on category change
   $(".category_id").live("change", function() {
@@ -288,12 +342,19 @@ $(document).ready(function() {
   $(".input_tags").tagit({
 	  singleField: true,
 	  singleFieldNode: $('.tags'),
-	  afterTagAdded: function() {
-		  save_tags($(this));
+	  afterTagAdded: function(event, ui) {
+		  if(!ui.duringInitialization) save_tags($(this));
 	  },
-	  afterTagRemoved: 
-		  function() {
-		  save_tags($(this));
+	  afterTagRemoved: function(event, ui) {
+		  if(!ui.duringInitialization) save_tags($(this));
 	  }
+  });
+  
+  //Save on amount change
+  $(".amount").live("change", function() {
+	  $widget = $(this).closest('.widget-drag');
+	  real_id = chop_id($widget.attr('id'));
+	  var data = {amount: $widget.find(".amount").val()};
+	  update_widget(real_id, data);
   });
 });

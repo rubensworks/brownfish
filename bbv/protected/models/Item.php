@@ -72,6 +72,7 @@ class Item extends WActiveRecord
 			'category'=>array(self::BELONGS_TO, 'Category', 'category_id'),
 			'author'=>array(self::BELONGS_TO, 'User', 'author_id'),
 			'comment'=>array(self::HAS_MANY, 'Comment', 'id'),
+			'widget'=>array(self::HAS_MANY, 'Widget', 'id'),
 		);
 	}
 
