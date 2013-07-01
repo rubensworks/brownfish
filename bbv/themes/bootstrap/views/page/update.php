@@ -11,33 +11,6 @@ $this->breadcrumbs=array(
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
 
-<div class="btn-toolbar pull-right">
-    <?php //pull-right
-    /*$columnchooser = array();
-    for($i=0;$i<$model->columns;$i++){
-    	$columnchooser[] = array(
-    			'label'=>'Kolom '.($i+1),
-    			'url'=>'',
-    			'linkOptions'=>array('id'=>'tocolumn_'.$i, 'class'=>'add_widget')
-    	);
-    }
-    $this->widget('bootstrap.widgets.TbButtonGroup', array(
-        'buttons'=>array(
-            array(
-            	'label'=>'Widget',
-            	'icon'=>'plus',
-	            'items'=>array(
-						array('label'=>'Dummy', 'url'=>'', 'items'=>$columnchooser),
-						array('label'=>'Tekst', 'url'=>'', 'items'=>$columnchooser),
-						array('label'=>'Nieuws', 'url'=>'', 'items'=>$columnchooser),
-						'---',
-						array('label'=>'Meer', 'url'=>''),
-				),
-        	),
-		),
-    ));*/ ?>
-</div>
-
 <div class="hide">
 <?php
 // Render the widget template

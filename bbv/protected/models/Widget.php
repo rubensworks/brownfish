@@ -22,6 +22,11 @@ class Widget extends WActiveRecord
 {
 	public static $TYPE_LIST = "LIST";
 	public static $TYPE_SINGLE = "SINGLE";
+	public static $VIEWS = array(
+			"LIST" => "_widget_view_list",
+			"SINGLE" => "_widget_view_single",
+	);
+	
 	public $item_type_display;
 	
 	/**

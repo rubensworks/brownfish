@@ -26,9 +26,13 @@ class PageController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+			array('allow',
 				'actions'=>array('admin','create','update','delete'),
 				'roles'=>array('managePages'),
+			),
+			array('allow',
+				'actions'=>array('view'),
+				'users'=>array('*'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -68,9 +72,6 @@ class PageController extends Controller
 	{
 		$model=Page::model()->findByPk($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['Page']))
 		{
 			$model->attributes=$_POST['Page'];
@@ -78,16 +79,19 @@ class PageController extends Controller
 				$this->redirect(array('update', 'id'=>$model->id));
 		}
 		
+		// Query all the widgets on this page
 		$criteria = new CDbCriteria();
 		$criteria->condition = "page_id = :page_id";
 		$criteria->params = array(":page_id"=>$model->id);
 		$criteria->order = "row_order";
 		$widgets = Widget::model()->findAll($criteria);
 		
+		// Register javascript file for dynamic widget management
 		$baseUrl = Yii::app()->baseUrl;
 		$cs = Yii::app()->getClientScript();
 		$cs->registerScriptFile($baseUrl.'/js/widgets_admin.js');
 		
+		// Dynamic js parameters to register on the page
 		Yii::app()->clientScript->registerScript('widget_variables',"
 			var changes = false;
 	  		var saving = false;
@@ -135,6 +139,34 @@ class PageController extends Controller
 		$dataProvider=new CActiveDataProvider('Page');
 		$this->render('admin',array(
 			'dataProvider'=>$dataProvider,
+		));
+	}
+	
+	/**
+	 * Updates a particular model.
+	 * The browser will be redirected to the 'view' page.
+	 * @param integer $id the ID of the model to view
+	 */
+	public function actionView($id)
+	{
+		$model=Page::model()->findByPk($id);
+	
+		if(isset($_POST['Page']))
+		{
+			$model->attributes=$_POST['Page'];
+			if($model->save())
+				$this->redirect(array('update', 'id'=>$model->id));
+		}
+	
+		$criteria = new CDbCriteria();
+		$criteria->condition = "page_id = :page_id";
+		$criteria->params = array(":page_id"=>$model->id);
+		$criteria->order = "row_order";
+		$widgets = Widget::model()->findAll($criteria);
+	
+		$this->render('view',array(
+				'model' => $model,
+				'widgets' => $widgets,
 		));
 	}
 

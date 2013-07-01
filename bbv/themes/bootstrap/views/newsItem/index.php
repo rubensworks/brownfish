@@ -10,8 +10,8 @@ $this->breadcrumbs=array(
 <?php
 $this->widget('ItemList', array(
 		'filter'=>$model,
-		'condition'=>"category.category_id = :category",
-		'params'=>array(":category"=>1),
+		//'condition'=>"category.category_id = :category",
+		//'params'=>array(":category"=>1),
 ));
 
 ?>

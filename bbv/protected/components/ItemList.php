@@ -38,11 +38,6 @@ class ItemList extends CListView
 	{
 		return $this->model;
 	}
-	
-	public function countComments($item_id)
-	{
-		return count(Comment::model()->findAll('item_id=:item_id', array(':item_id'=>$item_id)));
-	}
 
 }
 ?>

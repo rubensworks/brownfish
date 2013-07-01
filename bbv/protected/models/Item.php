@@ -242,10 +242,43 @@ class Item extends WActiveRecord
 	 /**
 	  * Cascade delete the related models and the item file
 	  */
-	 public function afterDelete(){
+	 public function afterDelete() {
 	 	$this->rmFile();
 	 	Comment::model()->deleteAll(array('condition' => 'item_id = :item_id', 'params'=> array(':item_id' => $this->id)));
 	 	Widget::model()->deleteAll(array('condition' => 'item_id = :item_id', 'params'=> array(':item_id' => $this->id)));
 	 	return parent::afterDelete();
+	 }
+	 
+	 /**
+	  * Build the list that is filterable with a widget
+	  * @param Widget $widget the list-widget that has some filters
+	  * @return AbstractItem's
+	  */
+	 public static function findList($widget) {
+	 	$class = $widget->item_type;
+	 	$criteria = new CDbCriteria();
+	 	$criteria->with = array('item');
+	 	$params = array();
+	 	$criteria->condition = "";
+	 	if($widget->filter_category) {
+	 		$criteria->condition .= "item.category_id = :category_id";
+	 		$params[':category_id'] = $widget->category_id;
+	 	}
+	 	if($widget->filter_tags) {
+	 		if($widget->filter_category) $criteria->condition .= " AND ";
+	 		$i = 0;
+	 		$tags = explode(",", $widget->tags);
+	 		foreach($tags as $tag) {
+	 			if($i>0) $criteria->condition.= " AND ";
+	 			$criteria->condition .= " item.tags LIKE :tag_".$i." ";
+	 			$params[':tag_'.$i] = "%".$tag."%";
+	 			$i++;
+	 		}
+	 	}
+	 	$criteria->params = $params;
+	 	$criteria->order = "item.date_created DESC";
+	 	$criteria->limit = $widget->amount;
+	 	$items = $class::model()->findAll($criteria);
+	 	return $items;
 	 }
 }

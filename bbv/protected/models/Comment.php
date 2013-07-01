@@ -97,4 +97,13 @@ class Comment extends CActiveRecord
 		return parent::beforeValidate();
 	}
 	
+	/**
+	 * Count the amount of comments for an item
+	 * @param integer $item_id
+	 */
+	public static function countComments($item_id)
+	{
+		return count(Comment::model()->findAll('item_id=:item_id', array(':item_id'=>$item_id)));
+	}
+	
 }
