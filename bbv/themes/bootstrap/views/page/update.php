@@ -54,15 +54,10 @@ $this->renderPartial('_widget_admin', array('widget'=>NULL))
 <?php for($i = 0 ; $i < $model->columns ; $i++){ ?>
 	<div id="column_<?php echo $i; ?>" class="span<?php echo 12/$model->columns; ?> well well-small">
 		<div class="content sortable">
-		<?php
-			$criteria = new CDbCriteria();
-			$criteria->condition = "page_id = :page_id AND col_id = :col_id";
-			$criteria->params = array(":page_id"=>$model->id, ":col_id"=>$i);
-			$criteria->order = "row_order";
-			$widgets = Widget::model()->findAll($criteria);
-			
+		<?php			
 			foreach($widgets as $widget) {
-				$this->renderPartial('_widget_admin', array('widget'=>$widget));
+				if($widget->col_id == $i)
+					$this->renderPartial('_widget_admin', array('widget'=>$widget));
 			}
 		?>
 			</div>

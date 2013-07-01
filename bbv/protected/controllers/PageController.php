@@ -78,6 +78,12 @@ class PageController extends Controller
 				$this->redirect(array('update', 'id'=>$model->id));
 		}
 		
+		$criteria = new CDbCriteria();
+		$criteria->condition = "page_id = :page_id";
+		$criteria->params = array(":page_id"=>$model->id);
+		$criteria->order = "row_order";
+		$widgets = Widget::model()->findAll($criteria);
+		
 		$baseUrl = Yii::app()->baseUrl;
 		$cs = Yii::app()->getClientScript();
 		$cs->registerScriptFile($baseUrl.'/js/widgets_admin.js');
@@ -96,6 +102,7 @@ class PageController extends Controller
 
 		$this->render('update',array(
 			'model' => $model,
+			'widgets'=>$widgets,
 		));
 	}
 
