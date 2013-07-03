@@ -1,8 +1,4 @@
-<div class="well-titled">
-	<div class="well-header">
-	    <h3 class="well-title"><? echo CHtml::link(isset($overrideTitle)?$overrideTitle:$data->item->name, array('newsitem/view', 'id'=>$data->item->id)) ?></h3>
-	</div>
-	<div class="well well-small well-body">
+<?php $this->beginWidget('WidgetWidget', array('name'=>CHtml::link(isset($overrideTitle)?$overrideTitle:$data->item->name, array('newsitem/view', 'id'=>$data->item->id)), 'id'=>$data->id)); ?>
 		<?php if(!(isset($compact) && $compact)){ ?>
 		<small class="muted">Aangemaakt op: <?php echo Utils::displayDate($data->item->date_created) ?>
 		<?php if($data->item->date_created != $data->item->date_changed) { ?>
@@ -18,5 +14,4 @@
 		echo $comments." ".($comments==1?"reactie":"reacties");
 		?>
 		</small>
-	</div>
-</div>
+<?php $this->endWidget(); ?>
