@@ -9,7 +9,7 @@
  *
  */
 class NewsItem extends AbstractItem
-{	
+{		
 	/**
 	 * Return a string representation of the type of the item
 	 */

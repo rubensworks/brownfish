@@ -8,6 +8,8 @@
  */
 abstract class AbstractItem extends WActiveRecord
 {
+	public static $_CUSTOM_LIST_VIEW = false;
+	
 	public $item_search;
 	public $author_search;
 	public $category_search;

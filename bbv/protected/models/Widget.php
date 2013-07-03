@@ -19,7 +19,7 @@
  * @property integer $item_id
  */
 class Widget extends WActiveRecord
-{
+{	
 	public static $TYPE_LIST = "LIST";
 	public static $TYPE_SINGLE = "SINGLE";
 	public static $VIEWS = array(
