@@ -4,7 +4,7 @@
     'stacked'=>true, // whether this is a stacked menu
     'items'=>array(
         array('label'=>'Pagina\'s', 'url'=>array('page/admin')),
-        array('label'=>'Navigatie', 'url'=>array('navigation/')),
+        array('label'=>'Navigatie', 'url'=>array('navigation/admin')),
     ),
 )); ?>
 </div>

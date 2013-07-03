@@ -8,6 +8,7 @@
  */
 abstract class AbstractItem extends WActiveRecord
 {
+	// Set this on 'true' if you want to use a custom _list_item view to be used in listing widgets
 	public static $_CUSTOM_LIST_VIEW = false;
 	
 	public $item_search;
