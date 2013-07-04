@@ -4,6 +4,43 @@ function chop_id(id) {
 	return id.substring(u_pos+1);
 }
 
+// Make the sorting elements, the sortable('refresh') method can't handle too much live stuff, so
+// we have to call this on every element update.
+function doSort() {
+	$(".navigation_column").sortable({
+		items: ".navigation_node",
+		connectWith: ".navigation_column",
+		cursor: 'move',
+		opacity: 0.7,
+		handle: ".move",
+		revert: true,
+		stop: function(event, ui) {
+			var col_id = $(ui.item).closest('.navigation_node').parent().closest('.navigation_node').attr("id");
+			var row_order = ui.item.index();
+			var id = $(event.toElement).closest('.navigation_node').attr("id");
+			
+			var items = $("#"+col_id).find(".navigation_column").sortable("toArray");
+			var rows = items.length;
+
+			// Save all the elements in that column
+			var offset = 0;
+			for(var i=0;i<rows;i++) {
+				if($("#"+items[i]).parent().closest(".navigation_node").attr("id") != col_id) {
+					// sortable("toArray") also takes all sub-nodes, so we have to ignore these manually
+					offset++;
+				} else {
+					update_element(chop_id(items[i]), {parent_id: chop_id(col_id), row_order: (i-offset)});
+				}
+			}
+		}
+	}).disableSelection();
+}
+
+//Make the sortable columns
+$(function() {
+	doSort();
+});
+
 //This is used to handle the ajax request results
 function handle_request_result(request, real_id) {
 	// We will disable the widget until the request has been successfully completed
@@ -66,8 +103,14 @@ function new_navigation($node, label, type, route, parent_id, row_order) {
 		if(type == TYPE_NODE) $navigation.find(".route").hide();
 		if(type == TYPE_LEAF) $navigation.find(".node_controls").hide();
 		
+		// Remove navigation_column of leaf elements
+		if(type ==  TYPE_LEAF) $navigation.find(".navigation_column").remove();
+		
 		// Append to given column
 		$node.find(".navigation_column").first().append($navigation);
+		
+		// Refresh the sortable column
+		doSort();
 	});
 
 	req.fail(function(jqXHR, textStatus, errorThrown) {
@@ -90,8 +133,6 @@ function delete_navigation(id, async) {
 			$("#navigation_"+id).hide("fast", function(){
 				$(this).remove();
 			});
-			
-			// TODO: recursively remove the subnodes in the controller
 		});
 
 		req.fail(function(jqXHR, textStatus, errorThrown) {

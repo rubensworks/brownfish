@@ -58,7 +58,7 @@ class Navigation extends WActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'parent'=>array(self::BELONGS_TO, 'Navigation', 'id'),
-			'children'=>array(self::HAS_MANY, 'Navigation', 'parent_id'),
+			'children'=>array(self::HAS_MANY, 'Navigation', 'parent_id', 'order'=>'row_order ASC'),
 		);
 	}
 

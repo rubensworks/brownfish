@@ -9,11 +9,11 @@
 		</div>
 		<?php
 		if($navigation == NULL || $navigation->type == Navigation::$TYPE_LEAF) {
-			echo CHtml::textField("route", $navigation==NULL?"":$navigation->route, array("class"=>"route span5", "placeholder"=>"Link"));
+			echo CHtml::textField("route", $navigation==NULL?"":$navigation->route, array("class"=>"route span4", "placeholder"=>"Link"));
 		}
 		if($navigation == NULL || $navigation->type != Navigation::$TYPE_LEAF) {
 		?>
-		<div class="span5 row-fluid node_controls">
+		<div class="span4 row-fluid node_controls">
 			<?php
 			$this->widget('bootstrap.widgets.TbButton', array(
 					'label'=>'Sub Element',
@@ -29,6 +29,13 @@
 		</div>
 		<?php
 		}
+		if($navigation == NULL || $navigation->type != Navigation::$TYPE_ROOT) {
+			$this->widget('bootstrap.widgets.TbButton', array(
+					'label'=>'',
+					'icon'=>'hand-up',
+					'htmlOptions'=>array('class'=>'span1 pull-right move'),
+			));
+		} else echo "<div class='span1 pull-right'>&nbsp;</div>";
 		$this->widget('bootstrap.widgets.TbButton', array(
 				'label'=>'',
 				'icon'=>'remove',
@@ -36,6 +43,7 @@
 		));
 		?>
 	</div>
+	<?php if($navigation == NULL || $navigation->type != Navigation::$TYPE_LEAF) { ?>
 	<div class="navigation_column">
 		<?php
 		if($navigation !== NULL) {
@@ -45,4 +53,5 @@
 		}
 		?>
 	</div>
+	<?php } ?>
 </div>
