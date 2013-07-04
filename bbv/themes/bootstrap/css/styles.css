@@ -79,3 +79,8 @@ ul.tagit li {
 .navigation_node{
 	padding-bottom:5px;
 }
+
+.main_nav{
+	list-style-type:none;
+	margin: 0 0 0 10px;
+}

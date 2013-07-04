@@ -4,7 +4,11 @@
 	<div class="row-fluid">
 		<div class="span6 row-fluid">
 			<?php
-			echo CHtml::textField("label", $navigation==NULL?"":$navigation->label, array("class"=>"nav_label span12", "placeholder"=>"Label"));
+			if($navigation != NULL && $navigation->type == Navigation::$TYPE_ROOT) {
+				?><div class='span12'>Top element</div><?php
+			} else {
+				echo CHtml::textField("label", $navigation==NULL?"":$navigation->label, array("class"=>"nav_label span12", "placeholder"=>"Label"));
+			}
 			?>
 		</div>
 		<?php
@@ -35,12 +39,13 @@
 					'icon'=>'hand-up',
 					'htmlOptions'=>array('class'=>'span1 pull-right move'),
 			));
-		} else echo "<div class='span1 pull-right'>&nbsp;</div>";
-		$this->widget('bootstrap.widgets.TbButton', array(
-				'label'=>'',
-				'icon'=>'remove',
-				'htmlOptions'=>array('class'=>'span1 pull-right remove'),
-		));
+			$this->widget('bootstrap.widgets.TbButton', array(
+					'label'=>'',
+					'icon'=>'remove',
+					'htmlOptions'=>array('class'=>'span1 pull-right remove'),
+			));
+		} else echo "<div class='span2 pull-right'>&nbsp;</div>";
+		
 		?>
 	</div>
 	<?php if($navigation == NULL || $navigation->type != Navigation::$TYPE_LEAF) { ?>

@@ -1,18 +1,13 @@
-<?php /* @var $this Controller */ ?>
+<?php
+/* @var $this Controller */
+$navigation = Navigation::buildNavigation();
+?>
 <?php $this->beginContent('//layouts/main'); ?>
 <div class="row">
 	<div class="span2">
-	TODO:NAV
         <div id="sidebar">
         <?php
-            $this->beginWidget('zii.widgets.CPortlet', array(
-                'title'=>'Operations',
-            ));
-            $this->widget('bootstrap.widgets.TbMenu', array(
-                'items'=>$this->menu,
-                'htmlOptions'=>array('class'=>'operations'),
-            ));
-            $this->endWidget();
+            echo Navigation::printNavigation($navigation);
         ?>
         </div><!-- sidebar -->
     </div>
