@@ -17,8 +17,8 @@ class ItemTable extends TbGridView
 	public static $SUMMARYTEXT = "<span class='muted'>Toont {start}-{end} van de {count} resultaten.</span>";
 	public static $BUTTONCOLUMN = array(
 					'class'=>'bootstrap.widgets.TbButtonColumn',
-					'htmlOptions'=>array('style'=>'width: 20px'),//{view}
-					'template'=>'{update}{delete}'
+					'htmlOptions'=>array('style'=>'width: 20px'),
+					'template'=>'{view}{update}{delete}'
 			);
 	
 	private $commonColumns = array(
@@ -39,7 +39,7 @@ class ItemTable extends TbGridView
 		$this->enablePagination = true;
 		if($this->buttonColumn) {
 			$this->columns = array_merge($this->columns, $this->commonColumns);
-			$this->columns[] = ItemTable::$BUTTONCOLUMN;
+			$this->columns[] = self::$BUTTONCOLUMN;
 		}
 		parent::init();
 	}

@@ -17,7 +17,6 @@ class ItemList extends CListView
 	{
 		$this->dataProvider = $this->filter->search();
 		$this->dataProvider->criteria->order = "date_created DESC";
-		//$this->dataProvider->criteria->condition = "item.category_id = 1";
 		$this->dataProvider->criteria->condition = $this->condition;
 		$this->dataProvider->criteria->params = $this->params;
 		$this->template = ItemTable::$TEMPLATE;
