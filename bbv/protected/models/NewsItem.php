@@ -6,6 +6,7 @@
  *
  * The followings are the available columns in table 'tbl_item_news':
  * @property integer $id
+ * @property string $excerpt
  *
  */
 class NewsItem extends AbstractItem
@@ -25,7 +26,20 @@ class NewsItem extends AbstractItem
 		return array_merge(
 				array(
 				'id' => Yii::t('form', 'ID'),
+				'excerpt' => Yii::t('form', 'Inleiding'),
 		), parent::attributeLabels());
+	}
+	
+	/**
+	 * @return array validation rules for model attributes.
+	 */
+	public function rules()
+	{
+		// NOTE: you should only define rules for those attributes that
+		// will receive user inputs.
+		return array_merge(array(
+				array('excerpt', 'length', 'max'=>500),
+		), parent::rules());
 	}
 	
 	/**

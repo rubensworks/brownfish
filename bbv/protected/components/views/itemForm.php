@@ -56,12 +56,6 @@ $notNew = !$model->isNewRecord;
 	</div>
 	</div>
 	
-	<div class="row-fluid">
-	    <?php echo $form->labelEx($model, 'item.content'); ?>
-	    <?php echo $form->textArea($model, 'item.content', array('class'=>'span12 item_content', 'rows'=>10)); ?>
-	    <?php echo $form->error($model, 'item.content'); ?>
-	</div>
-	
 	<?php
 	if($view!==NULL) {
 		$owner=$this->getOwner();
@@ -69,6 +63,12 @@ $notNew = !$model->isNewRecord;
 		$owner->renderFile($viewFile,array('form'=>$form, 'model'=>$model));
 	}
 	?>
+	
+	<div class="row-fluid">
+	    <?php echo $form->labelEx($model, 'item.content'); ?>
+	    <?php echo $form->textArea($model, 'item.content', array('class'=>'span12 item_content', 'rows'=>10)); ?>
+	    <?php echo $form->error($model, 'item.content'); ?>
+	</div>
 
 	<div>
 		<?php $this->widget(

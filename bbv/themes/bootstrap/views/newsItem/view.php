@@ -14,6 +14,8 @@ $this->breadcrumbs=array(
 , Laatst bewerkt op: <?php echo Utils::displayDate($model->item->date_changed, true); } ?>, 
 Auteur: <?php echo $model->item->author->name; ?></small>
 <hr />
+<i><?php echo $model->excerpt; ?></i>
+<hr />
 <?php echo $model->item->content; ?>
 </div>
 <hr />

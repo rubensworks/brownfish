@@ -6,7 +6,7 @@
 		Auteur: <?php echo $data->item->author->name; ?></small>
 		<hr class="hr-small"/>
 		<?php } ?>
-		<?php echo $data->item->content; ?>
+		<?php echo $data->excerpt; ?>
 		<hr class="hr-small"/>
 		<small class="muted">
 		<?php
