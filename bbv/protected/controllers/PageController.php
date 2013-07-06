@@ -15,6 +15,11 @@ class PageController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
+			array(
+					'COutputCache + view', // Completely cache pages in the view action
+					'duration'=>3600,
+					'varyByParam'=>array('id'),
+			),
 		);
 	}
 

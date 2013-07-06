@@ -9,7 +9,7 @@ class Commenting extends CWidget
 	{
 		$this->model = new Comment();
 		if($this->item!=NULL) {
-			$this->comments = Comment::model()->findAll('item_id=:item_id order by date_created', array(':item_id'=>$this->item->id));
+			$this->comments = Comment::model()->cache(Utils::$CACHE_DURATION_VERY_SHORT, new CDbCacheDependency('SELECT MAX(date_created) FROM '.Comment::model()->tableName()))->findAll('item_id=:item_id order by date_created', array(':item_id'=>$this->item->id));
 			$this->model->item_id = $this->item->id;
 		}
 	}

@@ -1,13 +1,12 @@
 <?php
 /* @var $this Controller */
-$navigation = Navigation::buildNavigation();
 ?>
 <?php $this->beginContent('//layouts/main'); ?>
 <div class="row">
 	<div class="span2">
         <div id="sidebar">
         <?php
-            echo Navigation::printNavigation($navigation);
+            echo Navigation::printNavigation();
         ?>
         </div><!-- sidebar -->
     </div>

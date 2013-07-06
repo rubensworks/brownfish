@@ -5,6 +5,14 @@
  *
  */
 class Utils {
+	
+	public static $CACHE_NEWS_CONTENT = "news_content";
+	public static $CACHE_COMMENTS = "news_comments";
+	public static $CACHE_NAVIGATION = "navigation";
+	
+	public static $CACHE_DURATION_VERY_SHORT = 10;
+	public static $CACHE_DURATION_SHORT = 3600;
+	public static $CACHE_DURATION_LONG = 86400;
 		
 	/**
 	 * Creates a display date for the given timestamp

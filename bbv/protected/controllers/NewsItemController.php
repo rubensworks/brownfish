@@ -40,7 +40,7 @@ class NewsItemController extends AbstractItemController
 	public function actionView($id)
 	{
 		$class = $this->getItemClassName();
-		$model=$class::model()->findByPk($id);
+		$model = $class::model()->cache(Utils::$CACHE_DURATION_SHORT)->findByPk($id);
 
 		$this->render('view',array(
 			'model' => $model,

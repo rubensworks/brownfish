@@ -69,7 +69,7 @@ return array(
 			'username' => DB_USERNAME,
 			'password' => DB_PASSWORD,
 			'charset' => 'utf8',
-			//'schemaCachingDuration'=>3600,   TODO: Enable
+			//'schemaCachingDuration'=>86400,   //TODO: Enable
 			'enableProfiling'=>true,
 		),
 		'authManager'=>array(
@@ -100,6 +100,9 @@ return array(
 		),
 		'bootstrap'=>array(
 				'class'=>'bootstrap.components.Bootstrap',
+		),
+		'cache'=>array(
+				'class'=>'system.caching.CFileCache',// Use another caching system for better performance
 		),
 	),
 
