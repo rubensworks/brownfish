@@ -34,6 +34,7 @@ class Utils {
 		return array(
 				"DummyItem",
 				"NewsItem",
+				"TextItem",
 		);
 	}
 }

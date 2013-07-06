@@ -6,6 +6,7 @@
         array('label'=>'Categorien', 'url'=>array('category/')),
         array('label'=>'DummyItems', 'url'=>array('item/')),
     	array('label'=>'Nieuws', 'url'=>array('newsitem/admin')),
+    	array('label'=>'Tekst items', 'url'=>array('textitem/admin')),
     ),
 )); ?>
 </div>
