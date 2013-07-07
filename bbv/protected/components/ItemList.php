@@ -1,5 +1,6 @@
 <?php
 Yii::import('zii.widgets.CListView');
+Yii::import('bootstrap.widgets.TbPager');
 /**
  * 
  * @author Ruben Taelman
@@ -22,6 +23,10 @@ class ItemList extends CListView
 		$this->template = ItemTable::$TEMPLATE;
 		$this->summaryText = ItemTable::$SUMMARYTEXT;
 		$this->enablePagination = true;
+		$this->pager = array(
+		   'class'=>'TbPager',
+		);
+		$this->pagerCssClass = 'pagination';
 		$this->itemView = '_item';
 		parent::init();
 	}
