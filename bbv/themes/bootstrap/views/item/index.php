@@ -1,35 +1,15 @@
 <?php
 $this->breadcrumbs=array(
-	'Dashboard'=>array('user/dashboard'),
-	'Items',
+	$model->getMultipleItemName(),
 );
 
 ?>
 <div class="section">
-<h1>Lijst van DummyItems</h1>
+<h1><?php echo $model->getMultipleItemName(); ?></h1>
 
 <?php
-if(Yii::app()->user->checkAccess('admin'))
-{
-	$this->widget('bootstrap.widgets.TbButton', array(
-			'label'=>'Admin',
-			'url'=>array('admin'),
-	));
-	echo " ";
-    $this->widget('bootstrap.widgets.TbButton', array(
-    		'label'=>'<i class="icon-plus icon-white"></i> Nieuw',
-    		'encodeLabel'=>false,
-    		'type'=>'primary',
-    		'url'=>array('create'),
-    ));
-}
-
-$this->widget('ItemTable', array(
+$this->widget('ItemList', array(
 		'filter'=>$model,
-		'columns'=>array(
-				'id',
-				'value',
-		),
 ));
 
 ?>

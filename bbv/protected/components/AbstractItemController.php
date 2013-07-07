@@ -7,7 +7,15 @@
  */
 abstract class AbstractItemController extends Controller
 {
+	/**
+	 * The name of the model class
+	 */
 	public abstract function getItemClassName();
+	
+	/**
+	 * The columns of the model to be used inside the ItemList besides the default item columns
+	 */
+	public abstract function getListColumns();
 	
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -60,7 +68,7 @@ abstract class AbstractItemController extends Controller
 				$this->redirect(array('admin'));
 		}
 
-		$this->render('create',array(
+		$this->render('/item/create',array(
 			'model' => $model,
 		));
 	}
@@ -80,10 +88,10 @@ abstract class AbstractItemController extends Controller
 			$model->attributes=$_POST[$class];
 			$model->item->content=$_POST[$class]['item']['content'];
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('/'.$class.'/admin'));
 		}
 
-		$this->render('update',array(
+		$this->render('/item/update',array(
 			'model' => $model,
 		));
 	}
@@ -104,7 +112,7 @@ abstract class AbstractItemController extends Controller
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('/'.$class.'/admin'));
 		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
@@ -122,7 +130,7 @@ abstract class AbstractItemController extends Controller
 			$model->attributes=$_GET[$class];
 		}
 		
-		$this->render('admin',array(
+		$this->render('/item/admin',array(
 				'model'=>$model,
 		));
 	}
@@ -139,8 +147,22 @@ abstract class AbstractItemController extends Controller
 			$model->attributes=$_GET[$class];
 		}
 	
-		$this->render('index',array(
+		$this->render('/item/index',array(
 				'model'=>$model,
+		));
+	}
+	
+	/**
+	 * View a particular model.
+	 * @param integer $id the ID of the model to be viewed
+	 */
+	public function actionView($id)
+	{
+		$class = $this->getItemClassName();
+		$model = $class::model()->cache(Utils::$CACHE_DURATION_SHORT)->findByPk($id);
+	
+		$this->render('/item/view',array(
+				'model' => $model,
 		));
 	}
 

@@ -21,7 +21,7 @@ class ItemList extends CListView
 		$this->dataProvider->criteria->params = $this->params;
 		$this->template = ItemTable::$TEMPLATE;
 		$this->summaryText = ItemTable::$SUMMARYTEXT;
-		$this->enablePagination = false;
+		$this->enablePagination = true;
 		$this->itemView = '_item';
 		parent::init();
 	}

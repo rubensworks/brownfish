@@ -24,6 +24,13 @@ abstract class AbstractItem extends WActiveRecord
 	public abstract function getItemName();
 	
 	/**
+	 * Return a string representation of the type of the item in plural form
+	 */
+	public static function getMultipleItemName() {
+		return "LIST";
+	}
+	
+	/**
 	 * @return array validation rules for model attributes.
 	 */
 	public function rules()

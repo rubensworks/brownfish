@@ -10,6 +10,12 @@ class TextItemController extends AbstractItemController
 	public function getItemClassName() {
 		return "TextItem";
 	}
+	
+	public function getListColumns() {
+		return array(
+				'id',
+		);
+	}
 
 	/**
 	 * Specifies the access control rules.

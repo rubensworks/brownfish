@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
 	'Dashboard'=>array('user/dashboard'),
-	'Items'=>array('index'),
+	$model->getMultipleItemName()=>array('/'.$this->getItemClassName().'/admin'),
 	'Update ' . $model->getItemName() . " " . $model->item->name ,
 );
 
@@ -12,7 +12,7 @@ $this->breadcrumbs=array(
 <?php
 $this->widget('ItemForm', array(
 		'model'=>$model,
-		'view'=>'_form',
+		'view'=>'/'.$this->getItemClassName().'/_form',
 	));
 ?>
 

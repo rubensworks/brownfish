@@ -1,19 +1,19 @@
 <?php
+
 /**
- * Container for all the News actions
- * @author Ruben Taelman
+ * This is just a test/debug controller TODO: delete this
  *
  */
-class NewsItemController extends AbstractItemController
+class DummyItemController extends AbstractItemController
 {
-	
 	public function getItemClassName() {
-		return "NewsItem";
+		return "DummyItem";
 	}
 	
-	public function getListColumns() {
+	public function getListColumns() { 
 		return array(
 				'id',
+				'value',
 		);
 	}
 
@@ -27,7 +27,7 @@ class NewsItemController extends AbstractItemController
 		return array(
 			array('allow', // allow admin user to perform CRUD
 				'actions'=>array('create','update','admin','delete'),
-				'roles'=>array('manageNews'),
+				'roles'=>array('manageItems'),
 			),
 			array('allow',  // allow all users
 				'actions'=>array('index','view'),

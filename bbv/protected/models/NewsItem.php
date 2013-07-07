@@ -19,6 +19,13 @@ class NewsItem extends AbstractItem
 	}
 	
 	/**
+	 * Return a string representation of the type of the item in plural form
+	 */
+	public static function getMultipleItemName() {
+		return "Nieuws";
+	}
+	
+	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()

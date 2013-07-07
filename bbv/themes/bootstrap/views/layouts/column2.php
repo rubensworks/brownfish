@@ -1,4 +1,5 @@
 <?php
+$navigation = Navigation::buildNavigation();
 /* @var $this Controller */
 ?>
 <?php $this->beginContent('//layouts/main'); ?>
@@ -6,7 +7,7 @@
 	<div class="span2">
         <div id="sidebar">
         <?php
-            echo Navigation::printNavigation();
+            echo Navigation::printNavigation($navigation);
         ?>
         <?php
 			$this->beginWidget('zii.widgets.CPortlet', array(

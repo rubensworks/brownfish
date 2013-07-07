@@ -18,6 +18,13 @@ class TextItem extends AbstractItem
 	}
 	
 	/**
+	 * Return a string representation of the type of the item in plural form
+	 */
+	public static function getMultipleItemName() {
+		return "Tekst Items";
+	}
+	
+	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
 	public function attributeLabels()

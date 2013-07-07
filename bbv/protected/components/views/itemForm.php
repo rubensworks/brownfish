@@ -60,7 +60,8 @@ $notNew = !$model->isNewRecord;
 	if($view!==NULL) {
 		$owner=$this->getOwner();
 		$viewFile=$owner->getViewFile($view);
-		$owner->renderFile($viewFile,array('form'=>$form, 'model'=>$model));
+		if($viewFile != NULL)
+			$owner->renderFile($viewFile,array('form'=>$form, 'model'=>$model));
 	}
 	?>
 	

@@ -27,7 +27,7 @@ class CategoryController extends Controller
 	{
 		return array(
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('index','create','update','delete'),
+				'actions'=>array('admin','create','update','delete'),
 				'roles'=>array('manageItems'),
 			),
 			array('deny',  // deny all users
@@ -107,10 +107,10 @@ class CategoryController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	public function actionAdmin()
 	{
 		$dataProvider=new CActiveDataProvider('Category');
-		$this->render('index',array(
+		$this->render('admin',array(
 			'dataProvider'=>$dataProvider,
 		));
 	}
