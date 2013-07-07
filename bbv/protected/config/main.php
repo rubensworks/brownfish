@@ -40,7 +40,13 @@ return array(
                 'bootstrap.gii',
             ),
 		),
-		*/
+		*/	
+		'rbam'=>array(
+			'applicationLayout'=>'webroot.themes.bootstrap.views.layouts.main',
+			//'initialise'=>true,
+			'userNameAttribute'=>'name',
+			'juiTheme'=>'bootstrap',
+		),
 	),
 		
 	'theme'=>'bootstrap',

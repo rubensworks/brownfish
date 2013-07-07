@@ -49,7 +49,7 @@ class UserController extends Controller
 		return array(
 			array('allow',
                 'actions'=>array('register', 'recoverPassword'),
-                'roles'=>array('registerUser'),
+				'roles'=>array('registerUser'),
             ),
 			array('allow', // allow captcha for all users
 				'actions'=>array('captcha'),
@@ -183,6 +183,15 @@ class UserController extends Controller
 					'active'=>false,
 					'label'=>"Inhoud",
 					'content'=>$this->renderPartial('dashboard_items', array(), true),
+			);
+		}
+		
+		if(Yii::app()->user->checkAccess('Admins'))
+		{
+			$tabs[]=array(
+					'active'=>false,
+					'label'=>"Administratie",
+					'content'=>$this->renderPartial('dashboard_admin', array(), true),
 			);
 		}
 		return $tabs;

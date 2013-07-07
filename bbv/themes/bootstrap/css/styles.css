@@ -84,3 +84,11 @@ ul.tagit li {
 	list-style-type:none;
 	margin: 0 0 0 10px;
 }
+
+#left-column form div.row {
+	margin:0px;
+}
+
+.alphaPager li.hidden{
+	visibility: visible;
+}

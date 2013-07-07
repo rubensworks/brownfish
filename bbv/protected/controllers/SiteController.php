@@ -36,7 +36,7 @@ class SiteController extends Controller
 	 */
 	protected function generateAuthRules()
 	{
-		$this->_authManager=Yii::app()->authManager;
+		/*$this->_authManager=Yii::app()->authManager;
 		$this->_authManager->clearAll();
 	
 		$this->_authManager->createOperation("createUser","create a new user");
@@ -77,7 +77,7 @@ class SiteController extends Controller
 		$role->addChild("deleteComment");
 	
 		// assign basic roles
-		$this->_authManager->assign('admin',3);
+		$this->_authManager->assign('admin',3);*/
 	
 	}
 
@@ -148,6 +148,7 @@ class SiteController extends Controller
 			if($model->validate() && $model->login())
 				$this->redirect(Yii::app()->user->returnUrl);
 		}
+		
 		// display the login form
 		$this->render('login',array('model'=>$model));
 	}
