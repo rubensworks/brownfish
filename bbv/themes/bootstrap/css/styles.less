@@ -1,0 +1,135 @@
+@import "bootstrap_required_less/bootstrap.less";
+
+// Main variables
+// -------------------------
+
+@well-border: 			#d5d5d5;
+@well-header-primary: 	#4495F2;
+@well-header-secondary: #8BD1F7;
+@well-title:			#E6EDF5;
+
+@tagging-height: 26px;
+@tagging-element-height: 26px;
+@tagging-font-size: 12px;
+
+// Main definitions
+// -------------------------
+
+#page {
+    padding-top: 60px;
+}
+
+.hr-small{
+	margin:2px;
+}
+
+.cursor-move{
+	cursor: move;
+}
+
+.cursor-pointer{
+	cursor: pointer;
+}
+
+// Tags
+// -------------------------
+
+ul.tagit {
+	min-height: @tagging-height;
+	font-size: @tagging-font-size;
+}
+
+ul.tagit li {
+	height: @tagging-element-height;
+}
+
+// Headed wells
+// -------------------------
+
+.well-header{
+	min-height:40px;
+	line-height:1;
+	border:1px solid @well-border;
+	border-top-left-radius: @baseBorderRadius;
+	border-top-right-radius: @baseBorderRadius;
+	.gradientBar(@well-header-primary, @well-header-secondary);
+}
+.well-header:before,.well-header:after{
+	content:" ";
+	display:table
+}
+.well-header:after{
+	clear:both
+}
+.well-title{
+	float:left;
+	margin: @paddingLarge;
+	font-size: @baseFontSize+1;
+	line-height:1.429;
+	color: @well-title
+}
+.well-title a{
+	text-decoration: none;
+	color: inherit
+}
+.well-body{
+	border-top-left-radius:0px !important;
+	border-top-right-radius:0px !important
+}
+
+// Widgets
+// -------------------------
+
+.widget-controls{
+	margin:8px;
+}
+
+.move_widget{
+	.cursor-move;
+}
+
+.delete_widget{
+	.cursor-pointer;
+}
+
+#saving{
+	float:left;
+}
+
+.content{
+	min-height:20px;
+}
+
+// Navigation
+// -------------------------
+
+.navigation_column{
+	min-height:20px;
+	border-left: solid 2px #C9C9C9;
+	padding-left: 15px;
+}
+
+.navigation_node{
+	padding-bottom:5px;
+}
+
+.main_nav{
+	li, a {
+		color: @white;
+	}
+	list-style-type:none;
+	margin: 0 0 0 10px;
+	background: @blue;
+	.border-radius(5px);
+}
+
+// Overridings of third-party css
+// -------------------------
+
+#left-column form div.row {
+	margin:0px;
+}
+
+.alphaPager li.hidden{
+	visibility: visible;
+}
