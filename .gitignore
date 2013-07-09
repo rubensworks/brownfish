@@ -16,3 +16,6 @@ bbv/protected/data/items/*
 *.aux
 *.log
 *.pdf
+
+# Ignore eclipse user-specific builders
+.externalToolBuilders/*

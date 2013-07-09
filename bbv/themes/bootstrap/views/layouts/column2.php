@@ -4,8 +4,7 @@ $navigation = Navigation::buildNavigation();
 ?>
 <?php $this->beginContent('//layouts/main'); ?>
 <div class="row">
-	<div class="span2">
-        <div id="sidebar">
+	<div id="sidebar" class="span2">
         <?php
             echo Navigation::printNavigation($navigation);
         ?>
@@ -19,8 +18,12 @@ $navigation = Navigation::buildNavigation();
 			));
 			$this->endWidget();
 		?>
-        </div><!-- sidebar -->
-    </div>
+		<div class='sponsors'>
+		
+			SPONSORS
+		
+		</div>
+    </div><!-- sidebar -->
     <div class="span10">
         <div id="content">
             <?php echo $content; ?>
