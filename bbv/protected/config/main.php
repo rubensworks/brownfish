@@ -49,7 +49,7 @@ return array(
 		),
 	),
 		
-	'theme'=>'bootstrap',
+	'theme'=>'default',
 
 	// application components
 	'components'=>array(
