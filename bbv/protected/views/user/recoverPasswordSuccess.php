@@ -1,14 +1,12 @@
 <?php
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
-	'Login',
+		'Nieuw wachtwoord',
 );
 ?>
-<div class="section">
-<h1>Login</h1>
-<h2>Recover Password</h2>
-
-A new password has been sent to <b><? echo $email; ?></b>.<br />
-Be sure to check your SPAM folder when you can't find the mail.
-</div>
-<br />
+<section>
+	<h2>Nieuw wachtwoord</h2>
+	<div class="register-form">
+		Een nieuw wachtwoord werd verstuurd naar <b><? echo $email; ?> </b>.<br />
+		Probeer ook de SPAM inbox te controleren als U de mail niet terugvind.
+	</div>
+</section>

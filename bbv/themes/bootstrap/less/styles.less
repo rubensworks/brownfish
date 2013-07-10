@@ -197,14 +197,8 @@ ul.tagit li {
 	}
 }
 
-// Navigation
+// Navigation (editing)
 // -------------------------
-
-.sidebar{
-	#gradient();
-	.horizontal(@blue, @blue*1.3);
-}
-
 .navigation_column{
 	min-height:20px;
 	border-left: solid 2px #C9C9C9;
@@ -213,6 +207,15 @@ ul.tagit li {
 
 .navigation_node{
 	padding-bottom:5px;
+}
+
+// Navigation
+// -------------------------
+.sidebar{
+	>section{
+		.well;
+		.well-small
+	}
 }
 
 .main_nav{
