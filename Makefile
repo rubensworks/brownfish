@@ -1,8 +1,8 @@
 DEBUG = False
 
-BASE_DIR_LESS = bbv/themes/bootstrap/less/
+BASE_DIR_LESS = bbv/themes/default/less/
 BASE_DIR_LESS_BOOTSTRAP = bbv/protected/extensions/bootstrap/assets/less/
-BASE_DIR_CSS = bbv/themes/bootstrap/css/
+BASE_DIR_CSS = bbv/themes/default/css/
 BASE_DIR_CSS_BOOTSTRAP = bbv/protected/extensions/bootstrap/assets/css/
 
 ifeq ($(DEBUG),True)
