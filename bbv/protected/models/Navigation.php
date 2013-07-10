@@ -153,7 +153,7 @@ class Navigation extends WActiveRecord
 		foreach($navigation as $key=>$element) {
 			if(is_array($element)) {
 				if(count($element) != 0) {
-					$ret .= "<li><strong>".$key."</strong></li>";
+					$ret .= "<li class='nav-header'>".$key."</li>";
 					$ret .= self::printNavigation($element);
 				}
 			} else {

@@ -12,6 +12,16 @@
 @tagging-element-height:	14px;
 @tagging-font-size: 		12px;
 
+@lightBlue:					#71C9F5;
+@softBlue:					#F7FCFC;
+@bodyBackground:			@softBlue;
+@inputBackground:			@softBlue*1.01;
+@wellBackground:			#FAFAFA;
+@navbarLinkColorHover:		@gray;
+
+@pageEdgeSize:				5px;
+@innerEdgeSize:				25px;
+
 // Custom definitions for fluid lay-out
 // -------------------------
 .makeFluidRow(){
@@ -31,9 +41,18 @@
 
 // Main definitions
 // -------------------------
+#navStripes{
+	#gradient > .striped(@lightBlue, 0deg);
+	.background-size(@pageEdgeSize @pageEdgeSize);
+}
+
 section.page {
 	.container-fixed;
-    padding-top: 60px;
+	.wrapper > section.content{
+		margin:0;
+		background-color: @bodyBackground;
+	}
+	padding:0;
 }
 
 .wrapper{
@@ -211,20 +230,38 @@ ul.tagit li {
 
 // Navigation
 // -------------------------
+
 .sidebar{
-	>section{
+	.inner-sidebar{
 		.well;
-		.well-small
+		.well-small;
+		padding: 5px 0;
+		background: @blue;
+		margin:0 30px 0 5px;	
 	}
+	padding-bottom:@pageEdgeSize;
+}
+
+header{
+	padding:@pageEdgeSize @pageEdgeSize 0 @pageEdgeSize;
+	.border-top-radius(@pageEdgeSize);
 }
 
 .main_nav{
-	li, a {
-		color: @white;
+	.nav;
+	.nav-list;
+	li{
+		color: @grayLighter;
+		a{
+			color: @white;
+			font-size: @fontSizeSmall;
+		}
+		padding: 0;
+		
 	}
 	list-style-type:none;
-	margin: 0 0 0 10px;
-	background: @blue;
+	margin: 0;
+	padding: 0 0 0 10px;
 }
 
 .sponsors{

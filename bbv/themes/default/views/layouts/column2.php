@@ -5,7 +5,7 @@ $navigation = Navigation::buildNavigation();
 <?php $this->beginContent('//layouts/main'); ?>
 <section class="wrapper">
 	<section class="sidebar">
-		<section>
+		<div class="inner-sidebar">
 			<nav>
 		        <?php
 		            echo Navigation::printNavigation($navigation);
@@ -26,9 +26,14 @@ $navigation = Navigation::buildNavigation();
 				SPONSORS
 			
 			</section>
-		</section>
+		</div>
     </section><!-- sidebar -->
     <section class="content">
+    	<?php if(isset($this->breadcrumbs)):?>
+			<?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+				'links'=>$this->breadcrumbs,
+			)); ?><!-- breadcrumbs -->
+		<?php endif?>	
     	<?php echo $content; ?>
     </section>
 </section>

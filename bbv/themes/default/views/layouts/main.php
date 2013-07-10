@@ -13,7 +13,10 @@
 
 <body>
 
-<?php $this->widget('bootstrap.widgets.TbNavbar',array(
+<section class="page container">
+
+	<header>
+		<?php $this->widget('bootstrap.widgets.TbNavbar',array(
     'items'=>array(
         array(
             'class'=>'bootstrap.widgets.TbMenu',
@@ -29,19 +32,12 @@
         ),
     ),
 )); ?>
-
-<section class="page container">
-
-	<header>
-		<?php if(isset($this->breadcrumbs)):?>
-			<?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
-				'links'=>$this->breadcrumbs,
-			)); ?><!-- breadcrumbs -->
-		<?php endif?>
-	
-		<?php echo $content; ?>
 	</header>
 
+	<section class="content">
+		<?php echo $content; ?>
+	</section>
+	
 	<div class="clear"></div>
 
 	<footer>
