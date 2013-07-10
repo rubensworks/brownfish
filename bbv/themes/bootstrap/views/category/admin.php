@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 );
 
 ?>
-<div class="section">
+<section>
 <h1>Lijst van Categori&euml;n</h1>
 
 <?php
@@ -29,4 +29,4 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 ));
 
 ?>
-</div>
+</section>

@@ -45,5 +45,19 @@ class Utils {
 				"TextItem",
 		);
 	}
+	
+	/**
+	 * Make an array that holds integers as key and value and counts until a certain number
+	 * @param integer $max number to count to
+	 * @param integer $min number to start from, defaults to 1
+	 */
+	public static function makeCountingArray($max, $min=1){
+		$row = array();
+		while($min <= $max) {
+			$row[$min] = $min;
+			$min++;
+		}
+		return $row;
+	}
 }
 ?>

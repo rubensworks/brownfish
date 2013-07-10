@@ -18,19 +18,19 @@ $model->pwd=NULL;
 
 	<?php echo $form->errorSummary($model); ?>
     <div id='error'></div>
-	<div class="">
+	<div class="input-row">
 		<?php echo $form->labelEx($model,'pwd'); ?>
 		<?php echo $form->passwordField($model,'pwd',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'pwd'); ?>
 	</div>
     
-	<div class="">
+	<div class="input-row">
 		<?php echo $form->labelEx($model,'newPwd_repeat'); ?>
 		<?php echo $form->passwordField($model,'newPwd_repeat',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'newPwd_repeat'); ?>
 	</div>
     
-    <div class="">
+    <div class="input-row">
 		<?php echo $form->labelEx($model,'newPwd'); ?>
 		<?php echo $form->passwordField($model,'newPwd',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'newPwd'); ?>

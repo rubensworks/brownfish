@@ -14,16 +14,16 @@ $notNew = !$model->isNewRecord;
 
 	<div class="row-fluid">
 	<?php if ($notNew) {?>
-	<div class="span1 row-fluid">
+	<div class="span1 input-row">
 	    <?php echo $form->labelEx($model, 'category_id'); ?>
-	    <?php echo $form->textField($model, 'category_id', array('class'=>'span12', 'readonly'=>true)); ?>
+	    <?php echo $form->textField($model, 'category_id', array('readonly'=>true)); ?>
 	    <?php echo $form->error($model, 'category_id'); ?>
 	</div>
 	<?php } ?>
 	
-	<div class="<?php echo $notNew?"span11":"" ?> row-fluid">
+	<div class="<?php echo $notNew?"span11":"" ?> input-row">
 	    <?php echo $form->labelEx($model, 'name'); ?>
-	    <?php echo $form->textField($model, 'name', array('class'=>'span12', 'maxlength'=>50)); ?>
+	    <?php echo $form->textField($model, 'name', array('maxlength'=>50)); ?>
 	    <?php echo $form->error($model, 'name'); ?>
 	</div>
 	</div>

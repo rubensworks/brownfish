@@ -1,4 +1,3 @@
-<div class="well">
 <?php $this->widget('bootstrap.widgets.TbMenu', array(
     'type'=>'pills',
     'stacked'=>true, // whether this is a stacked menu
@@ -7,4 +6,3 @@
         array('label'=>'Navigatie', 'url'=>array('navigation/admin')),
     ),
 )); ?>
-</div>

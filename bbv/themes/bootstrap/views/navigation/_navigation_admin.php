@@ -2,12 +2,12 @@
 	id="<?php echo $navigation==NULL?"navigation_template":("navigation_".$navigation->id)?>"
 	class="navigation_node">
 	<div class="row-fluid">
-		<div class="span6 row-fluid">
+		<div class="span6 input-row">
 			<?php
 			if($navigation != NULL && $navigation->type == Navigation::$TYPE_ROOT) {
 				?><div class='span12'>Top element</div><?php
 			} else {
-				echo CHtml::textField("label", $navigation==NULL?"":$navigation->label, array("class"=>"nav_label span12", "placeholder"=>"Label"));
+				echo CHtml::textField("label", $navigation==NULL?"":$navigation->label, array("class"=>"nav_label", "placeholder"=>"Label"));
 			}
 			?>
 		</div>

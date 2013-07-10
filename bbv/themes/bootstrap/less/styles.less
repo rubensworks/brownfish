@@ -9,16 +9,60 @@
 @well-title:				#E6EDF5;
 
 @tagging-height: 			26px;
-@tagging-element-height:	26px;
+@tagging-element-height:	14px;
 @tagging-font-size: 		12px;
+
+// Custom definitions for fluid lay-out
+// -------------------------
+.makeFluidRow(){
+    width: 100%;
+    .clearfix();
+}
+
+.makeFluidCol(@span:1,@offset:0){
+    float: left;
+    #grid > .fluid .span(@span);
+    #grid > .fluid .offset(@offset);
+    &:first-child {
+        margin-left: 0;
+        .offsetFirstChild(@offset);
+    }
+}
 
 // Main definitions
 // -------------------------
-
-#page {
+section.page {
+	.container-fixed;
     padding-top: 60px;
 }
 
+.wrapper{
+	.makeFluidRow();
+	>.sidebar{
+		.makeFluidCol(2);
+	}
+	>.content{
+		.makeFluidCol(10);
+	}
+}
+
+.login-section{
+	.makeFluidRow();
+	>div{
+		.makeFluidCol(4, 4)
+	}
+}
+
+.register-form{
+	.well
+}
+
+.tab-pane{
+	.well
+}
+
+// Tools
+// -------------------------
 .hr-small{
 	margin:2px;
 }
@@ -29,6 +73,37 @@
 
 .cursor-pointer{
 	cursor: pointer;
+}
+
+.input-row{
+	.makeFluidRow();
+	>input,
+	>textarea,
+	>label,
+	>select{
+		.makeFluidCol(12);
+  		margin-left: 0;
+  		display: inline-block;
+	}
+}
+
+// Forms
+// -------------------------
+.auto-save{
+	>p{
+		.muted;
+		.makeFluidCol(6)
+	}
+	>#saving{
+		.makeFluidCol(6)
+	}
+	.makeFluidRow
+}
+
+.rememberMe{
+	>input[type="checkbox"]{
+		.pull-left
+	}
 }
 
 // Tags
@@ -46,35 +121,39 @@ ul.tagit li {
 // Headed wells
 // -------------------------
 
-.well-header{
-	min-height:40px;
-	line-height:1;
-	border:1px solid @well-border;
-	border-top-left-radius: @baseBorderRadius;
-	border-top-right-radius: @baseBorderRadius;
-	.gradientBar(@well-header-primary, @well-header-secondary);
-}
-.well-header:before,.well-header:after{
-	content:" ";
-	display:table
-}
-.well-header:after{
-	clear:both
-}
-.well-title{
-	float:left;
-	margin: @paddingLarge;
-	font-size: @baseFontSize+1;
-	line-height:1.429;
-	color: @well-title
-}
-.well-title a{
-	text-decoration: none;
-	color: inherit
-}
-.well-body{
-	border-top-left-radius:0px !important;
-	border-top-right-radius:0px !important
+.well-titled{
+	.well-header{
+		min-height:40px;
+		line-height:1;
+		border:1px solid @well-border;
+		border-top-left-radius: @baseBorderRadius;
+		border-top-right-radius: @baseBorderRadius;
+		.gradientBar(@well-header-primary, @well-header-secondary);
+	}
+	.well-header:before,.well-header:after{
+		content:" ";
+		display:table
+	}
+	.well-header:after{
+		clear:both
+	}
+	.well-title{
+		float:left;
+		margin: @paddingLarge;
+		font-size: @baseFontSize+1;
+		line-height:1.429;
+		color: @well-title
+	}
+	.well-title a{
+		text-decoration: none;
+		color: inherit
+	}
+	.well-body{
+		.well;
+		.well-small;
+		border-top-left-radius:0px !important;
+		border-top-right-radius:0px !important
+	}
 }
 
 // Widgets
@@ -100,10 +179,28 @@ ul.tagit li {
 	min-height:20px;
 }
 
+.widget-drag{
+	.well-header-row{
+		.widget-controls{
+			.makeFluidCol(4);
+			.text-right;
+			.pull-right 
+		}
+		.well-title{
+			.makeFluidCol(6)
+		}
+	}
+	.well-titled;
+	.setup{
+		.well;
+		.well-small
+	}
+}
+
 // Navigation
 // -------------------------
 
-#sidebar{
+.sidebar{
 	#gradient();
 	.horizontal(@blue, @blue*1.3);
 }
@@ -131,6 +228,34 @@ ul.tagit li {
 	margin: 10px 0 10px 10px;
 	background-color: @black;
 	height: 100px;
+}
+
+// Articles
+// -------------------------
+
+article.news{
+	aside{
+		.muted;
+		font-size: @fontSizeMini;
+	}
+	summary{
+		font-style: italic;
+	}
+}
+
+article.news-extended{
+	.well;
+}
+
+// Articles
+// -------------------------
+.comment{
+	.well;
+	.well-small;
+	time{
+		font-size: @fontSizeMini;
+		.muted;
+	}
 }
 
 // Overridings of third-party css

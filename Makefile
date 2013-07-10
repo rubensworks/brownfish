@@ -13,5 +13,5 @@ endif
 
 less:
 	$(LESSC) ${BASE_DIR_LESS}styles.less > ${BASE_DIR_CSS}styles.css
-	$(LESSC) ${BASE_DIR_LESS_BOOTSTRAP}bootstrap.less > ${BASE_DIR_CSS_BOOTSTRAP}bootstrap.css
 	$(LESSC) ${BASE_DIR_LESS_BOOTSTRAP}responsive.less > ${BASE_DIR_CSS_BOOTSTRAP}bootstrap-responsive.css
+	$(LESSC) ${BASE_DIR_LESS_BOOTSTRAP}yii.less > ${BASE_DIR_CSS_BOOTSTRAP}yii.css

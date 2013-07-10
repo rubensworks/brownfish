@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 );
 
 ?>
-<div class="section">
+<section>
 <h1><?php echo $model->item->name; ?></h1>
 
 <?php
@@ -23,4 +23,4 @@ $this->widget('Commenting', array(
 	));
 ?>
 
-</div>
+</section>

@@ -108,7 +108,7 @@ return array(
 				'class'=>'bootstrap.components.Bootstrap',
 		),
 		'cache'=>array(
-				'class'=>'system.caching.CFileCache',// Use another caching system for better performance
+				'class'=>'system.caching.CDummyCache',// Use another caching system for better performance
 		),
 	),
 

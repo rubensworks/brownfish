@@ -30,25 +30,27 @@
     ),
 )); ?>
 
-<div class="container" id="page">
+<section class="page container">
 
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
-	<?php endif?>
-
-	<?php echo $content; ?>
+	<header>
+		<?php if(isset($this->breadcrumbs)):?>
+			<?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+				'links'=>$this->breadcrumbs,
+			)); ?><!-- breadcrumbs -->
+		<?php endif?>
+	
+		<?php echo $content; ?>
+	</header>
 
 	<div class="clear"></div>
 
-	<div id="footer">
+	<footer>
 		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
 		All Rights Reserved.<br/>
 		<?php echo Yii::powered(); ?>
-	</div><!-- footer -->
+	</footer><!-- footer -->
 
-</div><!-- page -->
+</section><!-- page -->
 
 </body>
 </html>

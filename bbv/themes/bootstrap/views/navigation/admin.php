@@ -5,11 +5,11 @@ $this->breadcrumbs=array(
 );
 
 ?>
-<div class="section">
+<section>
 <h1>Navigatie</h1>
-<div class="row-fluid">
-	<p class="muted span6">Onderstaande veranderingen worden automatisch opgeslaan.</p>
-	<div id="saving" class="span6"></div>
+<div class="auto-save">
+	<p>Onderstaande veranderingen worden automatisch opgeslaan.</p>
+	<div id="saving"></div>
 </div>
 <div class="hide">
 <?php
@@ -20,4 +20,4 @@ $this->renderPartial('_navigation_admin', array('navigation'=>NULL))
 
 <?php $this->renderPartial('_navigation_admin', array('navigation'=>$root)); ?>
 
-</div>
+</section>

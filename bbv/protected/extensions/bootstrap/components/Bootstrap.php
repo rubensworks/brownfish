@@ -78,7 +78,7 @@ class Bootstrap extends CApplicationComponent
 	 */
 	public function registerAllCss()
 	{
-		$this->registerCoreCss();
+		//$this->registerCoreCss(); // Because of our own bootstrap extension in styles.less we don't need to include this anymore
 		$this->registerResponsiveCss();
 		$this->registerYiiCss();
 	}

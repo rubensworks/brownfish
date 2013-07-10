@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 );
 
 ?>
-<div class="section">
+<section>
 <h1><?php echo $model->getMultipleItemName(); ?></h1>
 
 <?php
@@ -22,4 +22,4 @@ $this->widget('ItemTable', array(
 ));
 
 ?>
-</div>
+</section>

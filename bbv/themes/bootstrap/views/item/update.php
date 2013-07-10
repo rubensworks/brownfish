@@ -6,7 +6,7 @@ $this->breadcrumbs=array(
 );
 
 ?>
-<div class="section">
+<section>
 <h1>Update <?php echo $model->getItemName(); ?> <i><?php echo $model->item->name; ?></i></h1>
 
 <?php
@@ -16,4 +16,4 @@ $this->widget('ItemForm', array(
 	));
 ?>
 
-</div>
+</section>

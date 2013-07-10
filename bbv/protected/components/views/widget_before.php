@@ -1,7 +1,7 @@
-<div id="<?php echo $id; ?>" class="well-titled row-fluid">
-	<div class="well-header span12 row-fluid">
-	    <h3 class="well-title row-fluid">
+<div id="<?php echo $id; ?>" class="well-titled">
+	<div class="well-header">
+	    <h3 class="well-title">
 		    <?php echo $name; ?>
 	    </h3>
 	</div>
-	<div class="well well-small well-body">
+	<div class="well-body">

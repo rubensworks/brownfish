@@ -10,7 +10,7 @@ if($comments!=NULL){
 foreach ($comments as $comment){ //when adding comments to other stuff, make a widget of this piece
 	?>
 	<blockquote id="comment<?php echo $comment->id; ?>">
-		<div class="well well-small">
+		<div class="comment">
 			<?php 
 			if(!Yii::app()->user->isGuest && ($comment->author->id==Yii::app()->user->id || Yii::app()->user->checkAccess('deleteComment'))){
 				echo "<div class='close'>";
@@ -30,9 +30,9 @@ foreach ($comments as $comment){ //when adding comments to other stuff, make a w
 			?>
 			
 			<div><?php echo $comment->content; ?></div>
-			<small class="timeago muted">
+			<time>
 				Geplaatst op: <?php echo Utils::displayDate($comment->date_created, true); ?> door <strong><?php echo $comment->author->name; ?></strong>
-			</small>
+			</time>
 			
 		</div>
 	</blockquote>
@@ -54,29 +54,27 @@ if(!Yii::app()->user->isGuest){
 	<?php echo $form->hiddenField($model,'item_id'); ?>
     <div id='error'></div>
     <blockquote>
-	<div class="row-fluid">
-		<?php echo $form->textArea($model,'content', array('class'=>'span12')); ?>
-		<?php echo $form->error($model,'content'); ?>
-	</div>
-
-	<div class="buttons">
+		<div class="input-row">
+			<?php echo $form->textArea($model,'content'); ?>
+			<?php echo $form->error($model,'content'); ?>
+		</div>
 	
-		<?php
-		echo CHtml::ajaxSubmitButton(
-		    'Verstuur',
-		    CHtml::normalizeUrl(array('comment/comment')),
-		    array(
-		        'update'=>'#comment-page',
-				'type'=>'submit',
-		    ),
-			array(
-				'id'=>'comment',
-				'class'=>'btn btn-primary'
-			)
-		);
-
-?>
-	</div>
+		<div class="buttons">
+			<?php
+			echo CHtml::ajaxSubmitButton(
+			    'Verstuur',
+			    CHtml::normalizeUrl(array('comment/comment')),
+			    array(
+			        'update'=>'#comment-page',
+					'type'=>'submit',
+			    ),
+				array(
+					'id'=>'comment',
+					'class'=>'btn btn-primary'
+				)
+			);
+			?>
+		</div>
 	</blockquote>
 
 <?php

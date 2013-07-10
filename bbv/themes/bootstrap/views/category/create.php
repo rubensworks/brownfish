@@ -6,9 +6,9 @@ $this->breadcrumbs=array(
 );
 
 ?>
-<div class="section">
+<section>
 <h1>Nieuwe categorie</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
 
-</div>
+</section>
