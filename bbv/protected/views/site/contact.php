@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Contact Us</h1>
+<h1>Contact</h1>
 
 <?php if(Yii::app()->user->hasFlash('contact')): ?>
 
@@ -29,32 +29,32 @@ $this->breadcrumbs=array(
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="">
+	<div class="input-row">
 		<?php echo $form->labelEx($model,'name'); ?>
 		<?php echo $form->textField($model,'name'); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
-	<div class="">
+	<div class="input-row">
 		<?php echo $form->labelEx($model,'email'); ?>
 		<?php echo $form->textField($model,'email'); ?>
 		<?php echo $form->error($model,'email'); ?>
 	</div>
 
-	<div class="">
+	<div class="input-row">
 		<?php echo $form->labelEx($model,'subject'); ?>
 		<?php echo $form->textField($model,'subject',array('size'=>60,'maxlength'=>128)); ?>
 		<?php echo $form->error($model,'subject'); ?>
 	</div>
 
-	<div class="">
+	<div class="input-row">
 		<?php echo $form->labelEx($model,'body'); ?>
 		<?php echo $form->textArea($model,'body',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'body'); ?>
 	</div>
 
 	<?php if(CCaptcha::checkRequirements()): ?>
-	<div class="">
+	<div class="input-row">
 		<?php echo $form->labelEx($model,'verifyCode'); ?>
 		<div>
 		<?php $this->widget('CCaptcha'); ?>

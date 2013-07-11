@@ -42,10 +42,9 @@ return array(
 		),
 		*/	
 		'rbam'=>array(
-			'applicationLayout'=>'webroot.themes.bootstrap.views.layouts.main',
+			'applicationLayout'=>'webroot.themes.default.views.layouts.main',
 			//'initialise'=>true,
 			'userNameAttribute'=>'name',
-			'juiTheme'=>'bootstrap',
 		),
 	),
 		

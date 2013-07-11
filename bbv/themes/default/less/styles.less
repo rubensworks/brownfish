@@ -49,20 +49,9 @@
 section.page {
 	.container-fixed;
 	.wrapper > section.content{
-		margin:0;
 		background-color: @bodyBackground;
 	}
 	padding:0;
-}
-
-.wrapper{
-	.makeFluidRow();
-	>.sidebar{
-		.makeFluidCol(2);
-	}
-	>.content{
-		.makeFluidCol(10);
-	}
 }
 
 .login-section{
@@ -83,7 +72,7 @@ section.page {
 // Tools
 // -------------------------
 .hr-small{
-	margin:2px;
+	margin:2px
 }
 
 .cursor-move{
@@ -236,8 +225,8 @@ ul.tagit li {
 		.well;
 		.well-small;
 		padding: 5px 0;
-		background: @blue;
-		margin:0 30px 0 5px;	
+		background: lighten(@blue, 1%);
+		.box-shadow(inset 2px 2px 2px rgba(0,0,0,.075));
 	}
 	padding-bottom:@pageEdgeSize;
 }
@@ -245,19 +234,39 @@ ul.tagit li {
 header{
 	padding:@pageEdgeSize @pageEdgeSize 0 @pageEdgeSize;
 	.border-top-radius(@pageEdgeSize);
+	h1{
+		color: darken(@blue, 25%);
+		text-shadow: 1px 1px 0 rgba(0,0,0,.25);
+	}
+	.well;
+	background: url('../img/headerimg.jpg');
+	background-position:left center
+}
+
+footer{
+	.well
 }
 
 .main_nav{
-	.nav;
-	.nav-list;
 	li{
 		color: @grayLighter;
 		a{
-			color: @white;
+			color: darken(@white, 5%);
 			font-size: @fontSizeSmall;
+			text-decoration: none;
+			padding: 3px;
+			.border-radius(3px);
+			width:90%;
+			display:block;
+			&:hover{background-color: darken(@blue, 5%);}
+			&:active{background-color: darken(@blue, 10%);}
 		}
 		padding: 0;
 		
+	}
+	.nav-header{
+		color: darken(@white, 10%);
+		text-shadow: none;
 	}
 	list-style-type:none;
 	margin: 0;
@@ -265,9 +274,13 @@ header{
 }
 
 .sponsors{
-	margin: 10px 0 10px 10px;
-	background-color: @black;
+	//margin: 10px 0 10px 10px;
+	background-color: @lightBlue;
 	height: 100px;
+}
+
+.dropdown > .dropdown-menu{
+	left:-110px;
 }
 
 // Articles
