@@ -1,10 +1,10 @@
 <?php
 $this->breadcrumbs=array(
-		'Registreer',
+		Yii::t('messages', 'form.register.register'),
 );
 ?>
 <section>
-	<h1>Registreer</h1>
+	<h1><? echo Yii::t('messages', 'form.register.register') ?></h1>
 
 	<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
 </section>

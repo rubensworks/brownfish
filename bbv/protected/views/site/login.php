@@ -1,13 +1,13 @@
 <?php
-$this->pageTitle=Yii::app()->name . ' - Login';
+$this->pageTitle=Yii::app()->name . ' - ' . Yii::t('messages', 'form.login.login');
 $this->breadcrumbs=array(
-		'Login',
+		Yii::t('messages', 'form.login.login'),
 );
 ?>
 
 <section class="login-section">
 	<div>
-		<h1>Login</h1>
+		<h1><? echo Yii::t('messages', 'form.login.login') ?></h1>
 		<div class="form well">
 			<?php $form=$this->beginWidget('CActiveForm', array(
 					'id'=>'login-form',
@@ -18,12 +18,12 @@ $this->breadcrumbs=array(
 )); ?>
 
 			<p class="hint muted">
-				Nog geen account?
-				<? echo CHtml::link('Registreer hier!', array('user/register')) ?>
+				<? echo Yii::t('messages', 'form.login.noAccountYet') ?>
+				<? echo CHtml::link(Yii::t('messages', 'form.login.registerHere'), array('user/register')) ?>
 			</p>
 
 			<p class="muted">
-				Velden met een <span class="required">*</span> zijn verplicht.
+				<? echo Yii::t('messages', 'form.general.requiredFields') ?>
 			</p>
 
 			<div class="input-row">
@@ -45,7 +45,7 @@ $this->breadcrumbs=array(
 			</div>
 
 			<p class="hint">
-				<? echo CHtml::link('Wachtwoord vergeten?', array('user/recoverPassword')) ?>
+				<? echo CHtml::link(Yii::t('messages', 'form.login.forgotPassword'), array('user/recoverPassword')) ?>
 			</p>
 
 			<div class="buttons">
@@ -54,7 +54,7 @@ $this->breadcrumbs=array(
 						array(
 					'buttonType'=>'submit',
 					'type'=>'primary',
-					'label'=>'Login'
+					'label'=>Yii::t('messages', 'form.login.login'),
 					)
 				); ?>
 			</div>

@@ -5,7 +5,7 @@ $form=$this->beginWidget('CActiveForm', array(
 	'focus'=>array($model,'name'),
 )); $model->pwd_repeat=NULL;$model->pwd=NULL;
 ?>
-	<p class="note">Velden met een <span class="required">*</span> zijn verplicht.</p>
+	<p class="note"><? Yii::t('messages', 'form.general.requiredFields') ?></p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -47,7 +47,7 @@ $form=$this->beginWidget('CActiveForm', array(
 
 	<div class="input-row">
 		<?php echo $form->labelEx($model,'gender'); ?>
-		<?php echo $form->dropDownList($model,'gender',array('m' => 'Man', 'f' => 'Vrouw')); ?>
+		<?php echo $form->dropDownList($model,'gender',array('m' => Yii::t('messages', 'enum.gender.male'), 'f' => Yii::t('messages', 'enum.gender.female'))); ?>
 		<?php echo $form->error($model,'gender'); ?>
 	</div>
     
@@ -58,8 +58,7 @@ $form=$this->beginWidget('CActiveForm', array(
 		<?php $this->widget('CCaptcha'); ?><br />
 		<label>&nbsp;</label><?php echo $form->textField($model,'verifyCode'); ?>
 		</div>
-		<div class="hint muted">Typ de letters van bovenstaande afbeelding over, tekens zijn niet
-		hoofdletter-gevoelig.</div>
+		<div class="hint muted"><? Yii::t('messages', 'form.general.captchaExplanation') ?></div>
 		<?php echo $form->error($model,'verifyCode', array(), false); ?>
 	</div>
 	<?php endif; ?>
@@ -70,7 +69,7 @@ $form=$this->beginWidget('CActiveForm', array(
 				array(
 					'buttonType'=>'submit',
 					'type'=>'primary',
-					'label'=>($model->isNewRecord ? 'Registreer' : 'Pas aan')
+					'label'=>($model->isNewRecord ? Yii::t('messages', 'form.register.register') : Yii::t('messages', 'form.general.update'))
 					)
 				); ?>
 	</div>

@@ -87,19 +87,19 @@ class User extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => Yii::t('form', 'ID'),
-			'name' => Yii::t('form', 'Naam'),
-			'mail' => Yii::t('form', 'E-Mail'),
-			'datereg' => Yii::t('form', 'Datum van registratie'),
-			'pwd' => Yii::t('form', 'Wachtwoord'),
-			'secrq' => Yii::t('form', 'Geheime vraag'),
-			'secra' => Yii::t('form', 'Geheim antwoord'),
-			'pwd_repeat' => Yii::t('form', 'Wachtwoord (herhaling)'),
-			'newPwd' => Yii::t('form', 'Nieuw wachtwoord'),
-			'newPwd_repeat' => Yii::t('form', 'Nieuw wachtwoord (herhaling)'),
-			'gender' => Yii::t('form', 'Geslacht'),
-			'verifyCode' => Yii::t('form', 'Verificatie Code'),
-			'fbid' => Yii::t('form', 'Facebook ID'),
+			'id' => Yii::t('messages', 'model.user.ID'),
+			'name' => Yii::t('messages', 'model.user.name'),
+			'mail' => Yii::t('messages', 'model.user.mail'),
+			'datereg' => Yii::t('messages', 'model.user.datereg'),
+			'pwd' => Yii::t('messages', 'model.user.pwd'),
+			'secrq' => Yii::t('messages', 'model.user.secrq'),
+			'secra' => Yii::t('messages', 'model.user.secra'),
+			'pwd_repeat' => Yii::t('messages', 'form.user.pwd_repeat'),
+			'newPwd' => Yii::t('messages', 'form.user.newPwd'),
+			'newPwd_repeat' => Yii::t('messages', 'form.user.newPwd_repeat'),
+			'gender' => Yii::t('messages', 'model.user.gender'),
+			'verifyCode' => Yii::t('messages', 'form.general.verifyCode'),
+			'fbid' => Yii::t('messages', 'model.user.fbid'),
 		);
 	}
 

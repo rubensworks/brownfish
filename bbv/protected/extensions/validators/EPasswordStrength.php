@@ -28,7 +28,7 @@ class EPasswordStrength extends CValidator{
 	 */
     protected function validateAttribute($object,$attribute){
        if(!$this->checkPasswordStrength($object->$attribute)){
-            $message=$this->message!==null?$this->message:Yii::t("EPasswordStrength","{attribute} is zwak. {attribute} moet tenminste {$this->min} karakters bevatten en minstens 1 getal.");
+            $message=$this->message!==null?$this->message:Yii::t("messages","form.register.weakPassword", array('{min}'=>$this->min));
 			$this->addError($object,$attribute,$message);
        }
     }

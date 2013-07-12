@@ -36,9 +36,9 @@ class LoginForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-			'rememberMe'=>'Onthouden',
-			'username'=>'Gebruikersnaam',
-			'password'=>'Wachtwoord',
+			'rememberMe'=>Yii::t('messages', 'form.login.rememberMe'),
+			'username'=>Yii::t('messages', 'form.login.username'),
+			'password'=>Yii::t('messages', 'form.login.password'),
 		);
 	}
 
@@ -58,13 +58,13 @@ class LoginForm extends CFormModel
 					Yii::app()->user->login($this->_identity);
 					break;
 				case UserIdentity::ERROR_USERNAME_INVALID:
-					$this->addError('username',Yii::t('error', 'Inloggegevens zijn verkeerd.'));
+					$this->addError('username',Yii::t('messages', 'form.login.wrongCredentials'));
 					break;
 				case UserIdentity::ERROR_USERNAME_NOTACTIVATED:
-					$this->addError('username',Yii::t('error', 'Your account has not been activated yet.'));
+					$this->addError('username',Yii::t('messages', 'form.login.notActivated'));
 					break;
 				default: // UserIdentity::ERROR_PASSWORD_INVALID
-					$this->addError('password',Yii::t('error', 'Inloggegevens zijn verkeerd.'));
+					$this->addError('password',Yii::t('messages', 'form.login.wrongCredentials'));
 					break;
 			}
 		}
