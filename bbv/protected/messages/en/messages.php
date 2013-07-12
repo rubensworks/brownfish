@@ -3,6 +3,17 @@
 
 return array(
     //////////
+    // menu //
+    //////////
+    'menu.home' => 'Home',
+    'menu.photos' => 'Photos',
+    'menu.contact' => 'Contact',
+    'menu.activities' => 'Activities',
+    'menu.shop' => 'Shop',
+    'menu.logout' => 'Logout',
+    'menu.dashboard' => 'Dashboard',
+    
+    //////////
     // form //
     //////////
     
@@ -36,6 +47,12 @@ return array(
     'form.user.pwd_repeat' => 'Password (repeat)',
     'form.user.newPwd' => 'New Password',
     'form.user.newPwd_repeat' => 'New Password (repeat)',
+    
+    // contact
+    'form.contact.contact' => 'Contact',
+    'form.contact.contactUs' => 'Contact Us',
+    'form.contact.subject' => 'Subject',
+    'form.contact.body' => 'Body',
     
     ///////////
     // model //

@@ -1,11 +1,11 @@
 <?php
-$this->pageTitle=Yii::app()->name . ' - Contact Us';
+$this->pageTitle=Yii::app()->name . ' - ' . Yii::t('messages', 'form.contact.contactUs');
 $this->breadcrumbs=array(
-	'Contact',
+	Yii::t('messages', 'form.contact.contact'),
 );
 ?>
 
-<h1>Contact</h1>
+<h1><? echo Yii::t('messages', 'form.contact.contact') ?></h1>
 
 <?php if(Yii::app()->user->hasFlash('contact')): ?>
 
@@ -25,7 +25,7 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-	<p class="note">Velden met een <span class="required">*</span> zijn verplicht.</p>
+	<p class="note"><? echo Yii::t('messages', 'form.general.requiredFields') ?></p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -60,8 +60,7 @@ $this->breadcrumbs=array(
 		<?php $this->widget('CCaptcha'); ?>
 		<?php echo $form->textField($model,'verifyCode'); ?>
 		</div>
-		<div class="hint muted">Typ de letters van bovenstaande afbeelding over, tekens zijn niet
-		hoofdletter-gevoelig.</div>
+		<div class="hint muted"><? echo Yii::t('messages', 'form.general.captchaExplanation') ?></div>
 		<?php echo $form->error($model,'verifyCode'); ?>
 	</div>
 	<?php endif; ?>
@@ -72,7 +71,7 @@ $this->breadcrumbs=array(
 				array(
 					'buttonType'=>'submit',
 					'type'=>'primary',
-					'label'=>'Login'
+					'label'=>Yii::t('messages', 'form.login.login'),
 					)
 				); ?>
 	</div>

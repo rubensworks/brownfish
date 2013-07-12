@@ -3,6 +3,17 @@
 
 return array(
     //////////
+    // menu //
+    //////////
+    'menu.home' => 'Thuis',
+    'menu.photos' => 'Foto\'s',
+    'menu.contact' => 'Contact',
+    'menu.activities' => 'Activiteiten',
+    'menu.shop' => 'Shop',
+    'menu.logout' => 'Log uit',
+    'menu.dashboard' => 'Dashboard',
+    
+    //////////
     // form //
     //////////
     
@@ -36,6 +47,12 @@ return array(
     'form.user.pwd_repeat' => 'Wachtwoord (herhaling)',
     'form.user.newPwd' => 'Nieuw wachtwoord',
     'form.user.newPwd_repeat' => 'Nieuw wachtwoord (herhaling)',
+    
+    // contact
+    'form.contact.contact' => 'Contact',
+    'form.contact.contactUs' => 'Contacteer Ons',
+    'form.contact.subject' => 'Onderwerp',
+    'form.contact.body' => 'Inhoud',
     
     ///////////
     // model //
