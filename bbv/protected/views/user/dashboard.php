@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	'Dashboard',
+	Yii::t('messages', 'dashboard.dashboard'),
 );
 
 ?>

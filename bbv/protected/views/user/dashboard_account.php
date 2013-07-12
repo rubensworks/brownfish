@@ -2,6 +2,6 @@
     'type'=>'pills',
     'stacked'=>true, // whether this is a stacked menu
     'items'=>array(
-        array('label'=>'Verbinding met Facebook', 'url'=>'facebook'),
+        array('label'=>Yii::t('messages', 'dashboard.account.connectToFacebook'), 'url'=>'facebook'),
     ),
 )); ?>

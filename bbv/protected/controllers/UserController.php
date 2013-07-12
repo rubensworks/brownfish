@@ -158,12 +158,12 @@ class UserController extends Controller
 		$tabs=array(
 				array(
 						'active'=>true,
-						'label'=>"Account",
+						'label'=>Yii::t('messages', 'dashboard.account'),
 						'content'=>$this->renderPartial('dashboard_account', array(), true),
 				),
 				array(
 						'active'=>false,
-						'label'=>"Wijzig wachtwoord",
+						'label'=>Yii::t('messages', 'dashboard.changePassword'),
 						'content'=>$this->renderPartial('dashboard_change_password', array(), true),
 				),
 		);
@@ -172,7 +172,7 @@ class UserController extends Controller
 		{
 			$tabs[]=array(
 					'active'=>false,
-					'label'=>"Pagina's",
+					'label'=>Yii::t('messages', 'dashboard.pages'),
 					'content'=>$this->renderPartial('dashboard_pages', array(), true),
 			);
 		}
@@ -181,7 +181,7 @@ class UserController extends Controller
 		{
 			$tabs[]=array(
 					'active'=>false,
-					'label'=>"Inhoud",
+					'label'=>Yii::t('messages', 'dashboard.items'),
 					'content'=>$this->renderPartial('dashboard_items', array(), true),
 			);
 		}
@@ -190,7 +190,7 @@ class UserController extends Controller
 		{
 			$tabs[]=array(
 					'active'=>false,
-					'label'=>"Administratie",
+					'label'=>Yii::t('messages','dashboard.admin'),
 					'content'=>$this->renderPartial('dashboard_admin', array(), true),
 			);
 		}

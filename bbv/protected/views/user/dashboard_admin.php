@@ -2,6 +2,6 @@
     'type'=>'pills',
     'stacked'=>true, // whether this is a stacked menu
     'items'=>array(
-        array('label'=>'RBAM', 'url'=>array('/rbam')),
+        array('label'=>Yii::t('messages','dashboard.admin.rbam'), 'url'=>array('/rbam')),
     ),
 )); ?>

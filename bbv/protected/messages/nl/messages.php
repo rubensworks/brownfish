@@ -22,6 +22,7 @@ return array(
     'form.general.captchaExplanation' => 'Typ de letters van bovenstaande afbeelding over, tekens zij niet hoofdletter-gevoelig.',
     'form.general.verifyCode' => 'Verificatie Code',
     'form.general.update' => 'Pas aan',
+    'form.general.save' => 'Opslaan',
     
     // login
     'form.login.login' => 'Login',
@@ -53,6 +54,33 @@ return array(
     'form.contact.contactUs' => 'Contacteer Ons',
     'form.contact.subject' => 'Onderwerp',
     'form.contact.body' => 'Inhoud',
+    
+    ///////////////
+    // dashboard //
+    ///////////////
+    'dashboard.dashboard' => 'Dashboard',
+    
+    // account
+    'dashboard.account' => 'Account',
+    'dashboard.account.connectToFacebook' => 'Verbinding met Facebook',
+    
+    // changePassword
+    'dashboard.changePassword' => 'Wijzig wachtwoord',
+    
+    // pages
+    'dashboard.pages' => 'Pagina\'s',
+    'dashboard.pages.navigation' => 'Navigatie',
+    
+    // items
+    'dashboard.items' => 'Inhoud',
+    'dashboard.items.categories' => 'Categorien',
+    'dashboard.items.dummyItems' => 'DummyItems',
+    'dashboard.items.news' => 'Nieuws',
+    'dashboard.items.text' => 'Tekst items',
+    
+    // admin
+    'dashboard.admin' => 'Administratie',
+    'dashboard.admin.rbam' => 'RBAM',
     
     ///////////
     // model //

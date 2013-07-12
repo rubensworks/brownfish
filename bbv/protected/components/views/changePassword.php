@@ -39,7 +39,7 @@ $model->pwd=NULL;
 	<div class="buttons">
 		<?php
 		echo CHtml::ajaxSubmitButton(
-    'Save',
+    Yii::t('messages', 'form.general.save'),
     CHtml::normalizeUrl(array('user/changePassword')),
     array(
         'update'=>'#cpwd-page',

@@ -22,6 +22,7 @@ return array(
     'form.general.captchaExplanation' => 'Please enter the letters as they are shown in the image above.<br/>Letters are not case-sensitive.',
     'form.general.verifyCode' => 'Verification Code',
     'form.general.update' => 'Update',
+    'form.general.save' => 'Save',
     
     // login
     'form.login.login' => 'Login',
@@ -53,6 +54,33 @@ return array(
     'form.contact.contactUs' => 'Contact Us',
     'form.contact.subject' => 'Subject',
     'form.contact.body' => 'Body',
+    
+    ///////////////
+    // dashboard //
+    ///////////////
+    'dashboard.dashboard' => 'Dashboard',
+    
+    // account
+    'dashboard.account' => 'Account',
+    'dashboard.account.connectToFacebook' => 'Connect to Facebook',
+    
+    // changePassword
+    'dashboard.changePassword' => 'Change Password',
+    
+    // pages
+    'dashboard.pages' => 'Pages',
+    'dashboard.pages.navigation' => 'Navigation',
+    
+    // items
+    'dashboard.items' => 'Content',
+    'dashboard.items.categories' => 'Categories',
+    'dashboard.items.dummyItems' => 'DummyItems',
+    'dashboard.items.news' => 'News',
+    'dashboard.items.text' => 'Text items',
+    
+    // admin
+    'dashboard.admin' => 'Administration',
+    'dashboard.admin.rbam' => 'RBAM',
     
     ///////////
     // model //

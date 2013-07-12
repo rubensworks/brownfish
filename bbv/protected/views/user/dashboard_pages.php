@@ -2,7 +2,7 @@
     'type'=>'pills',
     'stacked'=>true, // whether this is a stacked menu
     'items'=>array(
-        array('label'=>'Pagina\'s', 'url'=>array('page/admin')),
-        array('label'=>'Navigatie', 'url'=>array('navigation/admin')),
+        array('label'=>Yii::t('messages', 'dashboard.pages'), 'url'=>array('page/admin')),
+        array('label'=>Yii::t('messages', 'dashboard.pages.navigation'), 'url'=>array('navigation/admin')),
     ),
 )); ?>
