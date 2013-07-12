@@ -1,14 +1,14 @@
 <?php
 $this->breadcrumbs=array(
-		'Dashboard'=>array('user/dashboard'),
-		'Pagina\'s'=>array('admin'),
-		'Update Pagina ' . $model->name ,
+		Yii::t('messages', 'dashboard.dashboard')=>array('user/dashboard'),
+		Yii::t('messages', 'dashboard.pages')=>array('admin'),
+		Yii::t('messages', 'dashboard.pages.update') . ' ' . $model->name ,
 );
 
 ?>
 <section>
 	<h1>
-		Update pagina <i><?php echo $model->name; ?> </i>
+		<? echo Yii::t('messages', 'dashboard.pages.update') ?> <i><?php echo $model->name; ?> </i>
 	</h1>
 
 	<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
@@ -20,10 +20,9 @@ $this->breadcrumbs=array(
 		?>
 	</div>
 
-	<h3>Widgets</h3>
+	<h3><? echo Yii::t('messages', 'form.widgets.widgets') ?></h3>
 	<div class="auto-save">
-		<p>Onderstaande veranderingen worden automatisch
-			opgeslaan.</p>
+		<p><? echo Yii::t('messages', 'form.widgets.changesAutoSaved') ?></p>
 		<div id="saving"></div>
 	</div>
 	<div class="row-fluid">
@@ -41,7 +40,7 @@ $this->breadcrumbs=array(
 			<hr class="hr-small" />
 			<?php
 			$this->widget('bootstrap.widgets.TbButton', array(
-					'label'=>'Widget',
+					'label'=>Yii::t('messages', 'form.widgets.widget'),
 					'icon'=>'plus',
 					'block'=>true,
 					'htmlOptions'=>array('id'=>'tocolumn_'.$i, 'class'=>'add_widget'),
@@ -57,11 +56,11 @@ $this->breadcrumbs=array(
 	<?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'newWidget')); ?>
 	<div class="modal-header">
 		<a class="close" data-dismiss="modal">&times;</a>
-		<h4>Nieuwe widget</h4>
+		<h4><? echo Yii::t('messages', 'form.widgets.new') ?></h4>
 	</div>
 
 	<div class="modal-body">
-		<p class="muted">Selecteer het type widget die je wilt toevoegen.</p>
+		<p class="muted"><? echo Yii::t('messages', 'form.widgets.selectWidgetType') ?></p>
 		<?php
 		foreach(Utils::getItemTypes() as $type) {
 			$instance = new $type();
@@ -77,12 +76,12 @@ $this->breadcrumbs=array(
 	<div class="modal-footer">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
 				'type'=>'primary',
-				'label'=>'Voeg toe',
+				'label'=>Yii::t('messages', 'form.general.add'),
 				'url'=>'',
 				'htmlOptions'=>array('data-dismiss'=>'modal', 'id'=>'confirm_add_widget'),
     )); ?>
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
-				'label'=>'Sluit',
+				'label'=>Yii::t('messages', 'form.general.close'),
 				'url'=>'',
 				'htmlOptions'=>array('data-dismiss'=>'modal'),
     )); ?>

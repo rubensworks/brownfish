@@ -62,10 +62,10 @@ class Page extends WActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => Yii::t('form', 'ID'),
-			'name' => Yii::t('form', 'Titel'),
-			'author_id' => Yii::t('form', 'Auteur'),
-			'columns' => Yii::t('form', 'Kolommen'),
+			'id' => Yii::t('messages', 'model.general.id'),
+			'name' => Yii::t('messages', 'model.general.title'),
+			'author_id' => Yii::t('messages', 'model.general.author'),
+			'columns' => Yii::t('messages', 'model.page.columns'),
 		);
 	}
 	

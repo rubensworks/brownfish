@@ -8,7 +8,7 @@ $form = $this->beginWidget('WForm', array(
 $notNew = !$model->isNewRecord;
 ?>
 
-	<p class="muted">Velden met <span class="required">*</span> zijn verplicht.</p>
+	<p class="muted"><? echo Yii::t('messages', 'form.general.requiredFields') ?></p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -50,7 +50,7 @@ $notNew = !$model->isNewRecord;
 				array(
 					'buttonType'=>'submit',
 					'type'=>'primary',
-					'label'=>($model->isNewRecord ? 'Volgende' : 'Pas aan')
+					'label'=>($model->isNewRecord ? Yii::t('messages', 'form.general.next') : Yii::t('messages', 'form.general.update'))
 					)
 				); ?>
 	</div>

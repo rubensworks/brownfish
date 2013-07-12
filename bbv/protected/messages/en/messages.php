@@ -23,6 +23,12 @@ return array(
     'form.general.verifyCode' => 'Verification Code',
     'form.general.update' => 'Update',
     'form.general.save' => 'Save',
+    'form.general.next' => 'Next',
+    'form.general.new' => 'New',
+    'form.general.add' => 'Add',
+    'form.general.close' => 'Close',
+    'form.general.list' => 'List',
+    'form.general.filterBy' => 'Filter by {type}',
     
     // login
     'form.login.login' => 'Login',
@@ -55,6 +61,16 @@ return array(
     'form.contact.subject' => 'Subject',
     'form.contact.body' => 'Body',
     
+    // widgets
+    'form.widgets.widget' => 'Widget',
+    'form.widgets.widgets' => 'Widgets',
+    'form.widgets.changesAutoSaved' => 'Any changes to the widgets will automatically be saved.',
+    'form.widgets.new' => 'New widget',
+    'form.widgets.selectWidgetType' => 'Select the type of the widget you want to add.',
+    'form.widgets.amount' => 'Amount',
+    'form.widgets.singleItem' => 'Single item',
+    'form.widgets.type' => 'Type',
+    
     ///////////////
     // dashboard //
     ///////////////
@@ -70,6 +86,9 @@ return array(
     // pages
     'dashboard.pages' => 'Pages',
     'dashboard.pages.navigation' => 'Navigation',
+    'dashboard.pages.create' => 'New page',
+    'dashboard.pages.listOfPages' => 'List of Pages',
+    'dashboard.pages.update' => 'Update page',
     
     // items
     'dashboard.items' => 'Content',
@@ -86,8 +105,14 @@ return array(
     // model //
     ///////////
     
+    // general
+    'model.general.id' => 'ID',
+    'model.general.title' => 'Title',
+    'model.general.author' => 'Author',
+    'model.general.tag' => 'Tag',
+    'model.general.tags' => 'Tags',
+    
     // user
-    'model.user.id' => 'ID',
     'model.user.name' => 'Name',
     'model.user.mail' => 'E-Mail',
     'model.user.datereg' => 'Date of registration',
@@ -96,6 +121,12 @@ return array(
     'model.user.secra' => 'Secret answer',
     'model.user.gender' => 'Gender',
     'model.user.fbid' => 'Facebook ID',
+    
+    // page
+    'model.page.columns' => 'Columns',
+    
+    // category
+    'model.category.category' => 'Category',
     
     //////////
     // enum //

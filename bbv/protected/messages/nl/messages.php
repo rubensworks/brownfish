@@ -23,6 +23,12 @@ return array(
     'form.general.verifyCode' => 'Verificatie Code',
     'form.general.update' => 'Pas aan',
     'form.general.save' => 'Opslaan',
+    'form.general.next' => 'Volgende',
+    'form.general.new' => 'Nieuw',
+    'form.general.add' => 'Voeg toe',
+    'form.general.close' => 'Sluit',
+    'form.general.list' => 'Lijst',
+    'form.general.filterBy' => 'Filter op {type}',
     
     // login
     'form.login.login' => 'Login',
@@ -55,6 +61,16 @@ return array(
     'form.contact.subject' => 'Onderwerp',
     'form.contact.body' => 'Inhoud',
     
+    // widgets
+    'form.widgets.widget' => 'Widget',
+    'form.widgets.widgets' => 'Widgets',
+    'form.widgets.changesAutoSaved' => 'Onderstaande veranderingen worden automatisch opgeslaan.',
+    'form.widgets.new' => 'Nieuwe widget',
+    'form.widgets.selectWidgetType' => 'Selecteer het type widget die je wilt toevoegen.',
+    'form.widgets.amount' => 'Aantal',
+    'form.widgets.singleItem' => 'Enkel item',
+    'form.widgets.type' => 'Type',
+    
     ///////////////
     // dashboard //
     ///////////////
@@ -70,6 +86,9 @@ return array(
     // pages
     'dashboard.pages' => 'Pagina\'s',
     'dashboard.pages.navigation' => 'Navigatie',
+    'dashboard.pages.create' => 'Nieuwe Pagina',
+    'dashboard.pages.listOfPages' => 'Lijst van Pagina\'s',
+    'dashboard.pages.update' => 'Update pagina',
     
     // items
     'dashboard.items' => 'Inhoud',
@@ -86,8 +105,14 @@ return array(
     // model //
     ///////////
     
+    // general
+    'model.general.id' => 'ID',
+    'model.general.title' => 'Titel',
+    'model.general.author' => 'Auteur',
+    'model.general.tag' => 'Tag',
+    'model.general.tags' => 'Tags',
+    
     // user
-    'model.user.id' => 'ID',
     'model.user.name' => 'Naam',
     'model.user.mail' => 'E-Mail',
     'model.user.datereg' => 'Datum van registratie',
@@ -96,6 +121,12 @@ return array(
     'model.user.secra' => 'Geheim antwoord',
     'model.user.gender' => 'Geslacht',
     'model.user.fbid' => 'Facebook ID',
+    
+    // page
+    'model.page.columns' => 'Kolommen',
+    
+    // category
+    'model.category.category' => 'Category',
     
     //////////
     // enum //
