@@ -262,15 +262,27 @@ footer{
 			&:active{background-color: darken(@blue, 10%);}
 		}
 		padding: 0;
+		>span{
+			.nav-header;
+			color: darken(@white, 10%);
+			text-shadow: none;
+			padding:0;
+		}
+		.active{
+			a{
+				background-color: darken(@blue, 10%);
+			}
+		}
 		
 	}
-	.nav-header{
-		color: darken(@white, 10%);
-		text-shadow: none;
-	}
 	list-style-type:none;
+	ul{
+		list-style-type:none;
+		margin: 0;
+		padding-left: 10px;
+	}
 	margin: 0;
-	padding: 0 0 0 10px;
+	padding-left: 10px;
 }
 
 .sponsors{

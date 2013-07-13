@@ -1,14 +1,11 @@
-<?php
-$navigation = Navigation::buildNavigation();
-/* @var $this Controller */
-?>
+<?php /* @var $this Controller */ ?>
 <?php $this->beginContent('//layouts/main'); ?>
 <section class="wrapper row-fluid">
 	<section class="sidebar span2">
 		<div class="inner-sidebar">
 			<nav>
 		        <?php
-		            echo Navigation::printNavigation($navigation);
+		        	$this->widget('zii.widgets.CMenu', Navigation::buildNavigation());
 		        ?>
 		        <?php
 					$this->beginWidget('zii.widgets.CPortlet', array(

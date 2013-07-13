@@ -904,9 +904,11 @@ ul.tagit li{height:14px;}
 header{padding:5px 5px 0 5px;-webkit-border-top-right-radius:5px;-moz-border-radius-topright:5px;border-top-right-radius:5px;-webkit-border-top-left-radius:5px;-moz-border-radius-topleft:5px;border-top-left-radius:5px;min-height:20px;padding:19px;margin-bottom:20px;background-color:#fafafa;border:1px solid #e8e8e8;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);-moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);background:url('../img/headerimg.jpg');background-position:left center;}header h1{color:#02435e;text-shadow:1px 1px 0 rgba(0, 0, 0, 0.25);}
 header blockquote{border-color:#ddd;border-color:rgba(0, 0, 0, 0.15);}
 footer{min-height:20px;padding:19px;margin-bottom:20px;background-color:#fafafa;border:1px solid #e8e8e8;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);-moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);}footer blockquote{border-color:#ddd;border-color:rgba(0, 0, 0, 0.15);}
-.main_nav{list-style-type:none;margin:0;padding:0 0 0 10px;}.main_nav li{color:#eeeeee;padding:0;}.main_nav li a{color:#f2f2f2;font-size:11.9px;text-decoration:none;padding:3px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;width:90%;display:block;}.main_nav li a:hover{background-color:#048ac2;}
+.main_nav{list-style-type:none;margin:0;padding-left:10px;}.main_nav li{color:#eeeeee;padding:0;}.main_nav li a{color:#f2f2f2;font-size:11.9px;text-decoration:none;padding:3px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;width:90%;display:block;}.main_nav li a:hover{background-color:#048ac2;}
 .main_nav li a:active{background-color:#0378a9;}
-.main_nav .nav-header{color:#e6e6e6;text-shadow:none;}
+.main_nav li>span{display:block;padding:3px 15px;font-size:11px;font-weight:bold;line-height:20px;color:#999999;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);text-transform:uppercase;color:#e6e6e6;text-shadow:none;padding:0;}
+.main_nav li .active a{background-color:#0378a9;}
+.main_nav ul{list-style-type:none;margin:0;padding-left:10px;}
 .sponsors{background-color:#71c9f5;height:100px;}
 .dropdown>.dropdown-menu{left:-110px;}
 article.news aside{color:#999999;font-size:10.5px;}
