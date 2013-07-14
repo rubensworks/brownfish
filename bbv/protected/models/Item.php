@@ -60,22 +60,22 @@ class Item extends WActiveRecord
 	}
 
 	/**
-	 * @return array relational rules. TODO: fill in the item relation with Utils::...
+	 * @return array relational rules.
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-			'dummy'=>array(self::HAS_MANY, 'DummyItem', 'id'),
-			'newsitem'=>array(self::HAS_MANY, 'NewsItem', 'id'),
-			'textitem'=>array(self::HAS_MANY, 'TextItem', 'id'),
-			'navigationitem'=>array(self::HAS_MANY, 'NavigationItem', 'id'),
+		// Dynamically add all the different item types to the relations of the base item
+		$types = Utils::getItemTypes();
+		$typeArray = array();
+		foreach($types as $type)
+			$typeArray[$type] = array(self::HAS_ONE, $type, 'id');
+		
+		return array_merge($typeArray, array(
 			'category'=>array(self::BELONGS_TO, 'Category', 'category_id'),
 			'author'=>array(self::BELONGS_TO, 'User', 'author_id'),
 			'comment'=>array(self::HAS_MANY, 'Comment', 'id'),
 			'widget'=>array(self::HAS_MANY, 'Widget', 'id'),
-		);
+		));
 	}
 
 	/**
