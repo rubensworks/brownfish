@@ -1,10 +1,16 @@
-<?php $this->widget('bootstrap.widgets.TbMenu', array(
+<?php
+$itemItems = array();
+foreach(Utils::getItemTypes() as $type) {
+	$instance = new $type();
+	$itemItems[] = array('label' => $instance->getItemName(), 'url'=>array($type.'/admin'));
+}
+$otherItems = array(
+	array('label'=>'Categorien', 'url'=>array('category/admin')),
+);
+
+$this->widget('bootstrap.widgets.TbMenu', array(
     'type'=>'pills',
     'stacked'=>true, // whether this is a stacked menu
-    'items'=>array(
-        array('label'=>'Categorien', 'url'=>array('category/admin')),
-        array('label'=>'DummyItems', 'url'=>array('dummyitem/admin')),
-    	array('label'=>'Nieuws', 'url'=>array('newsitem/admin')),
-    	array('label'=>'Tekst items', 'url'=>array('textitem/admin')),
-    ),
-)); ?>
+    'items'=>array_merge($otherItems, $itemItems),
+));
+?>

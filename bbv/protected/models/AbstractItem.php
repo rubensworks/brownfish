@@ -18,6 +18,8 @@ abstract class AbstractItem extends WActiveRecord
 	public $date_created_search;
 	public $date_changed_search;
 	
+	public $holdContent = true;
+	
 	/**
 	 * Return a string representation of the type of the item
 	 */

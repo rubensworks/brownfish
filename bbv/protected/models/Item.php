@@ -60,7 +60,7 @@ class Item extends WActiveRecord
 	}
 
 	/**
-	 * @return array relational rules.
+	 * @return array relational rules. TODO: fill in the item relation with Utils::...
 	 */
 	public function relations()
 	{
@@ -69,6 +69,8 @@ class Item extends WActiveRecord
 		return array(
 			'dummy'=>array(self::HAS_MANY, 'DummyItem', 'id'),
 			'newsitem'=>array(self::HAS_MANY, 'NewsItem', 'id'),
+			'textitem'=>array(self::HAS_MANY, 'TextItem', 'id'),
+			'navigationitem'=>array(self::HAS_MANY, 'NavigationItem', 'id'),
 			'category'=>array(self::BELONGS_TO, 'Category', 'category_id'),
 			'author'=>array(self::BELONGS_TO, 'User', 'author_id'),
 			'comment'=>array(self::HAS_MANY, 'Comment', 'id'),

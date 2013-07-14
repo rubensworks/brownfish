@@ -60,6 +60,7 @@ class Navigation extends WActiveRecord
 		return array(
 			'parent'=>array(self::BELONGS_TO, 'Navigation', 'id'),
 			'children'=>array(self::HAS_MANY, 'Navigation', 'parent_id', 'order'=>'row_order ASC'),
+			'item'=>array(self::HAS_ONE, 'NavigationItem', 'navigation_id'),
 		);
 	}
 
@@ -166,5 +167,18 @@ class Navigation extends WActiveRecord
 		if($toCache) Yii::app()->cache->set(Utils::$CACHE_NAVIGATION, $sub, Utils::$CACHE_DURATION_LONG);
 		
 		return $sub;
+	}
+	
+	/**
+	 * Generate a new root navigation element
+	 * @param string $label a (hidden) label to give to the new root, defaults to "CUSTOM_ROOT"
+	 * @return Navigation the newly created root
+	 */
+	public static function generateRoot($label="CUSTOM_ROOT") {
+		$root = new Navigation();
+		$root->label = $label;
+		$root->type = Navigation::$TYPE_ROOT;
+		$root->save();
+		return $root;
 	}
 }

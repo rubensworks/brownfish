@@ -53,7 +53,7 @@
 		<?php
 		if($navigation !== NULL) {
 			foreach($navigation->children as $child) {
-				$this->renderPartial('_navigation_admin', array('navigation'=>$child));
+				$this->render('_navigation_admin', array('navigation'=>$child));
 			}
 		}
 		?>

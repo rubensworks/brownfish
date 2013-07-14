@@ -28,7 +28,7 @@ class NavigationController extends Controller
 		return array(
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','create','update','delete'),
-				'roles'=>array('manageItems'),
+				'roles'=>array('manageNavigation'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -99,41 +99,7 @@ class NavigationController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$criteria = new CDbCriteria();
-		$criteria->condition = "type = :type";
-		$criteria->params = array(':type'=>Navigation::$TYPE_ROOT);
-		$root = Navigation::model()->find($criteria);
-		
-		if($root === NULL) {
-			$root = new Navigation();
-			$root->label = "Root";
-			$root->type = Navigation::$TYPE_ROOT;
-			$root->save();
-		}
-		
-		// Register javascript file for dynamic navigation management
-		$baseUrl = Yii::app()->baseUrl;
-		$cs = Yii::app()->getClientScript();
-		$cs->registerScriptFile($baseUrl.'/js/navigation_admin.js');
-		
-		// Dynamic js parameters to register on the page
-		Yii::app()->clientScript->registerScript('widget_variables',"
-			var changes = false;
-	  		var saving = false;
-				
-	  		var url_create = \"".CHtml::normalizeUrl(array("/navigation/create"))."\";
-	  		var url_update = \"".CHtml::normalizeUrl(array("/navigation/update"))."\";
-	  		var url_delete = \"".CHtml::normalizeUrl(array("/navigation/delete"))."\";
-	  		var TYPE_NODE = \"".Navigation::$TYPE_NODE."\";
-	  		var TYPE_LEAF = \"".Navigation::$TYPE_LEAF."\";
-	  	    var TYPE_ROOT = \"".Navigation::$TYPE_ROOT."\";
-	  				
-	  		var root_id = ".$root->id.";
-		", CClientScript::POS_END);
-		
-		$this->render('admin',array(
-			'root'=>$root,
-		));
+		$this->render('admin');
 	}
 
 	/**

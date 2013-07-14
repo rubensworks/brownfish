@@ -13,6 +13,7 @@ $this->breadcrumbs=array(
 $this->widget('ItemForm', array(
 		'model'=>$model,
 		'view'=>'/'.$this->getItemClassName().'/_form',
+		'afterView'=>'/'.$this->getItemClassName().'/_after_form',
 	));
 ?>
 

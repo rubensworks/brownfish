@@ -43,6 +43,7 @@ class Utils {
 				"DummyItem",
 				"NewsItem",
 				"TextItem",
+				"NavigationItem",
 		);
 	}
 	
