@@ -156,34 +156,6 @@ class PageController extends Controller
 			'dataProvider'=>$dataProvider,
 		));
 	}
-	
-	/**
-	 * Updates a particular model.
-	 * The browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to view
-	 */
-	/*public function actionView($id)
-	{
-		$model=Page::model()->findByPk($id);
-	
-		if(isset($_POST['Page']))
-		{
-			$model->attributes=$_POST['Page'];
-			if($model->save())
-				$this->redirect(array('update', 'id'=>$model->id));
-		}
-	
-		$criteria = new CDbCriteria();
-		$criteria->condition = "page_id = :page_id";
-		$criteria->params = array(":page_id"=>$model->id);
-		$criteria->order = "row_order";
-		$widgets = Widget::model()->findAll($criteria);
-	
-		$this->render('view',array(
-				'model' => $model,
-				'widgets' => $widgets,
-		));
-	}*/
 
 	/**
 	 * Performs the AJAX validation.

@@ -9,5 +9,6 @@ $this->breadcrumbs=array(
 <?php $this->widget('bootstrap.widgets.TbTabs', array(
 		'placement'=>'left',
     	'tabs'=>$tabs,
+		'fade'=>false,
 )); ?>
 </section>
