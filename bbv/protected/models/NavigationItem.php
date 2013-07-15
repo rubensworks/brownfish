@@ -76,7 +76,8 @@ class NavigationItem extends AbstractItem
 	 */
 	 protected function beforeSave()
 	 {
-		$this->navigation_id = Navigation::generateRoot()->id;
+	 	if($this->isNewRecord)
+			$this->navigation_id = Navigation::generateRoot()->id;
 		return parent::beforeSave();
 	 }
 	 
