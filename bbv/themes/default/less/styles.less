@@ -180,8 +180,12 @@ ul.tagit li {
 		.well-small;
 		border-top-left-radius:0px !important;
 		border-top-right-radius:0px !important;
-		.main_nav span, .main_nav a{
-			color: @textColor !important
+		.main_nav span{
+			color: @linkColor !important
+		}
+		.main_nav a{
+			color: @linkColor !important;
+			&:hover{background-color: @grayLighter}
 		}
 	}
 }
