@@ -7,6 +7,16 @@ class PageController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
+	
+	/**
+	 * External actions
+	 */
+	public function actions()
+	{
+		return array(
+				'view'=>'application.controllers.page.ViewAction',
+		);
+	}
 
 	/**
 	 * @return array action filters
@@ -152,7 +162,7 @@ class PageController extends Controller
 	 * The browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to view
 	 */
-	public function actionView($id)
+	/*public function actionView($id)
 	{
 		$model=Page::model()->findByPk($id);
 	
@@ -173,7 +183,7 @@ class PageController extends Controller
 				'model' => $model,
 				'widgets' => $widgets,
 		));
-	}
+	}*/
 
 	/**
 	 * Performs the AJAX validation.

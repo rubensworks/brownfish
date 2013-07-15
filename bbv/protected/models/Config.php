@@ -11,6 +11,7 @@ class Config extends WActiveRecord
 {
 	public static $KEYS = array(
 			'MAIN_NAV' => 'core_main_nav_id',
+			'INDEX_PAGE' => 'core_index_page_id',
 	); 
 	
 	/**
