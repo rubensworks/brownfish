@@ -91,7 +91,7 @@ class PageController extends Controller
 		{
 			$model->attributes=$_POST['Page'];
 			if($model->save())
-				$this->redirect(array('update', 'id'=>$model->id));
+				$this->redirect(array('admin'));
 		}
 		
 		// Query all the widgets on this page
