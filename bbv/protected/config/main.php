@@ -80,7 +80,7 @@ return array(
 		'authManager'=>array(
 				'class'=>'CDbAuthManager', // Database driven Yii-Auth Manager
 				'connectionID'=>'db', // db connection as above
-				'defaultRoles'=>array('registered','guest'), // default Role for logged in users
+				'defaultRoles'=>array('authenticated','guest'), // default Role for logged in users
 				'showErrors'=>true, // show eval()-errors in buisnessRules
 		),
 		'errorHandler'=>array(
