@@ -141,7 +141,8 @@ class User extends CActiveRecord
 	  */
 	 protected function beforeSave()
 	 {
-		$this->pwd=$this->encode($this->pwd);  
+	 	if($this->scenario == 'register')
+			$this->pwd=$this->encode($this->pwd);  
 		return parent::beforeSave();
 	 }
 	 
