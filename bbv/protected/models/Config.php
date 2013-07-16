@@ -41,7 +41,7 @@ class Config extends WActiveRecord
 		return array(
 			array('key', 'required'),
 			array('key', 'length', 'max'=>50),
-			array('value', 'length', 'max'=>200),
+			array('value', 'safe'),
 		);
 	}
 
@@ -75,7 +75,7 @@ class Config extends WActiveRecord
 	public static function getValue($key) {
 		$result = Config::model()->findByPk($key);
 		if($result == NULL) return false;
-		return $result->value;
+		return @unserialize($result->value);
 	}
 	
 	/**
@@ -89,7 +89,7 @@ class Config extends WActiveRecord
 			$model = new Config();
 			$model->key = $key;
 		}
-		$model->value = $value;
+		$model->value = @serialize($value);
 		$model->save(false);
 	}
 }
