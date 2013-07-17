@@ -1,13 +1,13 @@
 <?php
 $this->breadcrumbs=array(
-	'Dashboard'=>array('user/dashboard'),
+	Yii::t('messages', 'dashboard.dashboard')=>array('user/dashboard'),
 	$model->getMultipleItemName()=>array('/'.$this->getItemClassName().'/admin'),
-	'Maak ' .  $model->getItemName(),
+	Yii::t('messages', 'form.general.createAttr', array('{attribute}'=>$model->getItemName())),
 );
 
 ?>
 <section>
-<h1>Maak <?php echo $model->getItemName(); ?></h1>
+<h1><? echo Yii::t('messages', 'form.general.createAttr', array('{attribute}'=>$model->getItemName())) ?></h1>
 
 <?php
 $this->widget('ItemForm', array(

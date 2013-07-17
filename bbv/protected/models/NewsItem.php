@@ -32,8 +32,8 @@ class NewsItem extends AbstractItem
 	{
 		return array_merge(
 				array(
-				'id' => Yii::t('form', 'ID'),
-				'excerpt' => Yii::t('form', 'Inleiding'),
+				'id' => Yii::t('messages', 'model.general.id'),
+				'excerpt' => Yii::t('messages', 'model.items.news.excerpt'),
 		), parent::attributeLabels());
 	}
 	

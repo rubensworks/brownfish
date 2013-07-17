@@ -81,20 +81,20 @@ class Widget extends WActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => Yii::t('form', 'ID'),
-			'name' => Yii::t('form', 'Titel'),
-			'page' => Yii::t('form', 'Pagina'),
-			'col_id' => Yii::t('form', 'Kolom'),
-			'row_order' => Yii::t('form', 'Rij volgorde'),
-			'item_type' => Yii::t('form', 'Item Type'),
-			'widget_type' => Yii::t('form', 'Widget Type'),
-			'filter_category' => Yii::t('form', 'Filter op categorie'),
-			'category' => Yii::t('form', 'Categorie'),
-			'filter_tags' => Yii::t('form', 'Filter op tags'),
-			'tags' => Yii::t('form', 'Tags'),
-			'amount' => Yii::t('form', 'Amount'),
-			'item_id' => Yii::t('form', 'Item ID'),
-			'item_type_display' => Yii::t('form', 'Item Type'),
+			'id' => Yii::t('messages', 'model.general.id'),
+			'name' => Yii::t('messages', 'model.general.title'),
+			'page' => Yii::t('messages', 'model.widget.page'),
+			'col_id' => Yii::t('messages', 'model.widget.column'),
+			'row_order' => Yii::t('messages', 'model.widget.rowOrder'),
+			'item_type' => Yii::t('messages', 'model.widget.itemType'),
+			'widget_type' => Yii::t('messages', 'model.widget.widgetType'),
+			'filter_category' => Yii::t('messages', 'Filter op categorie'),
+			'category' => Yii::t('messages', 'model.category.category'),
+			'filter_tags' => Yii::t('messages', 'form.general.filterBy', array('{type}' => Yii::t('messages', 'model.general.tags'))),
+			'tags' => Yii::t('messages', 'model.general.tags'),
+			'amount' => Yii::t('messages', 'form.widgets.amount'),
+			'item_id' => Yii::t('messages', 'model.widget.itemId'),
+			'item_type_display' => Yii::t('messages', 'model.widget.itemType'),
 		);
 	}
 

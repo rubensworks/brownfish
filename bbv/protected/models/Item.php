@@ -82,14 +82,14 @@ class Item extends WActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => Yii::t('form', 'ID'),
-			'name' => Yii::t('form', 'Naam'),
-			'author_id' => Yii::t('form', 'Auteur'),
-			'date_created' => Yii::t('form', 'Datum van aanmaak'),
-			'date_changed' => Yii::t('form', 'Laatste bewerking'),
-			'category_id' => Yii::t('form', 'Categorie'),
-			'tags' => Yii::t('form', 'Tags'),
-			'content' => Yii::t('form', 'Inhoud'),
+			'id' => Yii::t('messages', 'model.general.id'),
+			'name' => Yii::t('messages', 'model.general.name'),
+			'author_id' => Yii::t('messages', 'model.general.author'),
+			'date_created' => Yii::t('messages', 'model.general.dateCreated'),
+			'date_changed' => Yii::t('messages', 'model.general.dateChanged'),
+			'category_id' => Yii::t('messages', 'model.category.category'),
+			'tags' => Yii::t('messages', 'model.general.tags'),
+			'content' => Yii::t('messages', 'model.general.content'),
 		);
 	}
 

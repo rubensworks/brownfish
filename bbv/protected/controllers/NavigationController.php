@@ -111,7 +111,7 @@ class NavigationController extends Controller
 	{
 		$model=Posts::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,Yii::t('messages', 'error.404'));
 		$model->content=Item::getContents($model->id);
 		return $model;
 	}

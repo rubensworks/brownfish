@@ -50,12 +50,12 @@ abstract class AbstractItem extends WActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-				'item_search' => Yii::t('form', 'Naam'),
-				'author_search' => Yii::t('form', 'Auteur'),
-				'category_search' => Yii::t('form', 'Categorie'),
-				'tags_search' => Yii::t('form', 'Tags'),
-				'date_created_search' => Yii::t('form', 'Aangepast'),
-				'date_changed_search' => Yii::t('form', 'Bewerkt'),
+				'item_search' => Yii::t('messages', 'model.general.name'),
+				'author_search' => Yii::t('messages', 'model.general.author'),
+				'category_search' => Yii::t('messages', 'model.category.category'),
+				'tags_search' => Yii::t('messages', 'model.general.tags'),
+				'date_created_search' => Yii::t('messages', 'model.general.dateCreated'),
+				'date_changed_search' => Yii::t('messages', 'model.general.dateChanged'),
 		);
 	}
 	

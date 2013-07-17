@@ -33,6 +33,11 @@ return array(
     'form.general.listOf' => 'List of {attributes}',
     'form.general.newAttr' => 'New {attribute}',
     'form.general.updateAttr' => 'Update {attribute}',
+    'form.general.createAttr' => 'Create {attribute}',
+    'form.general.changesAutoSaved' => 'Any changes will automatically by saved.',
+    'form.general.link' => 'Link',
+    'form.general.label' => 'Label',
+    'form.general.showingNumOf' => 'Showing {start}-{end} of {count} results.',
     
     // login
     'form.login.login' => 'Login',
@@ -80,6 +85,13 @@ return array(
     'form.widgets.singleItem' => 'Single item',
     'form.widgets.type' => 'Type',
     'form.widgets.invalidItemForWidget' => 'Please select a valid item for this widget.',
+    'form.widgets.notAllSaved' => 'Not all widgets were saved.',
+    
+    // navigation
+    'form.navigation.subElement' => 'Sub Element',
+    'form.navigation.removeMessage' => 'Are you sure you want to remove this element? All subelements will also be deleted.',
+    'form.navigation.newElement' => 'New Element',
+    'form.navigation.newLink' => 'New Link',
     
     ///////////////
     // dashboard //
@@ -122,6 +134,13 @@ return array(
     'model.general.tag' => 'Tag',
     'model.general.tags' => 'Tags',
     'model.general.name' => 'Name',
+    'model.general.dateCreated' => 'Creation Date',
+    'model.general.dateChanged' => 'Latest Change',
+    'model.general.content' => 'Content',
+    'model.general.value' => 'Value',
+    'model.general.label' => 'Label',
+    'model.general.type' => 'Type',
+    'model.general.parent' => 'Parent',
     
     // user
     'model.user.name' => 'Name',
@@ -138,6 +157,21 @@ return array(
     
     // category
     'model.category.category' => 'Category',
+    
+    // navigation
+    'model.navigation.route' => 'Route',
+    
+    // widget
+    'model.widget.page' => 'Page',
+    'model.widget.column' => 'Column',
+    'model.widget.rowOrder' => 'Row Order',
+    'model.widget.itemType' => 'Item Type',
+    'model.widget.widgetType' => 'Widget Type',
+    'model.widget.itemId' => 'Item ID',
+    
+    // items
+    'model.items.navigation.navigation' => 'Navigation',
+    'model.items.news.excerpt' => 'Excerpt',
     
     //////////
     // enum //
@@ -162,6 +196,8 @@ return array(
     ///////////
     
     'error.404' => 'The requested page does not exist.',
+    'error.navigation.rootElementDoesNotExist' => 'The given navigation root element does not exist.',
+    'error.somethingWentWrong' => 'Something went wrong, please try again later.',
 );
 
 ?>

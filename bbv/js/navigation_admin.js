@@ -50,7 +50,7 @@ function handle_request_result(request, real_id) {
 	});
 
 	request.fail(function(jqXHR, textStatus, errorThrown) {
-		alert("Er is iets misgelopen, probeer het later opnieuw.");
+		alert(lang.somethingWentWrong);
 	});
 }
 
@@ -114,7 +114,7 @@ function new_navigation($node, label, type, route, parent_id, row_order) {
 	});
 
 	req.fail(function(jqXHR, textStatus, errorThrown) {
-		alert("Er is iets misgelopen, probeer het later opnieuw.");
+		alert(lang.somethingWentWrong);
 	});
 }
 
@@ -122,7 +122,7 @@ function new_navigation($node, label, type, route, parent_id, row_order) {
 // If async is false, the ajax request will be called synchronous
 function delete_navigation(id, async) {
 	if(typeof(async)==='undefined') async=true;
-	if(!async || confirm("Weet je zeker dat je dit element wilt verwijderen? Alle sub-elementen zullen ook verwijderd worden.")) {
+	if(!async || confirm(lang.removeMessage)) {
 		var req = $.ajax({
 			url: url_delete+"/"+id,
 			async: async
@@ -136,7 +136,7 @@ function delete_navigation(id, async) {
 		});
 
 		req.fail(function(jqXHR, textStatus, errorThrown) {
-			alert("Er is iets misgelopen, probeer het later opnieuw.");
+			alert(lang.somethingWentWrong);
 		});
 	}
 }
@@ -153,12 +153,12 @@ function update_element(real_id, data) {
 $(document).ready(function() {
 	$(".add_element").live("click", function() {
 		$node = $(this).closest(".navigation_node");
-		new_navigation($node, "Nieuw element", TYPE_NODE, "", chop_id($node.attr("id")), 0);
+		new_navigation($node, lang.newElement, TYPE_NODE, "", chop_id($node.attr("id")), 0);
 	});
 	
 	$(".add_link").live("click", function() {
 		$node = $(this).closest(".navigation_node");
-		new_navigation($node, "Nieuwe link", TYPE_LEAF, "", chop_id($node.attr("id")), 0);
+		new_navigation($node, lang.newLink, TYPE_LEAF, "", chop_id($node.attr("id")), 0);
 	});
 	
 	$(".remove").live("click", function() {
@@ -201,7 +201,7 @@ $(document).ready(function() {
 	// Show an alert if there are changes or savings
 	$(window).bind('beforeunload', function(){
 		if(changes || saving){
-			return 'Niet alle widgets zijn opgeslaan.';
+			return lang.notAllWidgetsSaved;
 		}
 	});
 });

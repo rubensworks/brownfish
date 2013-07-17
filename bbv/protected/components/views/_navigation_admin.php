@@ -7,25 +7,25 @@
 			if($navigation != NULL && $navigation->type == Navigation::$TYPE_ROOT) {
 				?><div class='span12'>Top element</div><?php
 			} else {
-				echo CHtml::textField("label", $navigation==NULL?"":$navigation->label, array("class"=>"nav_label", "placeholder"=>"Label"));
+				echo CHtml::textField("label", $navigation==NULL?"":$navigation->label, array("class"=>"nav_label", "placeholder"=>Yii::t('messages', 'form.general.label')));
 			}
 			?>
 		</div>
 		<?php
 		if($navigation == NULL || $navigation->type == Navigation::$TYPE_LEAF) {
-			echo CHtml::textField("route", $navigation==NULL?"":$navigation->route, array("class"=>"route span4", "placeholder"=>"Link"));
+			echo CHtml::textField("route", $navigation==NULL?"":$navigation->route, array("class"=>"route span4", "placeholder"=>Yii::t('messages', 'form.general.link')));
 		}
 		if($navigation == NULL || $navigation->type != Navigation::$TYPE_LEAF) {
 		?>
 		<div class="span4 row-fluid node_controls">
 			<?php
 			$this->widget('bootstrap.widgets.TbButton', array(
-					'label'=>'Sub Element',
+					'label'=>Yii::t('messages', 'form.navigation.subElement'),
 					'icon'=>'plus',
 					'htmlOptions'=>array('class'=>'span6 add_element'),
 			));
 			$this->widget('bootstrap.widgets.TbButton', array(
-					'label'=>'Link',
+					'label'=>Yii::t('messages', 'form.general.link'),
 					'icon'=>'plus',
 					'htmlOptions'=>array('class'=>'span6 add_link'),
 			));

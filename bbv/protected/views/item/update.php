@@ -1,13 +1,13 @@
 <?php
 $this->breadcrumbs=array(
-	'Dashboard'=>array('user/dashboard'),
+	Yii::t('messages', 'dashboard.dashboard')=>array('user/dashboard'),
 	$model->getMultipleItemName()=>array('/'.$this->getItemClassName().'/admin'),
-	'Update ' . $model->getItemName() . " " . $model->item->name ,
+	Yii::t('messages', 'form.general.updateAttr', array('{attribute}'=>$model->getItemName() . " " . $model->item->name)),
 );
 
 ?>
 <section>
-<h1>Update <?php echo $model->getItemName(); ?> <i><?php echo $model->item->name; ?></i></h1>
+<h1><? echo Yii::t('messages', 'form.general.updateAttr', array('{attribute}'=>$model->getItemName() . " " . $model->item->name)) ?></i></h1>
 
 <?php
 $this->widget('ItemForm', array(

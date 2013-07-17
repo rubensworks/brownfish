@@ -33,6 +33,11 @@ return array(
     'form.general.listOf' => 'Lijst van {attributes}',
     'form.general.newAttr' => 'Nieuwe {attribute}',
     'form.general.updateAttr' => 'Update {attribute}',
+    'form.general.createAttr' => 'Maak {attribute}',
+    'form.general.changesAutoSaved' => 'Wijzigingen zullen automatisch opgeslagen worden.',
+    'form.general.link' => 'Link',
+    'form.general.label' => 'Label',
+    'form.general.showingNumOf' => 'Toont {start}-{end} van de {count} resultaten.',
     
     // login
     'form.login.login' => 'Login',
@@ -80,6 +85,13 @@ return array(
     'form.widgets.singleItem' => 'Enkel item',
     'form.widgets.type' => 'Type',
     'form.widgets.invalidItemForWidget' => 'Gelieve een geldige item te kiezen voor deze widget.',
+    'form.widgets.notAllSaved' => 'Niet alle widgets zijn opgeslagen.',
+    
+    // navigation
+    'form.navigation.subElement' => 'Sub Element',
+    'form.navigation.removeMessage' => 'Weet je zeker dat je dit element wilt verwijderen? Alle sub-elementen zullen ook verwijderd worden.',
+    'form.navigation.newElement' => 'Nieuw Element',
+    'form.navigation.newLink' => 'Nieuwe Link',
     
     ///////////////
     // dashboard //
@@ -122,6 +134,13 @@ return array(
     'model.general.tag' => 'Tag',
     'model.general.tags' => 'Tags',
     'model.general.name' => 'Name',
+    'model.general.dateCreated' => 'Datum van aanmaak',
+    'model.general.dateChanged' => 'Laatste Bewerking',
+    'model.general.content' => 'Inhoud',
+    'model.general.value' => 'Waarde',
+    'model.general.label' => 'Label',
+    'model.general.type' => 'Type',
+    'model.general.parent' => 'Ouder',
     
     // user
     'model.user.name' => 'Naam',
@@ -138,6 +157,21 @@ return array(
     
     // category
     'model.category.category' => 'Category',
+    
+    // navigation
+    'model.navigation.route' => 'Route',
+    
+    // widget
+    'model.widget.page' => 'Pagina',
+    'model.widget.column' => 'Kolom',
+    'model.widget.rowOrder' => 'Rij Volgorde',
+    'model.widget.itemType' => 'Item Type',
+    'model.widget.widgetType' => 'Widget Type',
+    'model.widget.itemId' => 'Item ID',
+    
+    // items
+    'model.items.navigation.navigation' => 'Navigatie',
+    'model.items.news.excerpt' => 'Inleiding',
     
     //////////
     // enum //
@@ -162,6 +196,8 @@ return array(
     ///////////
     
     'error.404' => 'De opgegeven pagina bestaat niet.',
+    'error.navigation.rootElementDoesNotExist' => 'Het opgegeven navigatie ouderelement bestaat niet.',
+    'error.somethingWentWrong' => 'Er is iets misgelopen, probeer het later opnieuw.',
 );
 
 ?>

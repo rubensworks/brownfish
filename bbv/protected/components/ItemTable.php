@@ -8,13 +8,16 @@ Yii::import('bootstrap.widgets.TbGridView');
  * if buttonColumn=true, then a default button column will be appended at the end for RUD actions.
  *
  */
+
+define('SUMMARY_TEXT', "<span class='muted'>" . Yii::t('messages', 'form.general.showingNumOf') . "</span>");
+
 class ItemTable extends TbGridView
 {
 	public $buttonColumn = true;
 	
 	public static $TYPE = "striped bordered condensed hover";
 	public static $TEMPLATE = "{summary}{items}<div class='text-center'>{pager}</div>";
-	public static $SUMMARYTEXT = "<span class='muted'>Toont {start}-{end} van de {count} resultaten.</span>";
+	public static $SUMMARYTEXT = SUMMARY_TEXT;
 	public static $BUTTONCOLUMN = array(
 					'class'=>'bootstrap.widgets.TbButtonColumn',
 					'htmlOptions'=>array('style'=>'width: 20px'),

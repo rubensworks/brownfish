@@ -49,8 +49,8 @@ class NavigationItem extends AbstractItem
 	{
 		return array_merge(
 				array(
-				'id' => Yii::t('form', 'ID'),
-				'navigation' => Yii::t('form', 'Navigatie'),
+				'id' => Yii::t('messages', 'model.general.id'),
+				'navigation' => Yii::t('messages', 'model.items.navigation.navigation'),
 		), parent::attributeLabels());
 	}
 	

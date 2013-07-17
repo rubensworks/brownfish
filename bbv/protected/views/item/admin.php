@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	'Dashboard'=>array('user/dashboard'),
+	Yii::t('messages', 'dashboard.dashboard')=>array('user/dashboard'),
 	$model->getMultipleItemName(),
 );
 
@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 
 <?php
 $this->widget('bootstrap.widgets.TbButton', array(
- 		'label'=>'<i class="icon-plus icon-white"></i> Nieuw',
+ 		'label'=>'<i class="icon-plus icon-white"></i> ' . Yii::t('messages', 'form.general.new'),
    		'encodeLabel'=>false,
    		'type'=>'primary',
    		'url'=>array('create'),

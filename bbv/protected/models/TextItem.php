@@ -31,7 +31,7 @@ class TextItem extends AbstractItem
 	{
 		return array_merge(
 				array(
-				'id' => Yii::t('form', 'ID'),
+				'id' => Yii::t('messages', 'model.general.id'),
 		), parent::attributeLabels());
 	}
 	

@@ -1,5 +1,5 @@
 <div class="auto-save">
-	<p>Onderstaande veranderingen worden automatisch opgeslaan.</p>
+	<p><? echo Yii::t('messages', 'form.general.changesAutoSaved') ?></p>
 	<div id="saving"></div>
 </div>
 <div class="hide">

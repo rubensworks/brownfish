@@ -70,11 +70,11 @@ class Navigation extends WActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => Yii::t('form', 'ID'),
-			'label' => Yii::t('form', 'Label'),
-			'type' => Yii::t('form', 'Type'),
-			'route' => Yii::t('form', 'Route'),
-			'parent' => Yii::t('form', 'Parent'),
+			'id' => Yii::t('messages', 'model.general.id'),
+			'label' => Yii::t('messages', 'model.general.label'),
+			'type' => Yii::t('messages', 'model.general.type'),
+			'route' => Yii::t('messages', 'model.navigation.route'),
+			'parent' => Yii::t('messages', 'model.general.parent'),
 		);
 	}
 

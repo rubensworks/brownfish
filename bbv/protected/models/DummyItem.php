@@ -33,8 +33,8 @@ class DummyItem extends AbstractItem
 	{
 		return array_merge(
 				array(
-				'id' => Yii::t('form', 'ID'),
-				'value' => Yii::t('form', 'Waarde'),
+				'id' => Yii::t('messages', 'model.general.id'),
+				'value' => Yii::t('messages', 'model.general.value'),
 		), parent::attributeLabels());
 	}
 	

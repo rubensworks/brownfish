@@ -20,7 +20,7 @@ class NavigationForm extends CWidget
 				Config::setValue(Config::$KEYS['MAIN_NAV'], $root->id);
 			}
 		} else $root = Navigation::model()->findByPk($this->root_id);
-		if($root === NULL) throw new CException('The given navigation root element does not exist.');
+		if($root === NULL) throw new CException('error.navigation.rootElementDoesNotExist');
 		$this->root = $root;
 		parent::init();
 	}
@@ -42,6 +42,13 @@ class NavigationForm extends CWidget
 	  		var TYPE_NODE = \"".Navigation::$TYPE_NODE."\";
 	  		var TYPE_LEAF = \"".Navigation::$TYPE_LEAF."\";
 	  	    var TYPE_ROOT = \"".Navigation::$TYPE_ROOT."\";
+                        var lang = {
+                            somethingWentWrong : '". Yii::t('messages', 'error.somethingWentWrong') ."',
+                            removeMessage : '" . Yii::t('messages', 'form.navigation.removeMessage') ."',
+                            newElement : '" . Yii::t('messages', 'form.navigation.newElement') . "',
+                            newLink : '" . Yii::t('messages', 'form.navigation.newLink') . "',
+                            notAllWidgetSaved : '". Yii::t('messages', 'form.widgets.notAllSaved') ."',
+                        };
 	  	
 	  		var root_id = ".$this->root->id.";
 		", CClientScript::POS_END);
