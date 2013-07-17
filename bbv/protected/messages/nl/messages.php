@@ -49,6 +49,7 @@ return array(
     
     // recoverPassword
     'form.recoverPassword.failed' => 'Er is iets misgelopen bij het verzenden van uw nieuwe wachtwoord',
+    'form.recoverPassword.wrongAnswer' => 'Verkeerd antwoord.',
     
     // changePassword
     'form.changePassword.succes' => 'Uw wachtwoord is aangepast.',
@@ -139,6 +140,12 @@ return array(
     // gender
     'enum.gender.male' => 'Man',
     'enum.gender.female' => 'Vrouw',
+    
+    ///////////
+    // error //
+    ///////////
+    
+    'error.404' => 'De opgegeven pagina bestaat niet.',
 );
 
 ?>

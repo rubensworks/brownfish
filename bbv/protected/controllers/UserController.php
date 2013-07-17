@@ -117,7 +117,7 @@ class UserController extends Controller
 								$user->name,$user->mail,
 								$model->generateNewPassword($user->name))
 						)
-							$model->addError('secrq', Yii::t('error', 'Er is iets misgelopen bij het versturen van Uw nieuw wachtwoord.'));
+							$model->addError('secrq', Yii::t('messages', 'form.recoverPassword.failed'));
 						$this->render('recoverPasswordSuccess', array(
 								'username' => $user->name,
 								'email' => $user->mail,
@@ -126,7 +126,7 @@ class UserController extends Controller
 					}
 					else if($model->secra!='')
 					{
-						$model->addError('secra', Yii::t('error', 'Verkeerd antwoord.'));
+						$model->addError('secra', Yii::t('messages', 'form.recoverPassword.wrongAnswer'));
 					}
 				}
 				$model->secrq=$user->secrq;
@@ -137,7 +137,7 @@ class UserController extends Controller
 			}
 			else
 			{
-				$model->addError('name', Yii::t('error', 'Ongeldige gebruikersnaam.'));
+				$model->addError('name', Yii::t('messages', 'form.login.invalidUsername'));
 				$this->render('recoverPassword',array(
 						'model'=>$model,
 				));
@@ -260,7 +260,7 @@ class UserController extends Controller
 	{
 		$model=User::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,Yii::t('messages', 'error.404'));
 		return $model;
 	}
 

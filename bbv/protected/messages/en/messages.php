@@ -49,6 +49,7 @@ return array(
     
     // recoverPassword
     'form.recoverPassword.failed' => 'Something went wrong when sending your new password',
+    'form.recoverPassword.wrongAnswer' => 'Wrong answer.',
     
     // changePassword
     'form.changePassword.succes' => 'Your password has been updated.',
@@ -139,6 +140,12 @@ return array(
     // gender
     'enum.gender.male' => 'Male',
     'enum.gender.female' => 'Female',
+    
+    ///////////
+    // error //
+    ///////////
+    
+    'error.404' => 'The requested page does not exist.',
 );
 
 ?>
