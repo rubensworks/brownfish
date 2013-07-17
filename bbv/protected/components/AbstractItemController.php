@@ -50,6 +50,30 @@ abstract class AbstractItemController extends Controller
 			),
 		);
 	}
+	
+	/**
+	 * This is called after a newly created model was saved
+	 */
+	protected function afterCreate($model) {
+		$class = $this->getItemClassName();
+		$this->redirect(array('/'.$class.'/admin'));
+	}
+
+	/**
+	 * This is called after a model was updated
+	 */
+	protected function afterUpdate($model) {
+		$class = $this->getItemClassName();
+		$this->redirect(array('/'.$class.'/admin'));
+	}
+	
+	/**
+	 * This is called after a model was deleted
+	 */
+	protected function afterDelete($model) {
+		$class = $this->getItemClassName();
+		$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('/'.$class.'/admin'));
+	}
 
 	/**
 	 * Creates a new model.
@@ -65,7 +89,7 @@ abstract class AbstractItemController extends Controller
 			$model->attributes=$_POST[$class];
 			$model->item->content=$_POST[$class]['item']['content'];
 			if($model->save())	
-				$this->redirect(array('admin'));
+				$this->afterCreate($model);
 		}
 
 		$this->render('/item/create',array(
@@ -88,7 +112,7 @@ abstract class AbstractItemController extends Controller
 			$model->attributes=$_POST[$class];
 			$model->item->content=$_POST[$class]['item']['content'];
 			if($model->save())
-				$this->redirect(array('/'.$class.'/admin'));
+				$this->afterUpdate($model);
 		}
 
 		$this->render('/item/update',array(
@@ -112,7 +136,7 @@ abstract class AbstractItemController extends Controller
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('/'.$class.'/admin'));
+				$this->afterDelete($model);
 		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');

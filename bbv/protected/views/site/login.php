@@ -13,9 +13,9 @@ $this->breadcrumbs=array(
 					'id'=>'login-form',
 					'enableClientValidation'=>true,
 					'clientOptions'=>array(
-		'validateOnSubmit'=>true,
-	),
-)); ?>
+					'validateOnSubmit'=>true,
+				),
+			)); ?>
 
 			<p class="hint muted">
 				<? echo Yii::t('messages', 'form.login.noAccountYet') ?>
@@ -25,23 +25,26 @@ $this->breadcrumbs=array(
 			<p class="muted">
 				<? echo Yii::t('messages', 'form.general.requiredFields') ?>
 			</p>
+			
+			<?php if($model->hasErrors()) { ?>
+				<div class="errorSummary">
+				Inloggegevens zijn verkeerd.
+				</div>
+			<?php } ?>
 
 			<div class="input-row">
 				<?php echo $form->labelEx($model,'username'); ?>
 				<?php echo $form->textField($model,'username'); ?>
-				<?php echo $form->error($model,'username'); ?>
 			</div>
 
 			<div class="input-row">
 				<?php echo $form->labelEx($model,'password'); ?>
 				<?php echo $form->passwordField($model,'password'); ?>
-				<?php echo $form->error($model,'password'); ?>
 			</div>
 
 			<div class="rememberMe">
 				<?php echo $form->checkBox($model,'rememberMe'); ?>
 				<?php echo $form->label($model,'rememberMe'); ?>
-				<?php echo $form->error($model,'rememberMe'); ?>
 			</div>
 
 			<p class="hint">

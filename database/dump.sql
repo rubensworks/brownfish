@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Machine: localhost
--- Genereertijd: 07 jul 2013 om 11:20
+-- Genereertijd: 13 jul 2013 om 16:28
 -- Serverversie: 5.5.25
 -- PHP-versie: 5.4.4
 
@@ -139,7 +139,7 @@ CREATE TABLE `tbl_comment` (
   `item_id` int(7) NOT NULL,
   `content` varchar(512) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=67 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=69 ;
 
 --
 -- Gegevens worden uitgevoerd voor tabel `tbl_comment`
@@ -154,9 +154,10 @@ INSERT INTO `tbl_comment` (`id`, `date_created`, `author_id`, `item_id`, `conten
 (60, 1372172285, 3, 19, 'sssss'),
 (61, 1372680239, 3, 16, 'drie'),
 (63, 1372680248, 3, 16, 'vier'),
-(64, 1373119564, 3, 16, 'a'),
 (65, 1373119564, 3, 16, 'a'),
-(66, 1373121496, 3, 16, 'xyz');
+(66, 1373121496, 3, 16, 'xyz'),
+(67, 1373207449, 3, 36, 'oja?'),
+(68, 1373372447, 3, 16, 'sdfqsdf');
 
 -- --------------------------------------------------------
 
@@ -182,11 +183,10 @@ CREATE TABLE `tbl_item` (
 --
 
 INSERT INTO `tbl_item` (`id`, `name`, `author_id`, `date_created`, `date_changed`, `category_id`, `tags`) VALUES
-(1, 'XYZ', 3, 10, 1371896426, 1, 'test,test2a,aaa,eentagje'),
+(1, 'XYZ', 3, 10, 1373205889, 1, 'test,test2a,aaa,eentagje'),
 (2, 'ulu', 3, 10, 10, 2, 'aaa'),
 (3, 'nnn', 4, 1371653202, 1371654167, 2, 'ttt'),
 (4, 'nnn', 3, 1371653221, 1371653221, 2, 'ttt'),
-(5, 'aaa', 3, 1371653980, 1371653980, 1, 'sss'),
 (6, 'aaa', 4, 1371654176, 1371657424, 1, 'bbb,uuuuu'),
 (7, 'a', 3, 1371658410, 1371658410, 1, ''),
 (8, 'a', 3, 1371658413, 1371658413, 1, ''),
@@ -197,11 +197,11 @@ INSERT INTO `tbl_item` (`id`, `name`, `author_id`, `date_created`, `date_changed
 (13, 'a', 3, 1371658439, 1371669748, 1, 'bla,blabla,blablabla'),
 (14, 'a', 3, 1371658463, 1371658486, 1, ''),
 (15, 'bbb', 3, 1371658473, 1371658473, 1, ''),
-(16, 'testnews', 3, 1371896430, 1373030254, 2, 'hallo,test'),
+(16, 'testnews', 3, 1371896430, 1373206485, 2, 'hallo,test'),
 (17, 'gggg', 3, 1371896456, 1371896456, 1, ''),
 (18, 'RUBEN', 3, 1371896544, 1371896544, 1, ''),
 (19, 'Rppppqsdqsd', 5, 1371896637, 1373030244, 1, 'test'),
-(20, 'another1@', 3, 1371896707, 1371896707, 1, ''),
+(20, 'another1@', 3, 1371896707, 1373209221, 1, ''),
 (21, 'xyz', 3, 1371896828, 1373030261, 1, ''),
 (22, 'a', 3, 1371901535, 1371901535, 1, ''),
 (23, 'test', 3, 1371901667, 1371901667, 1, ''),
@@ -211,7 +211,7 @@ INSERT INTO `tbl_item` (`id`, `name`, `author_id`, `date_created`, `date_changed
 (33, 'HALLO', 3, 1372603324, 1372603324, 1, ''),
 (34, 'HALLo', 3, 1372603346, 1372603346, 1, ''),
 (35, 'HALLO', 3, 1372603478, 1372603478, 1, ''),
-(36, 'Test Text', 3, 1373118545, 1373118545, 1, 'eentag,nogeentag');
+(36, 'Test Text', 3, 1373118545, 1373206539, 1, 'eentag,nogeentag');
 
 -- --------------------------------------------------------
 
@@ -230,9 +230,8 @@ CREATE TABLE `tbl_item_dummy` (
 --
 
 INSERT INTO `tbl_item_dummy` (`id`, `value`) VALUES
-(1, 'vallllueaaaxx'),
+(1, 'valllluea'),
 (3, ''),
-(5, ''),
 (6, ''),
 (7, ''),
 (8, ''),
@@ -261,7 +260,7 @@ CREATE TABLE `tbl_item_news` (
 --
 
 INSERT INTO `tbl_item_news` (`id`, `excerpt`) VALUES
-(16, 'blublu'),
+(16, 'blublusss'),
 (19, 'Dit is een korte inleiding!'),
 (21, 'korte inhoud');
 
@@ -296,6 +295,7 @@ CREATE TABLE `tbl_navigation` (
   `route` varchar(100) NOT NULL,
   `parent_id` int(7) NOT NULL,
   `row_order` int(5) NOT NULL,
+  `bizrule` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=120 ;
 
@@ -303,18 +303,18 @@ CREATE TABLE `tbl_navigation` (
 -- Gegevens worden uitgevoerd voor tabel `tbl_navigation`
 --
 
-INSERT INTO `tbl_navigation` (`id`, `label`, `type`, `route`, `parent_id`, `row_order`) VALUES
-(89, 'Root', 'ROOT', '', 0, 0),
-(100, 'Ding 1', 'NODE', '', 89, 0),
-(111, 'En hier ook niets', 'NODE', '', 113, 0),
-(112, 'Nog een ding', 'NODE', '', 100, 0),
-(113, 'Niets hier', 'NODE', '', 115, 1),
-(114, 'Dit is een link!', 'LEAF', '/', 112, 0),
-(115, 'Nieuw element', 'NODE', '', 89, 1),
-(116, 'Nieuwe link', 'LEAF', '', 115, 0),
-(117, 'Nieuwe link', 'LEAF', '', 111, 0),
-(118, 'Nieuwe link', 'LEAF', '', 112, 1),
-(119, 'Nieuwe link2', 'LEAF', '', 112, 2);
+INSERT INTO `tbl_navigation` (`id`, `label`, `type`, `route`, `parent_id`, `row_order`, `bizrule`) VALUES
+(89, 'Root', 'ROOT', '', 0, 0, ''),
+(100, 'Ding 1', 'NODE', '', 89, 0, ''),
+(111, 'En hier ook niets', 'NODE', '', 113, 0, ''),
+(112, 'Nog een ding', 'NODE', '', 100, 0, 'return $this->label=="Nog een ding";'),
+(113, 'Niets hier', 'NODE', '', 115, 1, ''),
+(114, 'Navigation admin', 'LEAF', '/navigation/admin', 112, 0, ''),
+(115, 'Nieuw element', 'NODE', '', 89, 1, ''),
+(116, 'Nieuwe link', 'LEAF', '/', 115, 0, ''),
+(117, 'Nieuwe link', 'LEAF', '/', 111, 0, ''),
+(118, 'Index', 'LEAF', '/site/index', 112, 1, ''),
+(119, 'Dashboard', 'LEAF', '/user/dashboard', 112, 2, '');
 
 -- --------------------------------------------------------
 
@@ -363,7 +363,7 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`id`, `name`, `mail`, `datereg`, `pwd`, `secra`, `secrq`, `gender`, `fbid`) VALUES
-(3, 'admin', 'admin@admin.be', 7, '149f7639ad2a1ae111d3d2a809b57112', '', '', 'M', ''),
+(3, 'admin', 'admin@admin.be', 7, '21232f297a57a5a743894a0e4a801fc3', '', '', 'M', ''),
 (4, 'test', 'a', 6, 'bc18a007185593423a61f573be365f6d', '', '', 'M', ''),
 (5, 'test2', 'rubensworks@gmail.com', 7, '9589f46d46ad079911a79b7b1ec6f084', 'aha!', 'huh?', 'M', '');
 
@@ -389,7 +389,7 @@ CREATE TABLE `tbl_widget` (
   `item_id` int(7) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `page_id` (`page_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=130 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=131 ;
 
 --
 -- Gegevens worden uitgevoerd voor tabel `tbl_widget`
@@ -399,8 +399,9 @@ INSERT INTO `tbl_widget` (`id`, `name`, `page_id`, `col_id`, `row_order`, `item_
 (85, 'Een dummy dingessss', 4, 0, 0, 'DummyItem', 'SINGLE', 1, 5, 0, 'tag1,tag2,tag3,tag4', 4, 18),
 (126, 'Een nieuws dinges', 4, 1, 0, 'NewsItem', 'SINGLE', 0, 1, 0, '', 1, 16),
 (127, 'Allemaal Nieuws Dingen', 4, 1, 1, 'NewsItem', 'LIST', 0, 1, 0, 'test,hallo', 5, 0),
-(128, 'Allemaal dummy dingen', 4, 0, 1, 'DummyItem', 'LIST', 0, 0, 0, '', 5, 0),
-(129, 'Nieuwe Widget', 4, 0, 2, 'TextItem', 'SINGLE', 0, 0, 0, '', 1, 36);
+(128, 'Allemaal dummy dingen', 4, 0, 1, 'DummyItem', 'LIST', 0, 1, 1, '', 5, 0),
+(129, 'Nieuwe Widget', 4, 0, 2, 'TextItem', 'SINGLE', 0, 1, 0, '', 1, 36),
+(130, 'Nieuwe Widget', 4, 0, 3, 'NewsItem', 'LIST', 0, 1, 0, '', 1, 0);
 
 --
 -- Beperkingen voor gedumpte tabellen

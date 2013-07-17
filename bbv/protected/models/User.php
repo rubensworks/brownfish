@@ -139,10 +139,11 @@ class User extends CActiveRecord
 	 /**
 	  * Encrypt pwd for storage in database
 	  */
-	 protected function afterValidate()
+	 protected function beforeSave()
 	 {
-		parent::afterValidate();
-		$this->pwd=$this->encode($this->pwd);  
+	 	if($this->scenario == 'register')
+			$this->pwd=$this->encode($this->pwd);  
+		return parent::beforeSave();
 	 }
 	 
 	 /**

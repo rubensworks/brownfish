@@ -7,6 +7,16 @@ class PageController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
+	
+	/**
+	 * External actions
+	 */
+	public function actions()
+	{
+		return array(
+				'view'=>'application.controllers.page.ViewAction',
+		);
+	}
 
 	/**
 	 * @return array action filters
@@ -81,7 +91,7 @@ class PageController extends Controller
 		{
 			$model->attributes=$_POST['Page'];
 			if($model->save())
-				$this->redirect(array('update', 'id'=>$model->id));
+				$this->redirect(array('admin'));
 		}
 		
 		// Query all the widgets on this page
@@ -144,34 +154,6 @@ class PageController extends Controller
 		$dataProvider=new CActiveDataProvider('Page');
 		$this->render('admin',array(
 			'dataProvider'=>$dataProvider,
-		));
-	}
-	
-	/**
-	 * Updates a particular model.
-	 * The browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to view
-	 */
-	public function actionView($id)
-	{
-		$model=Page::model()->findByPk($id);
-	
-		if(isset($_POST['Page']))
-		{
-			$model->attributes=$_POST['Page'];
-			if($model->save())
-				$this->redirect(array('update', 'id'=>$model->id));
-		}
-	
-		$criteria = new CDbCriteria();
-		$criteria->condition = "page_id = :page_id";
-		$criteria->params = array(":page_id"=>$model->id);
-		$criteria->order = "row_order";
-		$widgets = Widget::model()->findAll($criteria);
-	
-		$this->render('view',array(
-				'model' => $model,
-				'widgets' => $widgets,
 		));
 	}
 

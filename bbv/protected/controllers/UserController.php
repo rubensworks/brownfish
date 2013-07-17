@@ -202,6 +202,13 @@ class UserController extends Controller
 	 */
 	public function actionDashboard()
 	{	
+		Yii::app()->clientScript->registerScript('tagging',"$(document).ready(function() {
+		    location.hash && $('a[href=\"' + location.hash + '\"]').tab('show');
+		    $('a[data-toggle=\"tab\"]').on('shown', function(e) {
+		      location.hash = $(e.target).attr('href').substr(1);
+				$('html, body').animate({ scrollTop: 0 }, 0);
+		    });
+		});");
 		$this->render('dashboard',array(
 				'tabs' => $this->generateDashboardTabs(),
 		));

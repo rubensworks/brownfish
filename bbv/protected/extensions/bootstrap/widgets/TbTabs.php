@@ -48,6 +48,10 @@ class TbTabs extends CWidget
 	 * @var array the HTML attributes for the widget container.
 	 */
 	public $htmlOptions = array();
+	/**
+	 * @var boolean if the tabs should fade on click
+	 */
+	public $fade = true;
 
 	/**
 	 * Initializes the widget.
@@ -159,7 +163,7 @@ class TbTabs extends CWidget
 
 				$paneOptions['id'] = $item['id'];
 
-				$classes = array('tab-pane fade');
+				$classes = array('tab-pane'.($this->fade?" fade":""));
 
 				if (isset($item['active']) && $item['active'])
 					$classes[] = 'active in';

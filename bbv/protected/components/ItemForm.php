@@ -15,6 +15,7 @@ class ItemForm extends CWidget
 {
 	public $model;
 	public $view;
+	public $afterView;
 
 	public function init()
 	{
@@ -35,6 +36,7 @@ class ItemForm extends CWidget
 		$this->render('itemForm',array(
 			'model'=>$this->model,
 			'view'=>$this->view,
+			'afterView'=>$this->afterView,
 		));
     }
 

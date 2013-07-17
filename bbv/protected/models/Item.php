@@ -7,6 +7,7 @@
  * The followings are the available columns in table 'tbl_item':
  * @property integer $id
  * @property string $name
+ * @property string $content
  * @property string $author_id
  * @property integer $date_created
  * @property integer $date_changed
@@ -14,10 +15,7 @@
  * @property string $tags
  */
 class Item extends WActiveRecord
-{
-	// The content that doesn't need to be saved in the database
-	public $content;
-	
+{	
 	/**
 	 * Return a string representation of the type of the item
 	 */
@@ -64,16 +62,18 @@ class Item extends WActiveRecord
 	 */
 	public function relations()
 	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-			'dummy'=>array(self::HAS_MANY, 'DummyItem', 'id'),
-			'newsitem'=>array(self::HAS_MANY, 'NewsItem', 'id'),
+		// Dynamically add all the different item types to the relations of the base item
+		$types = Utils::getItemTypes();
+		$typeArray = array();
+		foreach($types as $type)
+			$typeArray[$type] = array(self::HAS_ONE, $type, 'id');
+		
+		return array_merge($typeArray, array(
 			'category'=>array(self::BELONGS_TO, 'Category', 'category_id'),
 			'author'=>array(self::BELONGS_TO, 'User', 'author_id'),
 			'comment'=>array(self::HAS_MANY, 'Comment', 'id'),
 			'widget'=>array(self::HAS_MANY, 'Widget', 'id'),
-		);
+		));
 	}
 
 	/**
@@ -129,97 +129,6 @@ class Item extends WActiveRecord
 	 }
 	 
 	 /**
-	  * Encrypt pwd for storage in database
-	  */
-	 protected function afterValidate()
-	 {
-		parent::afterValidate();
-	 }
-	
-	 /**
-	  * We want to save the content after we have generated an id
-	  */
-	 protected function afterSave() {
-	 	parent::afterSave();
-	 	$this->saveContents();
-	 }
-	 
-	 /**
-	  * Get the contents file of this item
-	  * @return string
-	  */
-	 public function getFile()
-	 {
-	 	return Yii::getPathOfAlias('webroot.protected.data.items').'/'.$this->id.'.item';
-	 }
-	 
-	 /**
-	  * Get the contents of this item
-	  * @return Item | string
-	  */
-	 public function getContents()
-	 {
-	 	$location=$this->getFile();
-	 	if(file_exists($location)){
-	 		$data=file_get_contents($location);
-	 		return $data;
-	 	}
-	 	else{
-	 		return "An error has occured while loading the post.";
-	 	}
-	 }
-	 
-	 /**
-	  * Load stuff after the model has been loaded
-	  * @param unknown $event
-	  */
-	 public function onAfterFind($event) {
-	 	$this->fetchContents();
-	 	return parent::onAfterFind($event);
-	 }
-	 
-	 /**
-	  * Fetches the contents of this item
-	  */
-	 public function fetchContents()
-	 {
-	 	$location=$this->getFile();
-	 	if(file_exists($location)){
-	 		$data=file_get_contents($location);
-	 		$this->content = $data;
-	 	}
-	 	else{
-	 		return "An error has occured while loading the post.";
-	 	}
-	 }
-	 
-	 /**
-	  * Remove a file
-	  * @param integer $id
-	  */
-	 public function rmFile()
-	 {
-	 	$location=$this->getFile();
-	 	if(file_exists($location))
-	 		unlink($location);
-	 }
-	 
-	 /**
-	  * Save the contents of this item
-	  */
-	 public function saveContents()
-	 {
-	 	// Make items data directory if it does not exist yet.
-	 	$dir = Yii::getPathOfAlias('webroot.protected.data.items');
-	 	if (!file_exists($dir) and !is_dir($dir))
-	 		mkdir($dir);
-	 	
-	 	$fh = fopen(Item::getFile($this->id), 'w') or die("can't open file");
-	 	fwrite($fh, $this->content);
-	 	fclose($fh);
-	 }
-	 
-	 /**
 	  * Behaviours for wform
 	  * @return multitype:multitype:string multitype:string
 	  */
@@ -243,7 +152,6 @@ class Item extends WActiveRecord
 	  * Cascade delete the related models and the item file
 	  */
 	 public function afterDelete() {
-	 	$this->rmFile();
 	 	Comment::model()->deleteAll(array('condition' => 'item_id = :item_id', 'params'=> array(':item_id' => $this->id)));
 	 	Widget::model()->deleteAll(array('condition' => 'item_id = :item_id', 'params'=> array(':item_id' => $this->id)));
 	 	return parent::afterDelete();

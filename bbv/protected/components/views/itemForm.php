@@ -61,15 +61,22 @@ $notNew = !$model->isNewRecord;
 		$owner=$this->getOwner();
 		$viewFile=$owner->getViewFile($view);
 		if($viewFile != NULL)
-			$owner->renderFile($viewFile,array('form'=>$form, 'model'=>$model));
+			$owner->renderFile($viewFile,array(
+					'form'=>$form,
+					'model'=>$model,
+		));
 	}
 	?>
 	
+	<?php if($model->holdContent) { ?>
 	<div class="input-row">
 	    <?php echo $form->labelEx($model, 'item.content'); ?>
 	    <?php echo $form->textArea($model, 'item.content', array('class'=>'item_content', 'rows'=>10)); ?>
 	    <?php echo $form->error($model, 'item.content'); ?>
 	</div>
+	<?php } else { ?>
+	<?php echo $form->hiddenField($model, 'item.content'); ?>
+	<?php } ?>
 
 	<div>
 		<?php $this->widget(
@@ -85,3 +92,15 @@ $notNew = !$model->isNewRecord;
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+<?php
+if($afterView!==NULL) {
+	$owner=$this->getOwner();
+	$viewFile=$owner->getViewFile($afterView);
+	if($viewFile != NULL)
+		$owner->renderFile($viewFile,array(
+				'form'=>$form,
+				'model'=>$model,
+		));
+}
+	?>
