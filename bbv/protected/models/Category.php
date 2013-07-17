@@ -60,8 +60,8 @@ class Category extends WActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'category_id' => Yii::t('form', 'ID'),
-			'name' => Yii::t('form', 'Categorie'),
+			'category_id' => Yii::t('messages', 'model.general.id'),
+			'name' => Yii::t('messages', 'model.general.name'),
 		);
 	}
 

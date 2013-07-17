@@ -26,9 +26,13 @@ return array(
     'form.general.next' => 'Volgende',
     'form.general.new' => 'Nieuw',
     'form.general.add' => 'Voeg toe',
+    'form.general.create' => 'Maak',
     'form.general.close' => 'Sluit',
     'form.general.list' => 'Lijst',
     'form.general.filterBy' => 'Filter op {type}',
+    'form.general.listOf' => 'Lijst van {attributes}',
+    'form.general.newAttr' => 'Nieuwe {attribute}',
+    'form.general.updateAttr' => 'Update {attribute}',
     
     // login
     'form.login.login' => 'Login',
@@ -117,6 +121,7 @@ return array(
     'model.general.author' => 'Auteur',
     'model.general.tag' => 'Tag',
     'model.general.tags' => 'Tags',
+    'model.general.name' => 'Name',
     
     // user
     'model.user.name' => 'Naam',

@@ -26,9 +26,13 @@ return array(
     'form.general.next' => 'Next',
     'form.general.new' => 'New',
     'form.general.add' => 'Add',
+    'form.general.create' => 'Create',
     'form.general.close' => 'Close',
     'form.general.list' => 'List',
     'form.general.filterBy' => 'Filter by {type}',
+    'form.general.listOf' => 'List of {attributes}',
+    'form.general.newAttr' => 'New {attribute}',
+    'form.general.updateAttr' => 'Update {attribute}',
     
     // login
     'form.login.login' => 'Login',
@@ -117,6 +121,7 @@ return array(
     'model.general.author' => 'Author',
     'model.general.tag' => 'Tag',
     'model.general.tags' => 'Tags',
+    'model.general.name' => 'Name',
     
     // user
     'model.user.name' => 'Name',

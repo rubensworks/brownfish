@@ -1,16 +1,16 @@
 <?php
 $this->breadcrumbs=array(
-	'Dashboard'=>array('user/dashboard'),
-	'Categorien',
+        Yii::t('messages', 'dashboard.dashboard')=>array('user/dashboard'),
+	Yii::t('messages', 'dashboard.items.categories'),
 );
 
 ?>
 <section>
-<h1>Lijst van Categori&euml;n</h1>
+<h1><? echo Yii::t('messages', 'form.general.listOf', array('{attributes}'=>Yii::t('messages', 'dashboard.items.categories'))) ?></h1>
 
 <?php
 $this->widget('bootstrap.widgets.TbButton', array(
-		'label'=>'<i class="icon-plus icon-white"></i> Nieuw',
+		'label'=>'<i class="icon-plus icon-white"></i> ' . Yii::t('messages', 'form.general.new'),
 		'encodeLabel'=>false,
 		'type'=>'primary',
 		'url'=>array('create'),
