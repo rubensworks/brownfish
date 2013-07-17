@@ -75,6 +75,7 @@ return array(
     'form.widgets.amount' => 'Amount',
     'form.widgets.singleItem' => 'Single item',
     'form.widgets.type' => 'Type',
+    'form.widgets.invalidItemForWidget' => 'Please select a valid item for this widget.',
     
     ///////////////
     // dashboard //
@@ -140,6 +141,16 @@ return array(
     // gender
     'enum.gender.male' => 'Male',
     'enum.gender.female' => 'Female',
+    
+    // item
+    'enum.item.dummyItem' => 'DummyItem',
+    'enum.item.dummyItems' => 'DummyItems',
+    'enum.item.newsItem' => 'News Item',
+    'enum.item.newsItems' => 'News',
+    'enum.item.textItem' => 'Text Item',
+    'enum.item.textItems' => 'Text Items',
+    'enum.item.navigationItem' => 'Navigation Item',
+    'enum.item.navigationItems' => 'Navigation Items',
     
     ///////////
     // error //

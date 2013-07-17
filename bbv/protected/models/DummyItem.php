@@ -16,14 +16,14 @@ class DummyItem extends AbstractItem
 	 * Return a string representation of the type of the item
 	 */
 	public function getItemName() {
-		return "DummyItem";
+		return Yii::t('messages', 'enum.item.dummyItem');
 	}
 	
 	/**
 	 * Return a string representation of the type of the item in plural form
 	 */
 	public static function getMultipleItemName() {
-		return "DummyItems";
+		return Yii::t('messages', 'enum.item.dummyItems');
 	}
 	
 	/**

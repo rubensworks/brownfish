@@ -8,6 +8,6 @@ if($data != NULL) {
 		'data' => $data,
 	));
 } else {
-	?><i>Gelieve een geldige item te kiezen voor deze widget.</i><?php
+	?><i><? echo Yii::t('messages', 'form.widgets.invalidItemForWidget') ?></i><?php
 }
 ?>

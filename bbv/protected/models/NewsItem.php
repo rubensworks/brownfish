@@ -15,14 +15,14 @@ class NewsItem extends AbstractItem
 	 * Return a string representation of the type of the item
 	 */
 	public function getItemName() {
-		return "Nieuws Item";
+		return Yii::t('messages', 'enum.item.newsItem');
 	}
 	
 	/**
 	 * Return a string representation of the type of the item in plural form
 	 */
 	public static function getMultipleItemName() {
-		return "Nieuws";
+		return Yii::t('messages', 'enum.item.newsItems');
 	}
 	
 	/**

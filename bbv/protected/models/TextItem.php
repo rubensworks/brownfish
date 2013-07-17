@@ -14,14 +14,14 @@ class TextItem extends AbstractItem
 	 * Return a string representation of the type of the item
 	 */
 	public function getItemName() {
-		return "Tekst Item";
+		return Yii::t('messages', 'enum.item.textItem');
 	}
 	
 	/**
 	 * Return a string representation of the type of the item in plural form
 	 */
 	public static function getMultipleItemName() {
-		return "Tekst Items";
+		return Yii::t('messages', 'enum.item.textItems');
 	}
 	
 	/**

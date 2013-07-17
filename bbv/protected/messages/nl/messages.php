@@ -75,6 +75,7 @@ return array(
     'form.widgets.amount' => 'Aantal',
     'form.widgets.singleItem' => 'Enkel item',
     'form.widgets.type' => 'Type',
+    'form.widgets.invalidItemForWidget' => 'Gelieve een geldige item te kiezen voor deze widget.',
     
     ///////////////
     // dashboard //
@@ -140,6 +141,16 @@ return array(
     // gender
     'enum.gender.male' => 'Man',
     'enum.gender.female' => 'Vrouw',
+    
+    // item
+    'enum.item.dummyItem' => 'DummyItem',
+    'enum.item.dummyItems' => 'DummyItems',
+    'enum.item.newsItem' => 'Nieuws Item',
+    'enum.item.newsItems' => 'Nieuws',
+    'enum.item.textItem' => 'Tekst Item',
+    'enum.item.textItems' => 'Tekst Items',
+    'enum.item.navigationItem' => 'Navigatie Item',
+    'enum.item.navigationItems' => 'Navigaties',
     
     ///////////
     // error //

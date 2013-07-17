@@ -17,14 +17,14 @@ class NavigationItem extends AbstractItem
 	 * Return a string representation of the type of the item
 	 */
 	public function getItemName() {
-		return "Navigatie Item";
+		return Yii::t('messages', 'enum.item.navigationItem');
 	}
 	
 	/**
 	 * Return a string representation of the type of the item in plural form
 	 */
 	public static function getMultipleItemName() {
-		return "Navigaties";
+		return Yii::t('messages', 'enum.item.navigationItems');
 	}
 	
 	/**
