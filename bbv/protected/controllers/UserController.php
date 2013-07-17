@@ -230,7 +230,7 @@ class UserController extends Controller
 		{
 			$model->attributes=$_POST['User'];
 			$user=User::model()->findByPk($id);
-			if($user!=NULL && $model->encode($model->pwd)==$user->pwd && $model->validate())
+			if($user!=NULL && $model->encode($model->pwd)==$user->pwd)
 			{
 				$user->pwd=$model->encode($model->newPwd);
 				$user->save(false);
