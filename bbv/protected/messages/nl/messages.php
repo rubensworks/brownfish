@@ -50,6 +50,10 @@ return array(
     // recoverPassword
     'form.recoverPassword.failed' => 'Er is iets misgelopen bij het verzenden van uw nieuwe wachtwoord',
     
+    // changePassword
+    'form.changePassword.succes' => 'Uw wachtwoord is aangepast.',
+    'form.changePassword.wrongCurrentPassword' => 'Uw huidig wachtwoord is verkeerd.',
+    
     // user
     'form.user.pwd_repeat' => 'Wachtwoord (herhaling)',
     'form.user.newPwd' => 'Nieuw wachtwoord',

@@ -234,14 +234,14 @@ class UserController extends Controller
 			{
 				$user->pwd=$model->encode($model->newPwd);
 				$user->save(false);
-				Yii::app()->user->setFlash('successChangePassword',Yii::t('success', 'Uw wachtwoord is aangepast.'));
+				Yii::app()->user->setFlash('successChangePassword',Yii::t('messages', 'form.changePassword.success'));
 			}
 			else
 			{
 				$cpwd->getModel()->addErrors($model->getErrors());
 				if($model->pwd!=$user->pwd)//no encoding anymore because pwd is already encoded now
 				{
-					$cpwd->getModel()->addError('pwd', Yii::t('error', 'Uw huidig wachtwoord is verkeerd.'));
+					$cpwd->getModel()->addError('pwd', Yii::t('messages', 'form.changePassword.wrongCurrentPassword'));
 				}
 			}
 		}

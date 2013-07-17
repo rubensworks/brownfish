@@ -50,6 +50,10 @@ return array(
     // recoverPassword
     'form.recoverPassword.failed' => 'Something went wrong when sending your new password',
     
+    // changePassword
+    'form.changePassword.succes' => 'Your password has been updated.',
+    'form.changePassword.wrongCurrentPassword' => 'Your current password is wrong.',
+    
     // user
     'form.user.pwd_repeat' => 'Password (repeat)',
     'form.user.newPwd' => 'New Password',
