@@ -1,6 +1,6 @@
 #!/usr/local/bin/python3
 
-messagesDir = "/Users/enver/Projects/Yii/bbv/bbv/protected/messages"
+messagesDir = "../bbv/protected/messages"
 langs = ["nl", "en"]
 messageFile = "messages.php"
 
