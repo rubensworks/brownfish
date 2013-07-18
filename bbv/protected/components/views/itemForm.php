@@ -3,7 +3,7 @@
 <?php
 $form = $this->beginWidget('WForm', array(
 	'id'=>'item-form',
-	'htmlOptions'=>array('class'=>'well'),
+	'htmlOptions'=>$htmlOptions,
 ));
 $notNew = !$model->isNewRecord;
 ?>

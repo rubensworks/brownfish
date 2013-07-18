@@ -16,7 +16,7 @@ require_once(CREDENTIALS_PATH);
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Bredense Bruinvissen',
-	'language'=>'en',
+	'language'=>'nl',
 
 	// preloading 'log' component
 	'preload'=>array('log'),

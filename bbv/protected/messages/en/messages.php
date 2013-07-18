@@ -172,6 +172,8 @@ return array(
     // items
     'model.items.navigation.navigation' => 'Navigation',
     'model.items.news.excerpt' => 'Excerpt',
+    'model.items.file.extension' => 'Extension',
+    'model.items.file.file' => 'File',
     
     //////////
     // enum //
@@ -190,6 +192,8 @@ return array(
     'enum.item.textItems' => 'Text Items',
     'enum.item.navigationItem' => 'Navigation Item',
     'enum.item.navigationItems' => 'Navigation Items',
+    'enum.item.fileItem' => 'File Item',
+    'enum.item.fileItems' => 'File Items',
     
     ///////////
     // error //

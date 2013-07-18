@@ -7,6 +7,8 @@
  */
 abstract class AbstractItemController extends Controller
 {
+	public $itemFormOptions = array();
+	
 	/**
 	 * The name of the model class
 	 */

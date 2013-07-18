@@ -16,6 +16,7 @@ class ItemForm extends CWidget
 	public $model;
 	public $view;
 	public $afterView;
+	public $options = array();
 
 	public function init()
 	{
@@ -37,6 +38,10 @@ class ItemForm extends CWidget
 			'model'=>$this->model,
 			'view'=>$this->view,
 			'afterView'=>$this->afterView,
+			'htmlOptions'=>array_merge(
+					array('class'=>'well'),
+					$this->options
+					),
 		));
     }
 

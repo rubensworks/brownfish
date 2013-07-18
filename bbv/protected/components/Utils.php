@@ -44,6 +44,7 @@ class Utils {
 				"NewsItem",
 				"TextItem",
 				"NavigationItem",
+				"FileItem",
 		);
 	}
 	

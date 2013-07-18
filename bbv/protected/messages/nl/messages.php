@@ -172,6 +172,8 @@ return array(
     // items
     'model.items.navigation.navigation' => 'Navigatie',
     'model.items.news.excerpt' => 'Inleiding',
+    'model.items.file.extension' => 'Extensie',
+    'model.items.file.file' => 'Bestand',
     
     //////////
     // enum //
@@ -190,6 +192,8 @@ return array(
     'enum.item.textItems' => 'Tekst Items',
     'enum.item.navigationItem' => 'Navigatie Item',
     'enum.item.navigationItems' => 'Navigaties',
+    'enum.item.fileItem' => 'Bestand Item',
+    'enum.item.fileItems' => 'Bestand Items',
     
     ///////////
     // error //
