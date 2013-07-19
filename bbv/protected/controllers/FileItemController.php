@@ -31,12 +31,21 @@ class FileItemController extends AbstractItemController
 						'roles'=>array('manageFiles'),
 				),
 				array('allow',  // allow all users
-						'actions'=>array('index','view'),
+						'actions'=>array('index','view', 'download'),
 						'users'=>array('*'),
 				),
 				array('deny',  // deny all users
 						'users'=>array('*'),
 				),
 		);
+	}
+	
+	/**
+	 * Let the users download files by id
+	 * @param integer $id the id of a FileItem
+	 */
+	public function actionDownload($id) {
+		$file = FileItem::model()->findByPk($id);
+		return Yii::app()->getRequest()->sendFile($file->item->name.'.'.$file->extension, @file_get_contents($file->getFile()));
 	}
 }
