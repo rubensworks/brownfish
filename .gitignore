@@ -6,7 +6,7 @@ bbv/assets/*
 bbv/protected/runtime/*
 
 # Do not include the saved items files, since these will be different on each system.
-bbv/protected/data/items/*
+bbv/protected/data/files/*
 
 # Remove system specific files
 .DS_Store
