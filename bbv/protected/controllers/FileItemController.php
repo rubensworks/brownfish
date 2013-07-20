@@ -27,7 +27,7 @@ class FileItemController extends AbstractItemController
 	{
 		return array(
 				array('allow', // allow admin user to perform CRUD
-						'actions'=>array('create','update','admin','delete'),
+						'actions'=>array('create','update','admin','delete', 'upload'),
 						'roles'=>array('manageFiles'),
 				),
 				array('allow',  // allow all users
@@ -47,5 +47,17 @@ class FileItemController extends AbstractItemController
 	public function actionDownload($id) {
 		$file = FileItem::model()->findByPk($id);
 		return Yii::app()->getRequest()->sendFile($file->item->name.'.'.$file->extension, @file_get_contents($file->getFile()));
+	}
+	
+	/**
+	 * Just a plain json action to upload files on the fly
+	 */
+	public function actionUpload() {
+		$handler = new UploadHandler(array(
+				'upload_dir' => Yii::getPathOfAlias('webroot.protected.data.files'),
+		));
+		$fileItem = new FileItem();
+		$fileItem->save();
+		return "{}";
 	}
 }

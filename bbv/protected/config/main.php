@@ -26,6 +26,7 @@ return array(
 		'application.models.*',
 		'application.components.*',
 		'ext.wform.*',
+		'ext.fileupload.*',
 	),
 
 	'modules'=>array(
@@ -108,6 +109,28 @@ return array(
 		),
 		'cache'=>array(
 				'class'=>'system.caching.CDummyCache',// Use another caching system for better performance
+		),
+		'clientScript'=>array(
+			'packages'=>array(
+				'fileupload'=>array(
+					'basePath' => 'application.assets',
+					'js' => array(
+							'js/fileupload/vendor/jquery.ui.widget.js',
+							'js/fileupload/cors/jquery.postmessage-transport.js',
+							'js/fileupload/cors/jquery.xdr-transport.js',
+							'js/fileupload/jquery.iframe-transport.js',
+							'js/fileupload/jquery.fileupload.js',
+							'js/fileupload/jquery.fileupload-ui.js',
+							'js/fileupload/jquery.fileupload-fp.js',
+							'js/fileupload/main.js',
+							'js/upload.js',
+					),
+					'css' => array(
+							'css/fileupload/jquery.fileupload-ui.css',
+					),
+					//'depends' => array('jquery'),
+				),
+			),
 		),
 	),
 
