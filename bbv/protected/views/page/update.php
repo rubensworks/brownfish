@@ -33,7 +33,7 @@ $this->breadcrumbs=array(
 				<?php			
 				foreach($widgets as $widget) {
 				if($widget->col_id == $i)
-					$this->renderPartial('_widget_admin', array('widget'=>$widget));
+					$this->renderPartial('_widget_admin', array('widget'=>$widget, 'categories'=>$categories));
 			}
 			?>
 			</div>

@@ -158,25 +158,28 @@ class Item extends WActiveRecord
 	 }
 	 
 	 /**
-	  * Build the list that is filterable with a widget
-	  * @param Widget $widget the list-widget that has some filters
-	  * @return AbstractItem's
+	  * Build a criteria for a list of Item's that is filterable by category and tags
+	  * @param unknown $filter_category if the filter should apply to category_id
+	  * @param unknown $category_id the category id to filter on (only Item's from this category id will be allowed)
+	  * @param unknown $filter_tags if the filter should apply to tags
+	  * @param unknown $tags the tags to filter on (only Item's with one or more of these tags will be allowed
+	  * @param string $amount the amount of Item's to list
+	  * @return Criteria for a list
 	  */
-	 public static function findList($widget) {
-	 	$class = $widget->item_type;
+	 public static function findListCriteria($filter_category, $category_id, $filter_tags, $tags, $amount=false) {
 	 	$criteria = new CDbCriteria();
 	 	$criteria->with = array('item');
 	 	$params = array();
 	 	$criteria->condition = "";
-	 	if($widget->filter_category) {
+	 	if($filter_category) {
 	 		$criteria->condition .= "item.category_id = :category_id";
-	 		$params[':category_id'] = $widget->category_id;
+	 		$params[':category_id'] = $category_id;
 	 	}
-	 	if($widget->filter_tags) {
-	 		if($widget->filter_category) $criteria->condition .= " AND ";
+	 	if($filter_tags) {
+	 		if($filter_category) $criteria->condition .= " AND ";
 	 		$i = 0;
-	 		$tags = explode(",", $widget->tags);
-	 		foreach($tags as $tag) {
+	 		$l_tags = explode(",", $tags);
+	 		foreach($l_tags as $tag) {
 	 			if($i>0) $criteria->condition.= " AND ";
 	 			$criteria->condition .= " item.tags LIKE :tag_".$i." ";
 	 			$params[':tag_'.$i] = "%".$tag."%";
@@ -185,8 +188,19 @@ class Item extends WActiveRecord
 	 	}
 	 	$criteria->params = $params;
 	 	$criteria->order = "item.date_created DESC";
-	 	$criteria->limit = $widget->amount;
-	 	$items = $class::model()->findAll($criteria);
-	 	return $items;
+	 	if($amount) $criteria->limit = $amount;
+	 	$criteria->distinct = true;
+	 	return $criteria;
+	 }
+	 
+	 /**
+	  * Build the list that is filterable with a widget
+	  * @param Widget $widget the list-widget that has some filters
+	  * @return AbstractItem's
+	  */
+	 public static function findListByWidget($widget) {
+	 	$class = $widget->item_type;
+	 	$criteria = self::findListCriteria($widget->filter_category, $widget->category_id, $widget->filter_tags, $widget->tags, $widget->amount);
+	 	return $class::model()->findAll($criteria);
 	 }
 }

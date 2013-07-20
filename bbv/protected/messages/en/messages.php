@@ -18,6 +18,7 @@ return array(
     //////////
     
     // general
+	'form.general.search' => 'Search',
     'form.general.requiredFields' => 'Fields with a <span class="required">*</span> are required.',
     'form.general.captchaExplanation' => 'Please enter the letters as they are shown in the image above.<br/>Letters are not case-sensitive.',
     'form.general.verifyCode' => 'Verification Code',

@@ -10,16 +10,14 @@ Yii::import('bootstrap.widgets.TbPager');
  */
 class ItemList extends CListView
 {
-	public $filter;
-	public $condition = "";
-	public $params = array();
+	public $class;
+	public $criteria;
 	
 	public function init()
 	{
-		$this->dataProvider = $this->filter->search();
-		$this->dataProvider->criteria->order = "date_created DESC";
-		$this->dataProvider->criteria->condition = $this->condition;
-		$this->dataProvider->criteria->params = $this->params;
+		$this->dataProvider = new CActiveDataProvider($this->class, array(
+		    'criteria'=>$this->criteria,
+		));
 		$this->template = ItemTable::$TEMPLATE;
 		$this->summaryText = ItemTable::$SUMMARYTEXT;
 		$this->enablePagination = true;

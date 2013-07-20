@@ -121,7 +121,8 @@ class PageController extends Controller
 
 		$this->render('update',array(
 			'model' => $model,
-			'widgets'=>$widgets,
+			'categories' => Category::model()->findAll(),
+			'widgets' => $widgets,
 		));
 	}
 

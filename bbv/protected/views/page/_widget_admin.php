@@ -32,7 +32,6 @@
 				</p>
 				<div class="setup filter_category_setup<?php echo ($widget != NULL && $widget->filter_category)?"":" hide" ?>">
 					<?php
-						$categories = Category::model()->findAll();
 						$categoryList = CHtml::listData($categories, 'category_id', 'name');
 						echo CHtml::dropDownList("category_id", $widget==NULL?"":$widget->category_id, $categoryList, array("class"=>"category_id span12"));
 					?>

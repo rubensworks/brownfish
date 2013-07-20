@@ -174,9 +174,28 @@ abstract class AbstractItemController extends Controller
 		if(isset($_GET[$class])){
 			$model->attributes=$_GET[$class];
 		}
+		$category_search = $tags_search = false;
+		$category_id = $tags = NULL;
+		if(isset($_GET['category_id']) && $_GET['category_id']!='') {
+			$category_search = true;
+			$category_id = $_GET['category_id'];
+		}
+		if(isset($_GET['tags']) && $_GET['tags']!='') {
+			$tags_search = true;
+			$tags = $_GET['tags'];
+		}
+		
+		Yii::app()->clientScript->registerScript('tagging',"
+			// Save tags on add and remove
+			$('.tags').tagit({
+				singleField: true,
+				singleFieldNode: $('.tags'),
+			});
+		", CClientScript::POS_END);
 	
 		$this->render('/item/index',array(
-				'model'=>$model,
+				'class' => $class,
+				'criteria' => Item::findListCriteria($category_search, $category_id, $tags_search, $tags),
 		));
 	}
 	

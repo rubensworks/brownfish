@@ -868,6 +868,10 @@ section.page .wrapper>section.content{background-color:#f7fcfc;}
 .errorSummary{padding:8px 35px 8px 14px;margin-bottom:20px;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);background-color:#fcf8e3;border:1px solid #fbeed5;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#c09853;padding-top:14px;padding-bottom:14px;background-color:#f2dede;border-color:#eed3d7;color:#b94a48;}
 .errorMessage{color:#9d261d;font-style:italic;float:right;}
 input.error{border-color:#9d261d;}
+.item_list_search{width:100%;*zoom:1;}.item_list_search:before,.item_list_search:after{display:table;content:"";line-height:0;}
+.item_list_search:after{clear:both;}
+.item_list_search .category_id_search,.item_list_search .tags_search{float:left;width:40.42553191489362%;*width:40.37234042553192%;margin-left:2.127659574468085%;*margin-left:2.0212765957446805%;}.item_list_search .category_id_search:first-child,.item_list_search .tags_search:first-child{margin-left:0;margin-left:0%;*margin-left:-0.10638297872340438%;}
+.item_list_search .submit_search{float:left;width:14.893617021276595%;*width:14.840425531914894%;margin-left:2.127659574468085%;*margin-left:2.0212765957446805%;}.item_list_search .submit_search:first-child{margin-left:0;margin-left:0%;*margin-left:-0.10638297872340438%;}
 .hr-small{margin:2px;}
 .cursor-move{cursor:move;}
 .cursor-pointer{cursor:pointer;}
