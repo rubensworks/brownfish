@@ -94,6 +94,7 @@ class FileItem extends AbstractItem
 	
 	public function beforeSave() {
 		$this->file = CUploadedFile::getInstance($this,'file');
+		$this->item->name = $this->file->name;
 		$this->extension = $this->file->extensionName;
 		return parent::beforeSave();
 	}

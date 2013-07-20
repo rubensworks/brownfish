@@ -27,7 +27,7 @@ class FileItemController extends AbstractItemController
 	{
 		return array(
 				array('allow', // allow admin user to perform CRUD
-						'actions'=>array('create','update','admin','delete'),
+						'actions'=>array('create','update','admin','delete', 'upload'),
 						'roles'=>array('manageFiles'),
 				),
 				array('allow',  // allow all users
