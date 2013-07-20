@@ -18,5 +18,14 @@ class Install {
 		
 		// TODO: Add default widgets & stuff
 	}
+	
+	/**
+	 * Set default preferences
+	 */
+	public static function setPreferences() {
+		// File upload
+		Config::setValue(Config::$KEYS['FILE_MAX_SIZE'], 10000);
+		Config::setValue(Config::$KEYS['FILE_ALLOWED_TYPES'], 'jpg, png, gif');
+	}
 }
 ?>

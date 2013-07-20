@@ -84,7 +84,7 @@ abstract class AbstractItemController extends Controller
 	public function actionCreate()
 	{
 		$class = $this->getItemClassName();
-		$model=new $class();
+		$model=new $class('create');
 
 		if(isset($_POST[$class]))
 		{
@@ -108,6 +108,7 @@ abstract class AbstractItemController extends Controller
 	{
 		$class = $this->getItemClassName();
 		$model=$class::model()->findByPk($id);
+		$model->scenario = 'update';
 
 		if(isset($_POST[$class]))
 		{
@@ -134,6 +135,7 @@ abstract class AbstractItemController extends Controller
 		{
 			// we only allow deletion via POST request
 			$model=$class::model()->findByPk($id);
+			$model->scenario = 'delete';
 			$model->delete();
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
@@ -186,6 +188,7 @@ abstract class AbstractItemController extends Controller
 	{
 		$class = $this->getItemClassName();
 		$model = $class::model()->cache(Utils::$CACHE_DURATION_SHORT)->findByPk($id);
+		$model->scenario = 'view';
 	
 		$this->render('/item/view',array(
 				'model' => $model,

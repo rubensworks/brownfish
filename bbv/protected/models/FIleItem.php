@@ -30,8 +30,8 @@ class FileItem extends AbstractItem
 	public function rules()
 	{
 		return array_merge(array(
-				array('file', 'file', 'types'=>'jpg, gif, png'),//TODO: add more possible extensions
-				array('file', 'file', 'maxSize'=>10000),//TODO: look for a better maxSize
+				array('file', 'file', 'types'=>Config::getValue(Config::$KEYS['FILE_ALLOWED_TYPES']), 'maxSize'=>Config::getValue(Config::$KEYS['FILE_MAX_SIZE']), 'on'=>'create'),//TODO: add more possible extensions, look for a better maxSize
+				array('file', 'file', 'types'=>Config::getValue(Config::$KEYS['FILE_ALLOWED_TYPES']), 'maxSize'=>Config::getValue(Config::$KEYS['FILE_MAX_SIZE']), 'allowEmpty' => true, 'on'=>'update'),
 		), parent::rules());
 	}
 	
@@ -94,13 +94,16 @@ class FileItem extends AbstractItem
 	
 	public function beforeSave() {
 		$this->file = CUploadedFile::getInstance($this,'file');
-		$this->extension = $this->file->extensionName;
-		$this->mime_type = $this->file->type;
+		if($this->file !== NULL) {
+			$this->extension = $this->file->extensionName;
+			$this->mime_type = $this->file->type;
+		}
 		return parent::beforeSave();
 	}
 	
 	public function afterSave() {
-		$this->file->saveAs($this->getFile());
+		if($this->file !== NULL)
+			$this->file->saveAs($this->getFile());
 		return parent::afterSave();
 	}
 	

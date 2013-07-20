@@ -12,6 +12,8 @@ class Config extends WActiveRecord
 	public static $KEYS = array(
 			'MAIN_NAV' => 'core_main_nav_id',
 			'INDEX_PAGE' => 'core_index_page_id',
+			'FILE_MAX_SIZE' => 'preferences_file_max_size',
+			'FILE_ALLOWED_TYPES' => 'preferences_file_types',
 	); 
 	
 	/**
