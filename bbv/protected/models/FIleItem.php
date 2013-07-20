@@ -95,11 +95,26 @@ class FileItem extends AbstractItem
 	public function beforeSave() {
 		$this->file = CUploadedFile::getInstance($this,'file');
 		$this->extension = $this->file->extensionName;
+		$this->mime_type = $this->file->type;
 		return parent::beforeSave();
 	}
 	
 	public function afterSave() {
 		$this->file->saveAs($this->getFile());
 		return parent::afterSave();
+	}
+	
+	/**
+	 * The public download link for this file
+	 */
+	public function getDownloadLink() {
+		return CHtml::normalizeUrl(array('/FileItem/download', 'id'=>$this->id));
+	}
+	
+	/**
+	 * The css class for this type of file
+	 */
+	public function getMimeTypeClass() {
+		return str_replace("/","_",$this->mime_type);
 	}
 }
