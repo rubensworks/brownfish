@@ -20,6 +20,7 @@ return array(
     
     // general
 	'form.general.search' => 'Zoeken',
+	'form.general.filter' => 'Filter',
     'form.general.requiredFields' => 'Velden met een <span class="required">*</span> zijn verplicht.',
     'form.general.captchaExplanation' => 'Typ de letters van bovenstaande afbeelding over, tekens zij niet hoofdletter-gevoelig.',
     'form.general.verifyCode' => 'Verificatie Code',
