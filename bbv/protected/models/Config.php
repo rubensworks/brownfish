@@ -75,8 +75,12 @@ class Config extends WActiveRecord
 	 * @return mixed the value for that key or false if the value was not found
 	 */
 	public static function getValue($key) {
-		$result = Config::model()->findByPk($key);
-		if($result == NULL) return false;
+		$result = Yii::app()->cache->get(Utils::$CACHE_CONFIG);
+		if($result===false){
+			$result = Config::model()->findByPk($key);
+			if($result == NULL) return false;
+			Yii::app()->cache->set(Utils::$CACHE_CONFIG.$key, $result, Utils::$CACHE_DURATION_LONG);
+		}
 		return @unserialize($result->value);
 	}
 	
@@ -93,5 +97,6 @@ class Config extends WActiveRecord
 		}
 		$model->value = @serialize($value);
 		$model->save(false);
+		Yii::app()->cache->delete(Utils::$CACHE_CONFIG.$key);
 	}
 }

@@ -100,6 +100,7 @@ class Navigation extends WActiveRecord
 	 * Cascade delete the children
 	 */
 	public function beforeDelete() {
+		Yii::app()->cache->delete(Utils::$CACHE_NAVIGATION);
 		foreach($this->children as $child) {
 			$child->delete();
 		}
@@ -131,17 +132,14 @@ class Navigation extends WActiveRecord
 	 * @return array structure of the complete navigation to pass to a CMenu widget
 	 */
 	public static function buildNavigation($root=NULL) {
-		$sub=Yii::app()->cache->get(Utils::$CACHE_NAVIGATION);
-		if($sub === false || $root == NULL) {
+		$toCache = false;
+		$sub = Yii::app()->cache->get(Utils::$CACHE_NAVIGATION);
+		if($root != NULL || $sub === false) {
 			$sub = array();
-			$toCache = false;
 			// Look for the root in the database if no root was given
 			if($root == NULL) {
 				$toCache = true;
-				$criteria = new CDbCriteria();
-				$criteria->condition = "type = :type";
-				$criteria->params = array(':type'=>Navigation::$TYPE_ROOT);
-				$root = Navigation::model()->find($criteria);
+				$root = Navigation::model()->findByPk(Config::getValue(Config::$KEYS['MAIN_NAV']));
 				if($root == NULL) return $sub;
 			}
 			
