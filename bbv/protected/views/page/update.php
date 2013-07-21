@@ -16,7 +16,7 @@ $this->breadcrumbs=array(
 	<div class="hide">
 		<?php
 		// Render the widget template
-		$this->renderPartial('_widget_admin', array('widget'=>NULL))
+		$this->renderPartial('_widget_admin', array('widget'=>NULL, 'categories'=>$categories))
 		?>
 	</div>
 

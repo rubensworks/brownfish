@@ -12,6 +12,7 @@ return array(
     'menu.shop' => 'Shop',
     'menu.logout' => 'Logout',
     'menu.dashboard' => 'Dashboard',
+	'menu.more' => 'More',
     
     //////////
     // form //
