@@ -1,0 +1,1 @@
+<form action="<?php echo CHtml::normalizeUrl(array('FileItem/upload'))?>" class="dropzone square" id="FileItemDropzone"></form>

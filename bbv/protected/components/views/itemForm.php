@@ -91,6 +91,23 @@ $notNew = !$model->isNewRecord;
 
 <?php $this->endWidget(); ?>
 
+<?php if($model->holdContent) { ?>
+<!-- Hidden modal -->
+<div id="uploadFile" class="modal hide fade">
+	<div class="modal-header">
+		<button type="button" class="cancelUpload close" data-dismiss="modal"
+			aria-hidden="true">&times;</button>
+		<h3>Upload</h3>
+	</div>
+	<div class="modal-body">
+		<?php $this->widget('FileUpload'); ?>
+	</div>
+	<div class="modal-footer">
+		<a data-dismiss="modal" href="#" class="cancelUpload btn">Cancel</a>
+	</div>
+</div>
+<?php } ?>
+
 </div><!-- form -->
 
 <?php

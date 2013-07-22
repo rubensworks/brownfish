@@ -14,6 +14,7 @@ class Config extends WActiveRecord
 			'INDEX_PAGE' => 'core_index_page_id',
 			'FILE_MAX_SIZE' => 'preferences_file_max_size',
 			'FILE_ALLOWED_TYPES' => 'preferences_file_types',
+			'DEFAULT_CATEGORY' => 'core_default_category_id',
 	); 
 	
 	/**

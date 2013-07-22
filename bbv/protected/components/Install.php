@@ -20,12 +20,22 @@ class Install {
 	}
 	
 	/**
+	 * Make the default category
+	 */
+	public static function makeDefaultCategory() {
+		$category = new Category();
+		$category->name = "Default Category";
+		$category->save();
+		Config::setValue(Config::$KEYS['DEFAULT_CATEGORY'], $category->category_id);
+	}
+	
+	/**
 	 * Set default preferences
 	 */
 	public static function setPreferences() {
 		// File upload
 		Config::setValue(Config::$KEYS['FILE_MAX_SIZE'], 10000);
-		Config::setValue(Config::$KEYS['FILE_ALLOWED_TYPES'], 'jpg, png, gif');
+		Config::setValue(Config::$KEYS['FILE_ALLOWED_TYPES'], array('image/gif','image/jpg','image/png'));
 	}
 }
 ?>

@@ -27,13 +27,25 @@ class ItemForm extends CWidget
 		Yii::app()->clientScript->registerScript('tagging','$(document).ready(function() {
 	        $(".input_tags").tagit();
 	    });');
-		Yii::app()->clientScript->registerScript('wysihtml5','$(document).ready(function() {
-	        $(".item_content").wysihtml5({
-					"html": true,
-					"color": true,
-					"stylesheets": ["'.Yii::app()->createAbsoluteUrl('/css/wysihtml5.css').'"]
-				});
-	    });');
+		Yii::app()->clientScript->registerScript('wysihtml5','
+		// Custom templates for the WYSIWYG editor
+		var myCustomTemplates = {
+			    image : function(locale) {
+			      return "<li><div class=\"btn-group\">" +
+			        "<a id=\"addFiles\" class=\"btn\" title=\"" + locale.link.insert + "\"><i class=\"icon-picture\"></i></a>" +
+			      "</div></li>";
+			    },
+		};
+        $(".item_content").wysihtml5({
+				"html": true,
+				"color": true,
+				"stylesheets": ["'.Yii::app()->createAbsoluteUrl('/css/wysihtml5.css').'"],
+				"customTemplates": myCustomTemplates
+		});
+		// Open file upload modal
+		$("#addFiles").live("click", function(){
+			$("#uploadFile").modal();
+		});');
 		$this->render('itemForm',array(
 			'model'=>$this->model,
 			'view'=>$this->view,

@@ -30,8 +30,8 @@ class FileItem extends AbstractItem
 	public function rules()
 	{
 		return array_merge(array(
-				array('file', 'file', 'types'=>Config::getValue(Config::$KEYS['FILE_ALLOWED_TYPES']), 'maxSize'=>Config::getValue(Config::$KEYS['FILE_MAX_SIZE']), 'on'=>'create'),//TODO: add more possible extensions, look for a better maxSize
-				array('file', 'file', 'types'=>Config::getValue(Config::$KEYS['FILE_ALLOWED_TYPES']), 'maxSize'=>Config::getValue(Config::$KEYS['FILE_MAX_SIZE']), 'allowEmpty' => true, 'on'=>'update'),
+				array('file', 'file', 'mimeTypes'=>Config::getValue(Config::$KEYS['FILE_ALLOWED_TYPES']), 'maxSize'=>Config::getValue(Config::$KEYS['FILE_MAX_SIZE']), 'on'=>'create'),//TODO: add more possible extensions, look for a better maxSize
+				array('file', 'file', 'mimeTypes'=>Config::getValue(Config::$KEYS['FILE_ALLOWED_TYPES']), 'maxSize'=>Config::getValue(Config::$KEYS['FILE_MAX_SIZE']), 'allowEmpty' => true, 'on'=>'update'),
 		), parent::rules());
 	}
 	
@@ -92,11 +92,25 @@ class FileItem extends AbstractItem
 		return parent::afterDelete();
 	}
 	
+	/**
+	 * A helper function to determine the filename without extension
+	 * @param string $name filename with optional extension
+	 * @return string filename without extension
+	 */
+	public static function getFileName($name)
+	{
+		if(($pos=strrpos($name,'.'))!==false)
+			return (string)substr($name,0,$pos);
+		else
+			return $name;
+	}
+	
 	public function beforeSave() {
 		$this->file = CUploadedFile::getInstance($this,'file');
 		if($this->file !== NULL) {
 			$this->extension = $this->file->extensionName;
 			$this->mime_type = $this->file->type;
+			$this->item->name = self::getFileName($this->file->name);
 		}
 		return parent::beforeSave();
 	}

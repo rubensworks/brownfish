@@ -27,7 +27,7 @@ class FileItemController extends AbstractItemController
 	{
 		return array(
 				array('allow', // allow admin user to perform CRUD
-						'actions'=>array('create','update','admin','delete'),
+						'actions'=>array('create','update','admin','delete','upload'),
 						'roles'=>array('manageFiles'),
 				),
 				array('allow',  // allow all users
@@ -47,5 +47,13 @@ class FileItemController extends AbstractItemController
 	public function actionDownload($id) {
 		$file = FileItem::model()->findByPk($id);
 		return Yii::app()->getRequest()->sendFile($file->item->name.'.'.$file->extension, @file_get_contents($file->getFile()));
+	}
+	
+	public function actionUpload() {
+		$file = new FileItem();
+		$file->item = new Item();
+		$file->item->name = "TMP File Name";// This will be overwritten before save
+		$file->item->category_id = Config::getValue(Config::$KEYS['DEFAULT_CATEGORY']);
+		$file->save();
 	}
 }
