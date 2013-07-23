@@ -20,4 +20,10 @@ $(document).ready(function() {
 	$("#addFiles").live("click", function(){
 		$("#uploadFile").modal();
 	});
+	
+	// Reload file table on file uploaded
+	var $widget = $("#file_upload_"+widget_id);
+	$widget.on("fileUploaded", function() {
+		$("#fileUploadTable").yiiGridView.update('fileUploadTable');
+	});
 });

@@ -14,6 +14,9 @@ define('SUMMARY_TEXT', "<span class='muted'>" . Yii::t('messages', 'form.general
 class ItemTable extends TbGridView
 {
 	public $buttonColumn = true;
+	public $ignoreOtherColumns = false;
+	public $pageSize = 10;
+	public $sort = "item.id";
 	
 	public static $TYPE = "striped bordered condensed hover";
 	public static $TEMPLATE = "{summary}{items}<div class='text-center'>{pager}</div>";
@@ -36,12 +39,19 @@ class ItemTable extends TbGridView
 	public function init()
 	{
 		$this->dataProvider = $this->filter->search();
+		$this->dataProvider->pagination->pageSize = $this->pageSize;
+		$this->dataProvider->sort = array(
+                                                'defaultOrder'=>$this->sort,
+                                );
 		$this->type = ItemTable::$TYPE;
 		$this->template = ItemTable::$TEMPLATE;
 		$this->summaryText = ItemTable::$SUMMARYTEXT;
 		$this->enablePagination = true;
 		if($this->buttonColumn) {
-			$this->columns = array_merge($this->columns, $this->commonColumns);
+			if($this->ignoreOtherColumns)
+				$this->columns = $this->columns;
+			else
+				$this->columns = array_merge($this->columns, $this->commonColumns);
 			$this->columns[] = self::$BUTTONCOLUMN;
 		}
 		parent::init();

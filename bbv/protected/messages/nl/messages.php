@@ -31,6 +31,7 @@ return array(
     'form.general.add' => 'Voeg toe',
     'form.general.create' => 'Maak',
     'form.general.close' => 'Sluit',
+    'form.general.cancel' => 'Annuleer',
     'form.general.list' => 'Lijst',
     'form.general.filterBy' => 'Filter op {type}',
     'form.general.listOf' => 'Lijst van {attributes}',
@@ -41,7 +42,13 @@ return array(
     'form.general.link' => 'Link',
     'form.general.label' => 'Label',
     'form.general.showingNumOf' => 'Toont {start}-{end} van de {count} resultaten.',
+    
+    // file upload
     'form.general.chooseFile' => 'Kies Bestand',
+    'form.general.uploading' => 'Versturen',
+    'form.general.filesUploaded' => 'Uw bestand is met succes verstuurd.',
+    'form.general.filesUploadFailed' => 'Versturen is mislukt.',
+    'form.general.uploadHere' => 'Sleep hier bestanden naartoe om te uploaden.',
     
     // login
     'form.login.login' => 'Login',

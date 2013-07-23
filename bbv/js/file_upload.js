@@ -1,23 +1,43 @@
+// Auto-hide alerts
+function autoHide($upload_info) {
+	setTimeout(function() {
+		$upload_info.html('');
+    }, 10000);
+}
+
 $(document).ready(function() {
 	// Init dropzone
-	var dropzone = $('#FileItemDropzone').dropzone({
+	var $widget = $("#file_upload_"+widget_id);
+	var $bar = $widget.find(".upload-progress >.bar");
+	var $upload_info = $widget.find(".upload-info");
+	var fileUploadedEvent = $.Event("fileUploaded");
+	var dropzone = $widget.find('.dropzone').dropzone({
+		dictDefaultMessage: messages.uploadHere,
 		acceptedFiles: acceptedFiles,
 		paramName: "FileItem[file]",
 		init: function() {
+				this.on("sending", function(file) {
+					$upload_info.html('<div class="alert alert-info">'+messages.uploading+'...</div>');
+				})
 				this.on("success", function(file) {
-						this.removeFile(file);
-						alert('add to list, or reload list');
+					this.removeFile(file);
+					$upload_info.html('<div class="alert alert-success">'+messages.filesUploaded+'</div>');
+					autoHide($upload_info);
+					
+					// Call listener
+					$($widget).trigger(fileUploadedEvent);
 				});
 				this.on("error", function(file) {
-						this.removeFile(file);
-						alert('show nice alert-error');
+					this.removeFile(file);
+					$upload_info.html('<div class="alert alert-error">'+messages.filesUploadFailed+'</div>');
+					autoHide($upload_info);
 				});
 				this.on("uploadprogress", function(file, progress) {
-					$(".upload-progress >.bar").width(progress+"%");
+					$bar.width(progress+"%");
 					if(progress==100)
-						$(".upload-progress >.bar").hide();
+						$bar.hide();
 					else
-						$(".upload-progress >.bar").show();
+						$bar.show();
 				});
 				},
 	});

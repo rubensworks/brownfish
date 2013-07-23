@@ -101,9 +101,20 @@ $notNew = !$model->isNewRecord;
 	</div>
 	<div class="modal-body">
 		<?php $this->widget('FileUpload'); ?>
+		<hr class="hr-small" />
+		<?php
+		$this->widget('ItemTable', array(
+				'filter'=>new FileItem(),
+				'columns'=>array('id',array('name'=>'item_search', 'value'=>'$data->item->name'),'extension'),
+				'id'=>"fileUploadTable",
+				'ignoreOtherColumns'=>true,
+				'pageSize'=>4,
+				'sort'=>'item.id DESC',
+		));
+		?>
 	</div>
 	<div class="modal-footer">
-		<a data-dismiss="modal" href="#" class="cancelUpload btn">Cancel</a>
+		<a data-dismiss="modal" href="#" class="cancelUpload btn"><? echo Yii::t('messages', 'form.general.cancel') ?></a>
 	</div>
 </div>
 <?php } ?>

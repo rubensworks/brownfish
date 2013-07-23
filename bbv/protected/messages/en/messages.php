@@ -31,6 +31,7 @@ return array(
     'form.general.add' => 'Add',
     'form.general.create' => 'Create',
     'form.general.close' => 'Close',
+    'form.general.cancel' => 'Cancel',
     'form.general.list' => 'List',
     'form.general.filterBy' => 'Filter by {type}',
     'form.general.listOf' => 'List of {attributes}',
@@ -41,7 +42,13 @@ return array(
     'form.general.link' => 'Link',
     'form.general.label' => 'Label',
     'form.general.showingNumOf' => 'Showing {start}-{end} of {count} results.',
+    
+    // file upload
     'form.general.chooseFile' => 'Choose File',
+    'form.general.uploading' => 'Uploading',
+    'form.general.filesUploaded' => 'Your file was successfully uploaded.',
+    'form.general.filesUploadFailed' => 'Upload failed.',
+    'form.general.uploadHere' => 'Drop files here to upload.',
     
     // login
     'form.login.login' => 'Login',
