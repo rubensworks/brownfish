@@ -110,6 +110,7 @@ $notNew = !$model->isNewRecord;
 				'ignoreOtherColumns'=>true,
 				'pageSize'=>4,
 				'sort'=>'item.id DESC',
+				'selectionChanged'=>'function(id){insertFileItem($.fn.yiiGridView.getSelection(id))}',
 		));
 		?>
 	</div>

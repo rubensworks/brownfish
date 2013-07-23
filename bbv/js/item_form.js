@@ -1,3 +1,9 @@
+// Insert a selected FileItem to the content
+function insertFileItem(id) {
+	alert(id);
+	// TODO
+}
+
 $(document).ready(function() {
 	// Tagging
 	$(".input_tags").tagit();
