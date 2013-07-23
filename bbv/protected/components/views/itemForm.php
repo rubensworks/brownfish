@@ -97,7 +97,7 @@ $notNew = !$model->isNewRecord;
 	<div class="modal-header">
 		<button type="button" class="cancelUpload close" data-dismiss="modal"
 			aria-hidden="true">&times;</button>
-		<h3>Upload</h3>
+		<h3><? echo Yii::t('messages', 'form.general.chooseFile') ?></h3>
 	</div>
 	<div class="modal-body">
 		<?php $this->widget('FileUpload'); ?>

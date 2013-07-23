@@ -41,6 +41,7 @@ return array(
     'form.general.link' => 'Link',
     'form.general.label' => 'Label',
     'form.general.showingNumOf' => 'Toont {start}-{end} van de {count} resultaten.',
+    'form.general.chooseFile' => 'Kies Bestand',
     
     // login
     'form.login.login' => 'Login',

@@ -41,6 +41,7 @@ return array(
     'form.general.link' => 'Link',
     'form.general.label' => 'Label',
     'form.general.showingNumOf' => 'Showing {start}-{end} of {count} results.',
+    'form.general.chooseFile' => 'Choose File',
     
     // login
     'form.login.login' => 'Login',
