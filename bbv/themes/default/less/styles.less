@@ -368,6 +368,37 @@ article.news-extended{
 	visibility: visible;
 }
 
+// File Upload
+// -------------------------
+
+.dropzone{
+	.well;
+	height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold;
+    .transition(all 0.3s ease-out);
+	opacity: 1;
+    &.in{
+    	font-size: larger;
+    }
+    &.hover{
+    	background: #FAFAFA;
+    }
+    .dz-preview{
+    	display:none;
+    }
+}
+
+.upload-progress{
+	.progress;
+	>.bar{
+		.progress .bar;
+		.progress.active .bar;
+		.progress-striped .bar;
+	}
+}
+
 // The extension icons
 // -------------------------
 @import "extensions.less";

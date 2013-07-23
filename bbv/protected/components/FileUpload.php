@@ -7,12 +7,11 @@ class FileUpload extends CWidget
 	}
 	
 	public function run() {
-		Yii::app()->clientScript->registerScript('dropZone',"
-			var dropzone = $('#FileItemDropzone').dropzone({
-				acceptedFiles: \"".implode(",",Config::getValue(Config::$KEYS['FILE_ALLOWED_TYPES']))."\",
-				paramName: \"FileItem[file]\",
-			});");
-		Yii::app()->clientScript->registerScript('dropZone',"Dropzone.autoDiscover = false;", CClientScript::POS_HEAD);
+		Yii::app()->clientScript->registerScript('variables_file_upload',"
+				Dropzone.autoDiscover = false;
+				var acceptedFiles = \"".implode(",",Config::getValue(Config::$KEYS['FILE_ALLOWED_TYPES']))."\";
+		", CClientScript::POS_HEAD);
+		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/file_upload.js');
 		$this->render('fileUpload');
     }
 

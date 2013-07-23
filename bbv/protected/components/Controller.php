@@ -46,8 +46,8 @@ class Controller extends CController
 		
 		// Dropzone
 		$cs->registerScriptFile($baseUrl.'/js/dropzone.min.js');
-		$cs->registerCssFile($baseUrl.'/css/basic.css');
-		$cs->registerCssFile($baseUrl.'/css/dropzone.css');
+		//$cs->registerCssFile($baseUrl.'/css/basic.css');
+		//$cs->registerCssFile($baseUrl.'/css/dropzone.css');
 		
 		// Google Analytics
 		if(isset(Yii::app()->params['googleAnalyticsTrackingID'])) {

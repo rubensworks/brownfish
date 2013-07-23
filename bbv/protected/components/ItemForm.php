@@ -24,7 +24,7 @@ class ItemForm extends CWidget
 	}
 	
 	public function run(){
-		Yii::app()->clientScript->registerScript('variables',"
+		Yii::app()->clientScript->registerScript('variables_item_form',"
 			var stylesheet = '".Yii::app()->createAbsoluteUrl('/css/wysihtml5.css')."';", CClientScript::POS_HEAD);
 		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/item_form.js');
 		$this->render('itemForm',array(
