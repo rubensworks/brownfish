@@ -71,7 +71,7 @@ $this->breadcrumbs=array(
 				array(
 					'buttonType'=>'submit',
 					'type'=>'primary',
-					'label'=>Yii::t('messages', 'form.login.login'),
+					'label'=>Yii::t('messages', 'form.general.send'),
 					)
 				); ?>
 	</div>

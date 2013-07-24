@@ -43,6 +43,7 @@ return array(
     'form.general.label' => 'Label',
     'form.general.showingNumOf' => 'Toont {start}-{end} van de {count} resultaten.',
     'form.general.select' => 'Selecteer',
+    'form.general.send' => 'Verstuur',
     
     // file upload
     'form.general.chooseFile' => 'Kies Bestand',
