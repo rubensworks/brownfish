@@ -204,8 +204,10 @@ return array(
     'enum.item.textItems' => 'Text Items',
     'enum.item.navigationItem' => 'Navigation Item',
     'enum.item.navigationItems' => 'Navigation Items',
-    'enum.item.fileItem' => 'File Item',
-    'enum.item.fileItems' => 'File Items',
+    'enum.item.fileItem' => 'File',
+    'enum.item.fileItems' => 'Files',
+    'enum.item.imageFileItem' => 'Image',
+    'enum.item.imageFileItems' => 'Images',
     
     ///////////
     // error //

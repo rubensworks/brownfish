@@ -204,8 +204,10 @@ return array(
     'enum.item.textItems' => 'Tekst Items',
     'enum.item.navigationItem' => 'Navigatie Item',
     'enum.item.navigationItems' => 'Navigaties',
-    'enum.item.fileItem' => 'Bestand Item',
-    'enum.item.fileItems' => 'Bestand Items',
+    'enum.item.fileItem' => 'Bestand',
+    'enum.item.fileItems' => 'Bestanden',
+    'enum.item.imageFileItem' => 'Afbeelding',
+    'enum.item.imageFileItems' => 'Afbeeldingen',
     
     ///////////
     // error //

@@ -46,6 +46,7 @@ class Utils {
 				"TextItem",
 				"NavigationItem",
 				"FileItem",
+				"ImageFileItem",
 		);
 	}
 	
