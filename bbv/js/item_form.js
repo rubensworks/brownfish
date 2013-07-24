@@ -1,7 +1,9 @@
 // Insert a selected FileItem to the content
-function insertFileItem(id) {
-	alert(id);
-	// TODO
+function insertFileItem(id, name) {
+	var editorInstance = $(".item_content").data("wysihtml5").editor;
+	editorInstance.composer.commands.exec("insertHTML", downloadLink.replace('_NAME_', name).replace('_ID_', id)	);
+	console.log(downloadLink.replace('_NAME_', id).replace('_ID_', id));
+	$('#uploadFile').modal('toggle');
 }
 
 $(document).ready(function() {
@@ -20,7 +22,8 @@ $(document).ready(function() {
 			"html": true,
 			"color": true,
 			"stylesheets": [stylesheet],
-			"customTemplates": myCustomTemplates
+			"customTemplates": myCustomTemplates,
+			"parserRules": wysihtml5ParserRules,
 	});
 	// Open file upload modal
 	$("#addFiles").live("click", function(){

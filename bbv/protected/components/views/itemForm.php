@@ -105,12 +105,38 @@ $notNew = !$model->isNewRecord;
 		<?php
 		$this->widget('ItemTable', array(
 				'filter'=>new FileItem(),
-				'columns'=>array('id',array('name'=>'item_search', 'value'=>'$data->item->name'),'extension'),
+				'columns'=>array(
+					'id',
+					array('name'=>'item_search', 'value'=>'$data->item->name'),
+					'extension',
+					array(
+						'class'=>'bootstrap.widgets.TbButtonColumn',
+						'htmlOptions'=>array('style'=>'width: 5px'),
+						'template'=>'{select}',
+						'buttons'=>array(
+								'select' => array(
+										'label'=>Yii::t('messages', 'form.general.select'),
+										'click'=>'function(){}',//Nothing needs to be done here, handler is called for each row
+										'icon'=>'hand-up',
+								),
+						),
+					),
+				),
 				'id'=>"fileUploadTable",
 				'ignoreOtherColumns'=>true,
 				'pageSize'=>4,
 				'sort'=>'item.id DESC',
-				'selectionChanged'=>'function(id){insertFileItem($.fn.yiiGridView.getSelection(id))}',
+				'selectionChanged'=>'function(id) {
+		var itemId = $.fn.yiiGridView.getSelection(id);
+        $.get(
+                "'.Yii::app()->createUrl('/FileItem/details').'",
+                { id: itemId[0] },
+                function(data) {
+                        insertFileItem(data.id, data.name);
+                },
+                "json"
+        );
+}',
 		));
 		?>
 	</div>

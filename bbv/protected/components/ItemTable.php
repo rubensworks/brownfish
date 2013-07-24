@@ -48,11 +48,12 @@ class ItemTable extends TbGridView
 		$this->summaryText = ItemTable::$SUMMARYTEXT;
 		$this->enablePagination = true;
 		if($this->buttonColumn) {
-			if($this->ignoreOtherColumns)
+			if($this->ignoreOtherColumns) {
 				$this->columns = $this->columns;
-			else
+			} else {
 				$this->columns = array_merge($this->columns, $this->commonColumns);
-			$this->columns[] = self::$BUTTONCOLUMN;
+				$this->columns[] = self::$BUTTONCOLUMN;
+			}
 		}
 		parent::init();
 	}

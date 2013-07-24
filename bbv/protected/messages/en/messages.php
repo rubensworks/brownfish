@@ -42,6 +42,7 @@ return array(
     'form.general.link' => 'Link',
     'form.general.label' => 'Label',
     'form.general.showingNumOf' => 'Showing {start}-{end} of {count} results.',
+    'form.general.select' => 'Select',
     
     // file upload
     'form.general.chooseFile' => 'Choose File',

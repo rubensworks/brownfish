@@ -38,6 +38,7 @@ class Controller extends CController
 		// Bootstrap WYSIHTML5
 		$cs->registerScriptFile($baseUrl.'/js/wysihtml5-0.3.0_rc2.min.js');
 		$cs->registerScriptFile($baseUrl.'/js/bootstrap-wysihtml5.js');
+		$cs->registerScriptFile($baseUrl.'/js/wysihtml5-parser-rules-advanced.js');
 		$cs->registerCssFile($baseUrl.'/css/wysihtml5.css');
 		$cs->registerCssFile($baseUrl.'/css/bootstrap-wysihtml5.css');
 		
@@ -46,8 +47,6 @@ class Controller extends CController
 		
 		// Dropzone
 		$cs->registerScriptFile($baseUrl.'/js/dropzone.min.js');
-		//$cs->registerCssFile($baseUrl.'/css/basic.css');
-		//$cs->registerCssFile($baseUrl.'/css/dropzone.css');
 		
 		// Google Analytics
 		if(isset(Yii::app()->params['googleAnalyticsTrackingID'])) {
