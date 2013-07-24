@@ -18,11 +18,17 @@
 					$this->endWidget();
 				?>
 			</nav>
-			<section class='sponsors'>
+			<?php
+			
+			/*
+			 <section class='sponsors'>
 			
 				SPONSORS
 			
-			</section>
+			 </section>
+			 */
+			
+			?>
 		</div>
     </section><!-- sidebar -->
     <section class="content span10">
