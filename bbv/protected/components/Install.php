@@ -35,7 +35,13 @@ class Install {
 	public static function setPreferences() {
 		// File upload
 		Config::setValue(Config::$KEYS['FILE_MAX_SIZE'], 10000);
-		Config::setValue(Config::$KEYS['FILE_ALLOWED_TYPES'], array('image/gif','image/jpg','image/png'));
+		Config::setValue(Config::$KEYS['FILE_ALLOWED_TYPES'], array(
+			'image/gif',
+			'image/jpg',
+			'image/png',
+			'application/pdf',
+			'application/x-pdf',
+		));
 	}
 }
 ?>
