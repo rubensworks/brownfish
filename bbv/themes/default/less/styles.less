@@ -415,6 +415,21 @@ article.news-extended{
 	}
 }
 
+.image-list-view .items{
+	.makeFluidRow();
+	>.image-file-item-row{
+		.well;
+		.makeFluidCol(2);
+		height:150px;
+		text-align:center;
+		padding:0;margin:0;
+		line-height:150px;
+		img{
+			vertical-align:middle;
+		}
+	}
+}
+
 // The extension icons
 // -------------------------
 @import "extensions.less";

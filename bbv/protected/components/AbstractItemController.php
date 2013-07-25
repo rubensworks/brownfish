@@ -20,6 +20,14 @@ abstract class AbstractItemController extends Controller
 	public abstract function getListColumns();
 	
 	/**
+	 * Overridable htmlOptions to add to the ItemList that is shown on the index action.
+	 * @return multitype:array of htmlOptions
+	 */
+	public function getListViewHtmlOptions() {
+		return array('class'=>'list-view');
+	}
+	
+	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
@@ -196,6 +204,7 @@ abstract class AbstractItemController extends Controller
 		$this->render('/item/index',array(
 				'class' => $class,
 				'criteria' => Item::findListCriteria($category_search, $category_id, $tags_search, $tags),
+				'htmlOptions' => $this->getListViewHtmlOptions(),
 		));
 	}
 	

@@ -5,6 +5,13 @@ Yii::import('application.controllers.FileItemController');
  */
 class ImageFileItemController extends FileItemController
 {
+	/**
+	 * Overridable htmlOptions to add to the ItemList that is shown on the index action.
+	 * @return multitype:array of htmlOptions
+	 */
+	public function getListViewHtmlOptions() {
+		return array('class'=>'image-list-view');
+	}
 	
 	public function getItemClassName() {
 		return "ImageFileItem";
@@ -33,5 +40,10 @@ class ImageFileItemController extends FileItemController
 		$file = ImageFileItem::model()->findByPk($id);
 		header("Content-type: ".$file->mime_type);
 		echo @file_get_contents($file->getFile());
+	}
+	
+	public function actionIndex() {
+		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/image_gallery.js');
+		return parent::actionIndex();
 	}
 }

@@ -26,6 +26,7 @@ return array(
 		'application.models.*',
 		'application.components.*',
 		'ext.wform.*',
+		'ext.easyimage.EasyImage',
 	),
 
 	'modules'=>array(
@@ -108,6 +109,14 @@ return array(
 		),
 		'cache'=>array(
 				'class'=>'system.caching.CDummyCache',// Use another caching system for better performance
+		),
+		'easyImage' => array(
+				'class' => 'application.extensions.easyimage.EasyImage',
+				'driver' => 'GD',
+				'quality' => 100,
+				'cachePath' => '/assets/easyimage/',
+				'cacheTime' => 2592000,
+				'retinaSupport' => true,
 		),
 	),
 

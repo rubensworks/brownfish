@@ -37,7 +37,7 @@ class Install {
 		Config::setValue(Config::$KEYS['FILE_MAX_SIZE'], 10000);
 		Config::setValue(Config::$KEYS['FILE_ALLOWED_TYPES'], array(
 			'image/gif',
-			'image/jpg',
+			'image/jpeg',
 			'image/png',
 			'application/pdf',
 			'application/x-pdf',

@@ -1,1 +1,1 @@
-<div><?php echo CHtml::image(CHtml::normalizeUrl(array('/ImageFileItem/display', 'id'=>$data->id))); ?></div>
+<div><?php echo Yii::app()->easyImage->thumbOf($data->getFile(), array('crop' => array('width' => 100, 'height' => 100),'type' => 'png',)); ?></div>

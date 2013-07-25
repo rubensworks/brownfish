@@ -1,8 +1,7 @@
-<div class="file-item-row">
-	<div class="name">
-		<?php echo CHtml::image(CHtml::normalizeUrl(array('/ImageFileItem/display', 'id'=>$data->id))); ?>
-	</div>
-	<div class="content">
-		<?php echo $data->item->content; ?>
-	</div>
+<div class="image-file-item-row">
+	<?php echo Yii::app()->easyImage->thumbOf($data->getFile(), array(
+			'type' => 'png',
+			'resize' => array('width' => 200, 'height' => 200),
+			'crop' => array('width' => 100, 'height' => 100),
+	)); ?>
 </div>
