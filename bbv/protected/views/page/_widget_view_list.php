@@ -21,6 +21,7 @@ $this->beginWidget('WidgetWidget', array('name'=>$widget->name, 'id'=>$widget->i
 					'tags'=>$widget->filter_tags?$widget->tags:""
 			),
 	);
+	echo "<br style='clear:both;' />";
 	$this->widget('bootstrap.widgets.TbMenu', array(
 			'type'=>'pills',
 			'stacked'=>true,

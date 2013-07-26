@@ -24,10 +24,10 @@
 						'htmlOptions'=>array('class'=>'pull-right'),
 						'items'=>array(
 								array('label'=>Yii::t('messages', 'menu.home'), 'icon'=>'home', 'url'=>array('/site/index')),
-								array('label'=>Yii::t('messages', 'menu.photos'), 'icon'=>'picture', 'url'=>array('/site/page', 'view'=>'about')),
+								array('label'=>Yii::t('messages', 'menu.photos'), 'icon'=>'picture', 'url'=>array('/ImageFileItem/index')),
 								array('label'=>Yii::t('messages', 'menu.contact'), 'icon'=>'envelope', 'url'=>array('/site/contact')),
-								array('label'=>Yii::t('messages', 'menu.activities'), 'icon'=>'star-empty', 'url'=>array('/site/contact')),
-								array('label'=>Yii::t('messages', 'menu.shop'), 'icon'=>'shopping-cart', 'url'=>array('/site/contact')),
+								//array('label'=>Yii::t('messages', 'menu.activities'), 'icon'=>'star-empty', 'url'=>array('/site/contact')),
+								//array('label'=>Yii::t('messages', 'menu.shop'), 'icon'=>'shopping-cart', 'url'=>array('/site/contact')),
 								array(
 										'class'=>'bootstrap.widgets.TbMenu',
 										'icon'=>'user',

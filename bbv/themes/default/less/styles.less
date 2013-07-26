@@ -415,8 +415,7 @@ article.news-extended{
 	}
 }
 
-.image-list-view .items{
-	.makeFluidRow();
+.image-list-view .items, .well-body{
 	>.image-file-item-row{
 		.well;
 		.makeFluidCol(2);
@@ -427,7 +426,20 @@ article.news-extended{
 		img{
 			vertical-align:middle;
 		}
+		cursor:pointer;
 	}
+}
+
+.gallery-body{
+	text-align:center;
+	width:auto;
+	height:auto;
+	max-height:100%;
+}
+
+.image-view-full{
+	.well;
+	text-align:center;
 }
 
 // The extension icons

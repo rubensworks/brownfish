@@ -44,6 +44,10 @@ class ImageFileItemController extends FileItemController
 	
 	public function actionIndex() {
 		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/image_gallery.js');
+		Yii::app()->clientScript->registerScript('deleteComment',"
+			var imageViewUrl = \"".CHtml::normalizeUrl(array('/ImageFileItem/view', 'id'=>''))."\";
+			var imageDisplayUrl = \"".CHtml::normalizeUrl(array('/ImageFileItem/display', 'id'=>''))."\";
+		", CClientScript::POS_BEGIN);
 		return parent::actionIndex();
 	}
 }

@@ -2,7 +2,7 @@
 $itemItems = array();
 foreach(Utils::getItemTypes() as $type) {
 	$instance = new $type();
-	$itemItems[] = array('label' => $instance->getItemName(), 'url'=>array($type.'/admin'));
+	$itemItems[] = array('label' => $instance->getMultipleItemName(), 'url'=>array($type.'/admin'));
 }
 $otherItems = array(
 	array('label'=>'Categorien', 'url'=>array('category/admin')),

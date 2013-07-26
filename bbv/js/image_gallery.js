@@ -3,11 +3,23 @@ var modal = '<div id="gallery" class="modal hide fade">\
 <a class="close" data-dismiss="modal">&times;</a>\
 <h3>Gallery</h3>\
 </div>\
-<div class="modal-body">\
-<p>One body...</p>\
+<div class="modal-body gallery-body">\
+\
 </div>\
 </div>';
+var $modal = $(modal);
 
 $(document).ready(function() {
-	$(modal).modal();
+	$(".image-file-item-row").live("click", function() {
+		var id = $(this).find("img").attr("id");
+		var $img = $("<img />");
+		$img.load(function(){
+			// TODO: better modal resizing here?
+		});
+		$img.attr('src', imageDisplayUrl+id);
+		var $a = $("<a />").attr('href', imageViewUrl+id).append($img);
+		$modal.modal().find(".modal-body").html($a);
+		
+		
+	});
 });
