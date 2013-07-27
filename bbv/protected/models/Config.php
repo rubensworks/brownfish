@@ -31,7 +31,7 @@ class Config extends WActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'tbl_config';
+		return '{{config}}';
 	}
 
 	/**

@@ -62,7 +62,7 @@ class FileItem extends AbstractItem
 	 */
 	public function tableName()
 	{
-		return 'tbl_item_file';
+		return '{{item_file}}';
 	}
 	
 	/**

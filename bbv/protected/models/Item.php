@@ -37,7 +37,7 @@ class Item extends WActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'tbl_item';
+		return '{{item}}';
 	}
 
 	/**

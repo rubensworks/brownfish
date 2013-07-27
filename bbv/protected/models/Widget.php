@@ -43,7 +43,7 @@ class Widget extends WActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'tbl_widget';
+		return '{{widget}}';
 	}
 
 	/**

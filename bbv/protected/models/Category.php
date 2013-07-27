@@ -24,7 +24,7 @@ class Category extends WActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'tbl_category';
+		return '{{category}}';
 	}
 
 	/**

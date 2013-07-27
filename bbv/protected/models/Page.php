@@ -26,7 +26,7 @@ class Page extends WActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'tbl_page';
+		return '{{page}}';
 	}
 
 	/**

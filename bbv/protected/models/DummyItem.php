@@ -64,7 +64,7 @@ class DummyItem extends AbstractItem
 	 */
 	public function tableName()
 	{
-		return 'tbl_item_dummy';
+		return '{{item_dummy}}';
 	}
 	
 	/**

@@ -68,7 +68,7 @@ class NavigationItem extends AbstractItem
 	 */
 	public function tableName()
 	{
-		return 'tbl_item_navigation';
+		return '{{item_navigation}}';
 	}
 	
 	/**

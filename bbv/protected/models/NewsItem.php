@@ -63,7 +63,7 @@ class NewsItem extends AbstractItem
 	 */
 	public function tableName()
 	{
-		return 'tbl_item_news';
+		return '{{item_news}}';
 	}
 	
 	/**

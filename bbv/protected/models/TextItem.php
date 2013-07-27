@@ -60,7 +60,7 @@ class TextItem extends AbstractItem
 	 */
 	public function tableName()
 	{
-		return 'tbl_item_text';
+		return '{{item_text}}';
 	}
 	
 	/**

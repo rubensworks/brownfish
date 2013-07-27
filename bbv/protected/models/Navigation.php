@@ -32,7 +32,7 @@ class Navigation extends WActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'tbl_navigation';
+		return '{{navigation}}';
 	}
 
 	/**
