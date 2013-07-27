@@ -129,12 +129,11 @@ $notNew = !$model->isNewRecord;
 				'selectionChanged'=>'function(id) {
 		var itemId = $.fn.yiiGridView.getSelection(id);
         $.get(
-                "'.Yii::app()->createUrl('/FileItem/details').'",
+                "'.Yii::app()->createUrl('/FileItem/getInclude').'",
                 { id: itemId[0] },
                 function(data) {
-                        insertFileItem(data.id, data.name);
-                },
-                "json"
+                        insertFileItem(data);
+                }
         );
 }',
 		));

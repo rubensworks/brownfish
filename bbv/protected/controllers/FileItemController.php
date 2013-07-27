@@ -27,7 +27,7 @@ class FileItemController extends AbstractItemController
 	{
 		return array(
 				array('allow', // allow admin user to perform CRUD
-						'actions'=>array('create','update','admin','delete','upload','details'),
+						'actions'=>array('create','update','admin','delete','upload','details','getInclude'),
 						'roles'=>array('manageFiles'),
 				),
 				array('allow',  // allow all users
@@ -70,5 +70,15 @@ class FileItemController extends AbstractItemController
 				'id' => $model->item->id,
 				'name' => $model->item->name,
 		));
+	}
+	
+	/**
+	 * Fetch the to-include html to place this item inside the content editor.
+	 * @param integer $id id of the requested FileItem
+	 */
+	public function actionGetInclude($id) {
+		$model = FileItem::model()->findByPk($id);
+		if($model->isImage()) $this->redirect(array('/ImageFileItem/getInclude', 'id'=>$id));
+		echo CHtml::link($model->item->name, Yii::app()->createAbsoluteUrl('/FileItem/download', array('id'=>$model->id)));
 	}
 }

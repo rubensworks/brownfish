@@ -134,4 +134,11 @@ class FileItem extends AbstractItem
 	public function getMimeTypeClass() {
 		return str_replace("/","_",$this->mime_type);
 	}
+	
+	/**
+	 * Check if this FileItem contains an ImageFileItem
+	 */
+	public function isImage() {
+		return strstr($this->mime_type, "image/");
+	}
 }

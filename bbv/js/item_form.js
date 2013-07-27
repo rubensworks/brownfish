@@ -1,8 +1,7 @@
 // Insert a selected FileItem to the content
-function insertFileItem(id, name) {
+function insertFileItem(include) {
 	var editorInstance = $(".item_content").data("wysihtml5").editor;
-	editorInstance.composer.commands.exec("insertHTML", downloadLink.replace('_NAME_', name).replace('_ID_', id)	);
-	console.log(downloadLink.replace('_NAME_', id).replace('_ID_', id));
+	editorInstance.composer.commands.exec("insertHTML", include);
 	$('#uploadFile').modal('toggle');
 }
 
