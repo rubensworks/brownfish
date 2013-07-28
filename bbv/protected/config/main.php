@@ -8,7 +8,7 @@
 Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 
 // Require the credentials file
-define( 'CREDENTIALS_PATH', dirname(__FILE__) . "/credentials.php" ); // cache it for multiple use
+define('CREDENTIALS_PATH', dirname(__FILE__) . "/config.php");
 require_once(CREDENTIALS_PATH);
 
 // This is the main Web application configuration. Any writable

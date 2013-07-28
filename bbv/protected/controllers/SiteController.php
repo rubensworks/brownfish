@@ -150,4 +150,18 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+	
+	/**
+	 * Install the website
+	 */
+	public function actionInstall() {
+		$this->layout = '';
+		$step = 0;
+		if(!defined('INSTALLED')) {
+			$step = 1;// Add lots of check if installed & requirements...
+			if(isset($_GET['step']) && $_GET['step']==2)
+				Install::install();
+		}
+		$this->render('install_'.$step,array());
+	}
 }
