@@ -40,7 +40,7 @@ class DatabaseCommand extends CConsoleCommand
 	 */
     public function actionDump($all = false, $trueTableNames = false, $prefix = "tbl_") {
     	if($all) {
-    		$dumpLocation = "data/full-dump.mysql.sql";
+    		$dumpLocation = YiiBase::getPathOfAlias('application.data')."/full-dump.mysql.sql";
     		$options = array(
     				'--single-transaction',
     		);
@@ -48,8 +48,8 @@ class DatabaseCommand extends CConsoleCommand
     		return 0;
     	}
     	
-    	$structureDumpLocation = "data/schema.mysql.sql";
-    	$dataDumpLocation = "data/data.mysql.sql";
+    	$structureDumpLocation = YiiBase::getPathOfAlias('application.data')."/schema.mysql.sql";
+    	$dataDumpLocation = YiiBase::getPathOfAlias('application.data')."/data.mysql.sql";
     	
     	$optionsStructure = array(
     			'--single-transaction',

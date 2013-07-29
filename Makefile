@@ -9,6 +9,8 @@ BASE_DIR_TEST = bbv/protected/tests/
 BASE_DIR_TEST_WFORM = bbv/protected/extensions/wform/tests/
 TEST_CONFIG = phpunit.xml
 
+YIIC = bbv/protected/yiic
+
 ifeq ($(DEBUG),True)
     LESSC = lessc
 else
@@ -29,4 +31,9 @@ test-app:
 
 test-extension-wform:
 	$(PHPUNIT) --configuration ${BASE_DIR_TEST_WFORM}${TEST_CONFIG} ${BASE_DIR_TEST_WFORM}
-
+	
+dump-distribute:
+	${YIIC} database dump
+	
+dump-all:
+	${YIIC} database dump --all
