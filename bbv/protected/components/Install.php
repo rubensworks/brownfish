@@ -24,7 +24,7 @@ class Install {
 		$fileLocation = YiiBase::getPathOfAlias('application.config')."/config.php";
 		$content = "<?php\ndefine('INSTALLED', true);\n";
 		foreach($data as $key=>$value) {
-			$content .= "\ndefine('$key', '$value');";
+			$content .= "\ndefine('".addslashes($key)."', '".addslashes($value)."');";
 		}
 		$ret = file_put_contents($fileLocation, $content);
 		chmod($fileLocation, 0666);
