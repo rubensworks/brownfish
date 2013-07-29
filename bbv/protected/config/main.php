@@ -77,7 +77,7 @@ return array(
 			'charset' => 'utf8',
 			//'schemaCachingDuration'=>86400,   //TODO: Enable
 			'enableProfiling'=>true,
-			'tablePrefix' => 'tbl_',
+			'tablePrefix' => TBL_PREFIX,
 		),
 		'authManager'=>array(
 				'class'=>'CDbAuthManager', // Database driven Yii-Auth Manager

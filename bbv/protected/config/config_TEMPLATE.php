@@ -9,3 +9,6 @@ define('DB_HOST', 'ENTER HOSTNAME');
 define('DB_NAME', 'ENTER DATABASE NAME');
 define('DB_USERNAME', 'ENTER DB USERNAME');
 define('DB_PASSWORD', 'ENTER DB PASSWORD');
+
+/* Miscellaneous */
+define('TBL_PREFIX', 'ENTER TABLE PREFIX');

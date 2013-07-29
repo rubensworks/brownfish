@@ -15,6 +15,7 @@ class Install {
 			'DB_NAME',
 			'DB_USERNAME',
 			'DB_PASSWORD',
+			'TBL_PREFIX',
 	);
 	
 	/**
