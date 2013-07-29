@@ -16,6 +16,7 @@ class Install {
 			'DB_USERNAME',
 			'DB_PASSWORD',
 			'TBL_PREFIX',
+			'MYSQLDUMP_COMMAND',
 	);
 	
 	/**
@@ -33,6 +34,19 @@ class Install {
 	}
 	
 	/**
+	 * Create a command from a dumped file location
+	 * @param string $location the location of an sql dump file
+	 * @return CDbCommand to run the dump file
+	 */
+	protected static function createCommand($location) {
+		$connection = Yii::app()->db;
+		$content = file_get_contents($location);
+		$content = preg_replace('/{{(.*?)}}/', $connection->tablePrefix.'\1', $content);
+		$command = $connection->createCommand($content);
+		return $command;
+	}
+	
+	/**
 	 * Execute the required sql scripts to make the required tables
 	 */
 	public static function buildDatabase() {
@@ -41,26 +55,51 @@ class Install {
 		$dataLocation = YiiBase::getPathOfAlias('application.data')."/data.mysql.sql";
 		
 		// Make the commands
-		$connection=Yii::app()->db;
-		$schemaCommand=$connection->createCommand(file_get_contents($schemaLocation));
-		$dataCommand=$connection->createCommand(file_get_contents($dataLocation));
+		$schemaCommand = self::createCommand($schemaLocation);
+		$dataCommand = self::createCommand($dataLocation);
 		
-		// Execute the files
-		$schemaCommand->execute();
-		$dataCommand->execute();
+		// Execute the commands
+		$schemaCommand->execute();$schemaCommand = false;
+		$dataCommand->execute();$dataCommand = false;
+	}
+	
+	/**
+	 * Make the admin account
+	 * @param string $username name for the admin account
+	 * @param string $password password for the admin account
+	 */
+	public static function makeAdmin($username, $password) {
+		// Make the user
+		$admin = new User('install');
+		$admin->pwd = $password;
+		$admin->name = $username;
+		$admin->save();
+		
+		// Give admin right
+		Yii::app()->authManager->assign('Admins', $admin->id);
+		return $admin;
 	}
 	
 	/**
 	 * Make the home page with default widgets
+	 * @param $admin User model for the admin user
 	 */
-	public static function makeIndexPage() {
-		$page = new Page();
+	public static function makeIndexPage($admin) {
+		$page = new Page('install');
 		$page->columns = 1;
+		$page->author_id = $admin->id;
 		$page->name = "Home";
 		$page->save();
 		Config::setValue(Config::$KEYS['INDEX_PAGE'], $page->id);
 		
 		// TODO: Add default widgets & stuff
+	}
+	
+	/**
+	 * Make a stub navigation bar with a few obvious links
+	 */
+	public static function makeStubNavigation() {
+		// TODO
 	}
 	
 	/**
@@ -91,10 +130,12 @@ class Install {
 	/**
 	 * Make the config file, create the database tables and save all the basic settings into the database
 	 */
-	public static function install() {
-		/*Install::writeConfig(array('IETS'=>'WAT'));  // TODO: fill in the params
-		self::buildDatabase();
-		self::makeIndexPage();
+	public static function completeInstall() {
+		//Install::writeConfig(array('IETS'=>'WAT'));  // TODO: fill in the params
+		/*self::buildDatabase();
+		$admin = self::makeAdmin("admin", "admin"); // TMP!
+		self::makeIndexPage($admin);
+		self::makeStubNavigation();
 		self::makeDefaultCategory();
 		self::setPreferences();*/
 		// Commented out for debugging safety

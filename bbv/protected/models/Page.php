@@ -74,7 +74,7 @@ class Page extends WActiveRecord
 	 */
 	protected function beforeValidate()
 	{
-		if($this->isNewRecord) {
+		if($this->isNewRecord && !$this->scenario == 'install') {
 			$this->author_id = Yii::app()->user->getId();
 		}
 	

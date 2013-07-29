@@ -155,12 +155,13 @@ class SiteController extends Controller
 	 * Install the website
 	 */
 	public function actionInstall() {
+		Install::completeInstall();
 		$this->layout = '';
 		$step = 0;
 		if(!defined('INSTALLED')) {
 			$step = 1;// Add lots of check if installed & requirements...
 			if(isset($_GET['step']) && $_GET['step']==2)
-				Install::install();
+				Install::completeInstall();
 		}
 		$this->render('install_'.$step,array());
 	}

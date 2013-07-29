@@ -45,7 +45,7 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, mail', 'unique', 'on'=>'register'),
+			array('name, mail', 'unique', 'on'=>'register, install'),
 			array('mail', 'email', 'on'=>'register'),
 			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements(), 'on'=>'register'),
 			array('pwd', 'compare', 'on'=>'register'),
@@ -141,7 +141,7 @@ class User extends CActiveRecord
 	  */
 	 protected function beforeSave()
 	 {
-	 	if($this->scenario == 'register')
+	 	if($this->scenario == 'register' || $this->scenario = 'install')
 			$this->pwd=$this->encode($this->pwd);  
 		return parent::beforeSave();
 	 }
