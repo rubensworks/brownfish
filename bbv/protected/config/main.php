@@ -84,6 +84,10 @@ return array(
 				'connectionID'=>'db', // db connection as above
 				'defaultRoles'=>array('authenticated','guest'), // default Role for logged in users
 				'showErrors'=>true, // show eval()-errors in buisnessRules
+				// Custom table names
+				'itemTable'=>'{{auth_item}}',
+				'assignmentTable'=>'{{auth_assignment}}',
+				'itemChildTable'=>'{{auth_item_child}}',
 		),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
