@@ -19,3 +19,7 @@ bbv/protected/data/files/*
 
 # Ignore eclipse user-specific builders
 .externalToolBuilders/*
+
+# Git extensions in IDE's like Eclipse cause symlinks to folder to want to track everything in that folder, but we don't want that, so let's ignore them.
+bbv/themes/install/css/*
+bbv/themes/install/img/*

@@ -106,6 +106,19 @@ return array(
     'form.navigation.newElement' => 'Nieuw Element',
     'form.navigation.newLink' => 'Nieuwe Link',
     
+    // install
+    'form.install.db_host' => 'Database host',
+    'form.install.db_name' => 'Database naam',
+    'form.install.db_username' => 'Database gebruikersnaam',
+    'form.install.db_password' => 'Database wachtwoord',
+    'form.install.tbl_prefix' => 'Tabel prefix',
+    'form.install.mysqldump_command' => '\'mysqldump\'-commando locatie',
+    'form.install.error.no_connection' => 'Er kan geen verbinding gemaakt worden met deze database met de ingevoerde gegevens.',
+    'form.install.info.already_installed' => 'De website installatie is al gedaan.',
+    'form.install.info.installed' => 'De installatie is afgelopen, bekijk de site nu!',
+    'form.install.title.configuration' => 'Configuratie',
+    'form.install.title.admin' => 'Admin account',
+    
     ///////////////
     // dashboard //
     ///////////////
@@ -160,6 +173,7 @@ return array(
     'model.user.mail' => 'E-Mail',
     'model.user.datereg' => 'Datum van registratie',
     'model.user.pwd' => 'Wachtwoord',
+    'model.user.pwd_repeat' => 'Wachtwoord (2)',
     'model.user.secrq' => 'Geheime vraag',
     'model.user.secra' => 'Geheim antwoord',
     'model.user.gender' => 'Geslacht',
@@ -217,6 +231,12 @@ return array(
     'error.404' => 'De opgegeven pagina bestaat niet.',
     'error.navigation.rootElementDoesNotExist' => 'Het opgegeven navigatie ouderelement bestaat niet.',
     'error.somethingWentWrong' => 'Er is iets misgelopen, probeer het later opnieuw.',
+    
+    //////////
+    // misc //
+    //////////
+    
+    'misc.congratulations' => 'Gefeliciteerd',
 );
 
 ?>

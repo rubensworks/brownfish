@@ -106,6 +106,19 @@ return array(
     'form.navigation.newElement' => 'New Element',
     'form.navigation.newLink' => 'New Link',
     
+    // install
+    'form.install.db_host' => 'Database host',
+    'form.install.db_name' => 'Database name',
+    'form.install.db_username' => 'Database username',
+    'form.install.db_password' => 'Database password',
+    'form.install.tbl_prefix' => 'Table prefix',
+    'form.install.mysqldump_command' => '\'mysqldump\'-command location',
+    'form.install.error.no_connection' => 'Unable to connect to the given database with the provided credentials.',
+    'form.install.info.already_installed' => 'The installation is already completed, no need to re-install.',
+    'form.install.info.installed' => 'Your installation was completed, check out your site now!',
+    'form.install.title.configuration' => 'Configuration',
+    'form.install.title.admin' => 'Admin account',
+    
     ///////////////
     // dashboard //
     ///////////////
@@ -160,6 +173,7 @@ return array(
     'model.user.mail' => 'E-Mail',
     'model.user.datereg' => 'Date of registration',
     'model.user.pwd' => 'Password',
+    'model.user.pwd_repeat' => 'Password (2)',
     'model.user.secrq' => 'Secret question',
     'model.user.secra' => 'Secret answer',
     'model.user.gender' => 'Gender',
@@ -217,6 +231,12 @@ return array(
     'error.404' => 'The requested page does not exist.',
     'error.navigation.rootElementDoesNotExist' => 'The given navigation root element does not exist.',
     'error.somethingWentWrong' => 'Something went wrong, please try again later.',
+    
+    //////////
+    // misc //
+    //////////
+    
+    'misc.congratulations' => 'Congratulations',
 );
 
 ?>

@@ -18,12 +18,12 @@ $this->breadcrumbs=array(
 			)); ?>
 
 			<p class="hint muted">
-				<? echo Yii::t('messages', 'form.login.noAccountYet') ?>
-				<? echo CHtml::link(Yii::t('messages', 'form.login.registerHere'), array('user/register')) ?>
+				<?php echo Yii::t('messages', 'form.login.noAccountYet') ?>
+				<?php echo CHtml::link(Yii::t('messages', 'form.login.registerHere'), array('user/register')) ?>
 			</p>
 
 			<p class="muted">
-				<? echo Yii::t('messages', 'form.general.requiredFields') ?>
+				<?php echo Yii::t('messages', 'form.general.requiredFields') ?>
 			</p>
 			
 			<?php if($model->hasErrors()) { ?>
