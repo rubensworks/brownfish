@@ -128,17 +128,33 @@ class Install {
 	}
 	
 	/**
-	 * Make the config file, create the database tables and save all the basic settings into the database
+	 * Tests the database connection before allowing saving
+	 * @param string $DB_HOST database host
+	 * @param string $DB_USERNAME database username
+	 * @param string $DB_PASSWORD database password
+	 * @param string $DB_NAME database name
+	 * @return true if the connection tested succesfully
 	 */
-	public static function completeInstall() {
-		//Install::writeConfig(array('IETS'=>'WAT'));  // TODO: fill in the params
-		/*self::buildDatabase();
-		$admin = self::makeAdmin("admin", "admin"); // TMP!
+	public static function testConnection($DB_HOST, $DB_USERNAME, $DB_PASSWORD, $DB_NAME)
+	{
+		$connection = mysqli_connect($DB_HOST,$DB_USERNAME,$DB_PASSWORD,$DB_NAME);
+		return !mysqli_connect_errno($connection);
+	}
+	
+	/**
+	 * Make the config file, create the database tables and save all the basic settings into the database
+	 * @param $config map of key=>values to save in the config file
+	 * @param $username username for the admin account
+	 * @param $password password for the admin account
+	 */
+	public static function completeInstall($config, $username, $password) {
+		self::writeConfig($config);
+		self::buildDatabase();
+		$admin = self::makeAdmin($username, $password);
 		self::makeIndexPage($admin);
 		self::makeStubNavigation();
 		self::makeDefaultCategory();
-		self::setPreferences();*/
-		// Commented out for debugging safety
+		self::setPreferences();
 	}
 }
 ?>

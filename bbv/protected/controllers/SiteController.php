@@ -155,14 +155,20 @@ class SiteController extends Controller
 	 * Install the website
 	 */
 	public function actionInstall() {
-		Install::completeInstall();
-		$this->layout = '';
+		Yii::app()->theme = 'install';
+		$model=new InstallForm();
 		$step = 0;
+		$error = false;
 		if(!defined('INSTALLED')) {
-			$step = 1;// Add lots of check if installed & requirements...
-			if(isset($_GET['step']) && $_GET['step']==2)
-				Install::completeInstall();
+			$step = 1;
+			if(isset($_POST['InstallForm'])) {
+				$model->attributes = $_POST['InstallForm'];
+				if($model->testConnection()) $step = 2;
+				else $error = Yii::t('messages', 'form.install.error.no_connection');
+			}
+			if($step == 2)
+				Install::completeInstall($model->prepareData(Install::$CONFIG_KEYS), $model->username, $model->password);
 		}
-		$this->render('install_'.$step,array());
+		$this->render('install_'.$step, array('model'=>$model, 'error'=>$error));
 	}
 }
