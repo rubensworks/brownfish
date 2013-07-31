@@ -25,23 +25,12 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'application.modules.brownfish.controllers.*',
 		'ext.wform.*',
 		'ext.easyimage.EasyImage',
 	),
 
 	'modules'=>array(
-		// uncomment the following to enable the Gii tool
-		/*
-		'gii'=>array(
-			'class'=>'system.gii.GiiModule',
-			'password'=>'Enter Your Password Here',
-		 	// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('127.0.0.1','::1'),
-			'generatorPaths'=>array(
-                'bootstrap.gii',
-            ),
-		),
-		*/	
 		'rbam'=>array(
 			'applicationLayout'=>'webroot.themes.default.views.layouts.main',
 			//'initialise'=>true,
@@ -52,12 +41,10 @@ return array(
 	'theme'=>'default',
 
 	// application components
-	'components'=>array(
+	'components'=>array(	
 		'user'=>array(
-			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
-		// uncomment the following to enable URLs in path-format
 		
 		'urlManager'=>array(
 			'urlFormat'=>'path',
@@ -76,14 +63,14 @@ return array(
 			'password' => DB_PASSWORD,
 			'charset' => 'utf8',
 			//'schemaCachingDuration'=>86400,   //TODO: Enable
-			'enableProfiling'=>true,
+			'enableProfiling'=>YII_DEBUG,
 			'tablePrefix' => TBL_PREFIX,
 		),
 		'authManager'=>array(
 				'class'=>'CDbAuthManager', // Database driven Yii-Auth Manager
 				'connectionID'=>'db', // db connection as above
 				'defaultRoles'=>array('authenticated','guest'), // default Role for logged in users
-				'showErrors'=>true, // show eval()-errors in buisnessRules
+				'showErrors'=>YII_DEBUG, // show eval()-errors in buisnessRules
 				// Custom table names
 				'itemTable'=>'{{auth_item}}',
 				'assignmentTable'=>'{{auth_assignment}}',
