@@ -19,6 +19,10 @@ abstract class AbstractItem extends WActiveRecord
 	public $date_changed_search;
 	
 	public $holdContent = true;
+	/**
+	 * @var boolean set this to false to disable commenting for this model(-instance)
+	 */
+	public $commenting = true;
 	
 	/**
 	 * Return a string representation of the type of the item

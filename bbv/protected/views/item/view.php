@@ -18,9 +18,11 @@ try {
 
 <hr />
 <?php
-$this->widget('Commenting', array(
-		'item'=>$model->item,
-	));
+if($model->commenting) {
+	$this->widget('Commenting', array(
+			'item'=>$model->item,
+		));
+}
 ?>
 
 </section>
