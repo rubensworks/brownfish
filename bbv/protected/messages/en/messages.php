@@ -199,6 +199,10 @@ return array(
     // items
     'model.items.navigation.navigation' => 'Navigation',
     'model.items.news.excerpt' => 'Excerpt',
+    'model.items.news.conditional_date' => 'Date filtering',
+    'model.items.news.startdate' => 'Start date',
+    'model.items.news.enddate' => 'End date',
+    'model.items.news.hide' => 'Hide',
     'model.items.file.extension' => 'Extension',
     'model.items.file.file' => 'File',
     
@@ -231,6 +235,8 @@ return array(
     'error.404' => 'The requested page does not exist.',
     'error.navigation.rootElementDoesNotExist' => 'The given navigation root element does not exist.',
     'error.somethingWentWrong' => 'Something went wrong, please try again later.',
+    
+    'form.error.noDate' => '{attribute} is not a date!',
     
     //////////
     // misc //

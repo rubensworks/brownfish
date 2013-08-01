@@ -15,7 +15,8 @@ class ItemList extends CListView
 	
 	public function init()
 	{
-		$this->dataProvider = new CActiveDataProvider($this->class, array(
+		$class = $this->class;
+		$this->dataProvider = new CActiveDataProvider($class::model()->visible(), array(
 		    'criteria'=>$this->criteria,
 		));
 		$this->template = ItemTable::$TEMPLATE;

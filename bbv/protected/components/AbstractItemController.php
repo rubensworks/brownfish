@@ -160,7 +160,7 @@ abstract class AbstractItemController extends Controller
 	public function actionAdmin()
 	{
 		$class = $this->getItemClassName();
-		$model=new $class('search');
+		$model=new $class('admin');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET[$class])){
 			$model->attributes=$_GET[$class];
@@ -215,7 +215,7 @@ abstract class AbstractItemController extends Controller
 	public function actionView($id)
 	{
 		$class = $this->getItemClassName();
-		$model = $class::model()->cache(Utils::$CACHE_DURATION_SHORT)->findByPk($id);
+		$model = $class::model()->visible()->cache(Utils::$CACHE_DURATION_SHORT)->findByPk($id);
 		$model->scenario = 'view';
 	
 		$this->render('/item/view',array(

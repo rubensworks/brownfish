@@ -199,6 +199,10 @@ return array(
     // items
     'model.items.navigation.navigation' => 'Navigatie',
     'model.items.news.excerpt' => 'Inleiding',
+    'model.items.news.conditional_date' => 'Filter op datum',
+    'model.items.news.startdate' => 'Start datum',
+    'model.items.news.enddate' => 'Eind datum',
+    'model.items.news.hide' => 'Verberg',
     'model.items.file.extension' => 'Extensie',
     'model.items.file.file' => 'Bestand',
     
@@ -231,6 +235,8 @@ return array(
     'error.404' => 'De opgegeven pagina bestaat niet.',
     'error.navigation.rootElementDoesNotExist' => 'Het opgegeven navigatie ouderelement bestaat niet.',
     'error.somethingWentWrong' => 'Er is iets misgelopen, probeer het later opnieuw.',
+    
+    'form.error.noDate' => '{attribute} is geen datum!',
     
     //////////
     // misc //

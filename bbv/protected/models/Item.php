@@ -53,7 +53,7 @@ class Item extends WActiveRecord
 			array('tags', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('name, author, category, tags', 'safe', 'on'=>'search'),
+			array('name, author, category, tags', 'safe', 'on'=>'search, admin'),
 		);
 	}
 

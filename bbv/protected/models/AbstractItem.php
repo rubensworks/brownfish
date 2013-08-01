@@ -44,7 +44,7 @@ abstract class AbstractItem extends WActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-				array('id, name, item_search, author_search, category_search, tags_search', 'safe', 'on'=>'search'),
+				array('id, name, item_search, author_search, category_search, tags_search', 'safe', 'on'=>'search, admin'),
 		);
 	}
 	
@@ -89,7 +89,7 @@ abstract class AbstractItem extends WActiveRecord
 	}
 	
 	/**
-	 * Overridable basic DbCriteria
+	 * Overridable basic DbCriteria, will be used for all item look-ups
 	 * @return CDbCriteria
 	 */
 	public function makeDbCriteria() {
@@ -159,5 +159,19 @@ abstract class AbstractItem extends WActiveRecord
 	public function afterDelete(){
 		$this->item->delete();
 		return parent::afterDelete();
+	}
+	
+	/**
+	 * Override these scopes for action specific scopes.
+	 * 'visible': for the view and index(=ItemList) actions
+	 * @return multitype:multitype:string
+	 */
+	public function scopes()
+	{
+		return array(
+				'visible'=>array(
+						
+				),
+		);
 	}
 }

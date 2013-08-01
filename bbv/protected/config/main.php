@@ -118,5 +118,8 @@ return array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
 		//'googleAnalyticsTrackingID'=>'[Enter tracking ID to enable]',
+		'dateFormat'=>'yyyy-dd-mm', // Used by date validator
+		'dateFormatPicker'=>'yy-dd-mm', // Used by CJuiDatePicker
+		'dateFormatCore'=>'Y-d-m', // Used by php date() formatter
 	),
 );
