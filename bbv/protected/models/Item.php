@@ -201,6 +201,6 @@ class Item extends WActiveRecord
 	 public static function findListByWidget($widget) {
 	 	$class = $widget->item_type;
 	 	$criteria = self::findListCriteria($widget->filter_category, $widget->category_id, $widget->filter_tags, $widget->tags, $widget->amount);
-	 	return $class::model()->findAll($criteria);
+	 	return $class::model()->visible()->findAll($criteria);
 	 }
 }
