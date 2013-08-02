@@ -91,7 +91,7 @@ return array(
 				
 				array(
 					'class'=>'CWebLogRoute',
-					//'levels'=>'error, warning',
+					'enabled'=>YII_DEBUG,
 				),
 				
 			),
