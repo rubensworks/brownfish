@@ -232,6 +232,8 @@ return array(
     // error //
     ///////////
     
+	'error.main' => 'Error',
+	'error.goBack' => 'Go back',
     'error.404' => 'The requested page does not exist.',
     'error.navigation.rootElementDoesNotExist' => 'The given navigation root element does not exist.',
     'error.somethingWentWrong' => 'Something went wrong, please try again later.',

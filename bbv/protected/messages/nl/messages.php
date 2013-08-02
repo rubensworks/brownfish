@@ -232,6 +232,8 @@ return array(
     // error //
     ///////////
     
+	'error.main' => 'Fout',
+	'error.goBack' => 'Ga terug',
     'error.404' => 'De opgegeven pagina bestaat niet.',
     'error.navigation.rootElementDoesNotExist' => 'Het opgegeven navigatie ouderelement bestaat niet.',
     'error.somethingWentWrong' => 'Er is iets misgelopen, probeer het later opnieuw.',
