@@ -17,7 +17,15 @@ class DatabaseCommand extends CConsoleCommand
 	 * @param string $location the location to dump the contents to
 	 */
 	protected function runDump($options, $location) {
-		exec(MYSQLDUMP_COMMAND.' --user='.DB_USERNAME.' --password='.DB_PASSWORD.' --host='.DB_HOST.' '.DB_NAME.' '.implode(" ",$options).' > '.$location);
+		$extraOptions = "";
+		
+		// Since the dump command doesn't (always) have this options, we just do it the old fashioned way
+		if($found = array_search("--skip-auto-increment", $options)) {
+			$extraOptions .= " | sed 's/ AUTO_INCREMENT=[0-9]*//'";
+			unset($options[$found]);
+		}
+		
+		exec(MYSQLDUMP_COMMAND.' --user='.DB_USERNAME.' --password='.DB_PASSWORD.' --host='.DB_HOST.' '.DB_NAME.' '.implode(" ",$options).$extraOptions.' > '.$location);
 		echo "Dumped to ".$location."\n";
 	}
 	
@@ -54,6 +62,7 @@ class DatabaseCommand extends CConsoleCommand
     	$optionsStructure = array(
     			'--single-transaction',
     			'--no-data',
+    			'--skip-auto-increment',
     	);
     	$optionsData = array(
     			'--single-transaction',
