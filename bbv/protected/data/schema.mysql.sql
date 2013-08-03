@@ -132,7 +132,7 @@ CREATE TABLE `{{item}}` (
   KEY `author_id` (`author_id`),
   CONSTRAINT `{{item_ibfk_1}}` FOREIGN KEY (`category_id`) REFERENCES `{{category}}` (`category_id`),
   CONSTRAINT `{{item_ibfk_2}}` FOREIGN KEY (`author_id`) REFERENCES `{{user}}` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -191,6 +191,10 @@ DROP TABLE IF EXISTS `{{item_news}}`;
 CREATE TABLE `{{item_news}}` (
   `id` int(7) NOT NULL,
   `excerpt` varchar(500) NOT NULL,
+  `conditional_date` int(1) NOT NULL,
+  `startdate` date NOT NULL,
+  `enddate` date NOT NULL,
+  `hide` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   CONSTRAINT `{{item_news_ibfk_1}}` FOREIGN KEY (`id`) REFERENCES `{{item}}` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -245,7 +249,7 @@ CREATE TABLE `{{page}}` (
   PRIMARY KEY (`id`),
   KEY `author_id` (`author_id`),
   CONSTRAINT `{{page_ibfk_1}}` FOREIGN KEY (`author_id`) REFERENCES `{{user}}` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -322,7 +326,7 @@ CREATE TABLE `{{widget}}` (
   PRIMARY KEY (`id`),
   KEY `page_id` (`page_id`),
   CONSTRAINT `{{widget_ibfk_1}}` FOREIGN KEY (`page_id`) REFERENCES `{{page}}` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=137 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -334,4 +338,4 @@ CREATE TABLE `{{widget}}` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-07-29 20:43:09
+-- Dump completed on 2013-08-03 11:10:38
