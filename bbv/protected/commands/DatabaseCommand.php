@@ -1,8 +1,8 @@
 <?php
 
 // Require the credentials file
-define('CREDENTIALS_PATH', dirname(__FILE__) . "/../config/config.php");
-require_once(CREDENTIALS_PATH);
+//define('CREDENTIALS_PATH', dirname(__FILE__) . "/../config/config.php");
+//require_once(CREDENTIALS_PATH);
 /**
  * A command to execute database manipulation.
  * @author Ruben Taelman
