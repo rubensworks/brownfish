@@ -5,6 +5,20 @@ $this->breadcrumbs=array(
 
 ?>
 <section>
+
+<?php
+if(Yii::app()->user->checkAccess('managePages')) {
+	$this->widget('bootstrap.widgets.TbButton', array(
+	    'label' => Yii::t('messages', 'form.general.update'),
+		'icon' => 'pencil white',
+	    'type' => 'primary',
+		'url' => CHtml::normalizeUrl(array('/Page/Update', 'id'=>$model->id)),
+	    'htmlOptions' => array(
+			'class' => 'pull-right',
+	    ),
+	));
+} ?>
+
 <h1><?php echo $model->name; ?></h1>
 
 <div class="row-fluid">
