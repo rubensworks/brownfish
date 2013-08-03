@@ -1,9 +1,3 @@
-<div class="input-row">
-    <?php echo $form->labelEx($model, 'excerpt'); ?>
-    <?php echo $form->textArea($model, 'excerpt', array('rows'=>10, 'maxlength'=>500)); ?>
-    <?php echo $form->error($model, 'excerpt'); ?>
-</div>
-
 <div class="row-fluid">
 	<div class="span1 input-row">
 	    <?php echo $form->labelEx($model, 'conditional_date'); ?>
@@ -38,4 +32,10 @@
 	    <?php echo $form->checkbox($model, 'hide'); ?>
 	    <?php echo $form->error($model, 'hide'); ?>
 	</div>
+</div>
+
+<div class="input-row">
+    <?php echo $form->labelEx($model, 'excerpt'); ?>
+    <?php echo $form->textArea($model, 'excerpt', array('rows'=>10, 'maxlength'=>500)); ?>
+    <?php echo $form->error($model, 'excerpt'); ?>
 </div>
