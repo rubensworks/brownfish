@@ -10,9 +10,9 @@ $this->breadcrumbs=array(
 
 <?php
 try {
-	$this->renderPartial('/'.$this->getItemClassName().'/_item_extended', array('data'=>$model));
+	$this->renderPartial('/'.$this->getItemClassNameCamel().'/_item_extended', array('data'=>$model));
 } catch(CException $e) {
-	$this->renderPartial('/'.$this->getItemClassName().'/_item', array('data'=>$model));
+	$this->renderPartial('/'.$this->getItemClassNameCamel().'/_item', array('data'=>$model));
 }
 ?>
 

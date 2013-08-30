@@ -15,6 +15,13 @@ abstract class AbstractItemController extends Controller
 	public abstract function getItemClassName();
 	
 	/**
+	 * The name of the model class in camel casing
+	 */
+	public function getItemClassNameCamel() {
+		return lcfirst($this->getItemClassName());
+	}
+	
+	/**
 	 * The columns of the model to be used inside the ItemList besides the default item columns
 	 */
 	public abstract function getListColumns();

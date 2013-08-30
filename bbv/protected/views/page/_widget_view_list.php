@@ -1,7 +1,7 @@
 <?php
 $this->beginWidget('WidgetWidget', array('name'=>$widget->name, 'id'=>$widget->id));	
 	$items = Item::findListByWidget($widget);
-	$class = $widget->item_type;
+	$class = lcfirst($widget->item_type);
 	$displayItems = array();
 	if($class::$_CUSTOM_LIST_VIEW) {
 		foreach($items as $item) {

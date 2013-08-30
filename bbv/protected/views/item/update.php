@@ -12,8 +12,8 @@ $this->breadcrumbs=array(
 <?php
 $this->widget('ItemForm', array(
 		'model'=>$model,
-		'view'=>'/'.$this->getItemClassName().'/_form',
-		'afterView'=>'/'.$this->getItemClassName().'/_after_form',
+		'view'=>'/'.$this->getItemClassNameCamel().'/_form',
+		'afterView'=>'/'.$this->getItemClassNameCamel().'/_after_form',
 		'options'=>$this->itemFormOptions,
 	));
 ?>

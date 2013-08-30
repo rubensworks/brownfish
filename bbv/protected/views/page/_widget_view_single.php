@@ -1,5 +1,5 @@
 <?php
-$class = $widget->item_type;
+$class = lcfirst($widget->item_type);
 $data = $class::model()->visible()->findByPk($widget->item_id);
 if($data != NULL) {
 	$this->renderPartial('/'.$class.'/_item', array(
