@@ -1,8 +1,9 @@
 <?php
-$class = lcfirst($widget->item_type);
+$class = $widget->item_type;
+$camelClass = lcfirst($class);
 $data = $class::model()->visible()->findByPk($widget->item_id);
 if($data != NULL) {
-	$this->renderPartial('/'.$class.'/_item', array(
+	$this->renderPartial('/'.$camelClass.'/_item', array(
 		'compact' => true,
 		'overrideTitle' => $widget->name,
 		'data' => $data,
