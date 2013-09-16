@@ -1,4 +1,4 @@
-<?php $this->beginWidget('WidgetWidget', array('name'=>CHtml::link(isset($overrideTitle)?$overrideTitle:$data->item->name, array('newsitem/view', 'id'=>$data->item->id)), 'id'=>$data->id)); ?>
+<?php $this->beginWidget('WidgetWidget', array('name'=>CHtml::link(isset($overrideTitle)?$overrideTitle:$data->item->name, array('newsItem/view', 'id'=>$data->item->id)), 'id'=>$data->id)); ?>
 <article class="news">
 	<?php if(!(isset($compact) && $compact)){ ?>
 		<aside>
