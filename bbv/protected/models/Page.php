@@ -80,6 +80,15 @@ class Page extends WActiveRecord
 	
 		return parent::beforeValidate();
 	}
+	
+	/**
+	 * Clear page cache after save
+	 */
+	protected function afterSave()
+	{ 
+		self::flushCache();
+		return parent::afterSave();
+	}
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -97,5 +106,12 @@ class Page extends WActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+	/**
+	 * Flush cache for pages
+	 */
+	public static function flushCache() {
+		Yii::app()->getComponent("cache")->flush();
 	}
 }

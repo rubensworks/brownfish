@@ -97,6 +97,15 @@ class Widget extends WActiveRecord
 			'item_type_display' => Yii::t('messages', 'model.widget.itemType'),
 		);
 	}
+	
+	/**
+	 * Clear page cache after save
+	 */
+	protected function afterSave()
+	{
+		Page::flushCache();
+		return parent::afterSave();
+	}
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
