@@ -12,6 +12,7 @@ class ItemList extends CListView
 {
 	public $class;
 	public $criteria;
+	public $pageSize = 10;
 	
 	public function init()
 	{
@@ -19,6 +20,7 @@ class ItemList extends CListView
 		$this->dataProvider = new CActiveDataProvider($class::model()->visible(), array(
 		    'criteria'=>$this->criteria,
 		));
+		$this->dataProvider->pagination->pageSize = $this->pageSize;
 		$this->template = ItemTable::$TEMPLATE;
 		$this->summaryText = ItemTable::$SUMMARYTEXT;
 		$this->enablePagination = true;

@@ -5,6 +5,8 @@ Yii::import('application.controllers.FileItemController');
  */
 class ImageFileItemController extends FileItemController
 {
+	public $pageSize = 12;
+	
 	/**
 	 * Overridable htmlOptions to add to the ItemList that is shown on the index action.
 	 * @return multitype:array of htmlOptions

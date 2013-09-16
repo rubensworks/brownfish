@@ -67,6 +67,7 @@ $this->widget('ItemList', array(
 		'class' => $class,
 		'criteria' => $criteria,
 		'htmlOptions'=>$htmlOptions,
+		'pageSize'=>$pageSize,
 ));
 
 ?>

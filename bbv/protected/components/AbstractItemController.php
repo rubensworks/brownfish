@@ -8,6 +8,7 @@
 abstract class AbstractItemController extends Controller
 {
 	public $itemFormOptions = array();
+	public $pageSize = 10;
 	
 	/**
 	 * The name of the model class
@@ -212,6 +213,7 @@ abstract class AbstractItemController extends Controller
 				'class' => $class,
 				'criteria' => Item::findListCriteria($category_search, $category_id, $tags_search, $tags),
 				'htmlOptions' => $this->getListViewHtmlOptions(),
+				'pageSize' => $this->pageSize,
 		));
 	}
 	
