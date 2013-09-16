@@ -158,6 +158,15 @@ class Item extends WActiveRecord
 	 }
 	 
 	 /**
+	  * Clear page cache after save
+	  */
+	 protected function afterSave()
+	 {
+	 	Page::flushCache();
+	 	return parent::afterSave();
+	 }
+	 
+	 /**
 	  * Build a criteria for a list of Item's that is filterable by category and tags
 	  * @param unknown $filter_category if the filter should apply to category_id
 	  * @param unknown $category_id the category id to filter on (only Item's from this category id will be allowed)
