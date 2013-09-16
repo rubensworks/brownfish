@@ -51,7 +51,7 @@ class CategoryController extends Controller
 		{
 			$model->attributes=$_POST['Category'];
 			if($model->save())	
-				$this->redirect(array('index'));
+				$this->redirect(array('admin'));
 		}
 
 		$this->render('create',array(
@@ -75,7 +75,7 @@ class CategoryController extends Controller
 		{
 			$model->attributes=$_POST['Category'];
 			if($model->save())
-				$this->redirect(array('index'));
+				$this->redirect(array('admin'));
 		}
 
 		$this->render('update',array(
