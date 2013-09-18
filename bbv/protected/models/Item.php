@@ -185,7 +185,8 @@ class Item extends WActiveRecord
 	 		$params[':category_id'] = $category_id;
 	 	}
 	 	if($filter_tags) {
-	 		if($filter_category) $criteria->condition .= " ";
+	 		//if($filter_category)
+	 			$criteria->condition .= " AND ";
 	 		$i = 0;
 	 		$l_tags = explode(",", $tags);
 	 		foreach($l_tags as $tag) {
