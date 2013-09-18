@@ -179,13 +179,13 @@ class Item extends WActiveRecord
 	 	$criteria = new CDbCriteria();
 	 	$criteria->with = array('item');
 	 	$params = array();
-	 	$criteria->condition = "";
+	 	$criteria->condition = " item.tags NOT LIKE '%hide%'";
 	 	if($filter_category) {
-	 		$criteria->condition .= "item.category_id = :category_id";
+	 		$criteria->condition .= " AND item.category_id = :category_id";
 	 		$params[':category_id'] = $category_id;
 	 	}
 	 	if($filter_tags) {
-	 		if($filter_category) $criteria->condition .= " AND ";
+	 		if($filter_category) $criteria->condition .= " ";
 	 		$i = 0;
 	 		$l_tags = explode(",", $tags);
 	 		foreach($l_tags as $tag) {
