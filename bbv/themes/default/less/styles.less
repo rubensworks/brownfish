@@ -405,14 +405,16 @@ article.news-extended{
 .file-item-row{
 	.well;
 	.well-small;
-	margin:0;
-	.makeFluidRow();
-	>.name{
-		.makeFluidCol(4);
+	>.sub-row{
+		.makeFluidRow();
+		>.name{
+			.makeFluidCol(6);
+		}
+		>.content{
+			.makeFluidCol(6);
+		}
 	}
-	>.content{
-		.makeFluidCol(8);
-	}
+	margin:-10px 0 10px 0;
 }
 
 .image-list-view .items, .well-body{
