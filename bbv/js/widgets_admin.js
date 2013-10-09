@@ -167,6 +167,16 @@ function update_widget_field($node, field) {
 	update_widget(real_id, data);
 }
 
+//Update a field for a certain widget where the field is the name of the column to be updated
+//and the $node is some tag inside the widget and the $node is a checkbox
+function update_widget_checkbox($node, field) {
+	$widget = $($node).closest('.widget-drag');
+	real_id = chop_id($widget.attr('id'));
+	var data = {};
+	data[field] = $widget.find("."+field).is(":checked")?1:0;
+	update_widget(real_id, data);
+}
+
 //Enable/disable checkboxes with auto-save
 function toggle_setup(type) {
 	$("."+type).live("change", function() {
@@ -207,6 +217,7 @@ function disable_widget(id) {
 	$("#widget_"+id).find(".category_id").prop('disabled', true);
 	$("#widget_"+id).find(".filter_tags").prop('disabled', true);
 	$("#widget_"+id).find(".tags").prop('disabled', true);
+	$("#widget_"+id).find(".clear").prop('disabled', true);
 	$("#widget_"+id).find(".move_widget").removeClass("move_widget").addClass("move_widget_disabled");
 	$("#widget_"+id).find(".delete_widget").removeClass("delete_widget").addClass("delete_widget_disabled");
 }
@@ -220,6 +231,7 @@ function enable_widget(id) {
 	$("#widget_"+id).find(".category_id").prop('disabled', false);
 	$("#widget_"+id).find(".filter_tags").prop('disabled', false);
 	$("#widget_"+id).find(".tags").prop('disabled', false);
+	$("#widget_"+id).find(".clear").prop('disabled', false);
 	$("#widget_"+id).find(".move_widget_disabled").removeClass("move_widget_disabled").addClass("move_widget");
 	$("#widget_"+id).find(".delete_widget_disabled").removeClass("delete_widget_disabled").addClass("delete_widget");
 }
@@ -351,6 +363,11 @@ $(document).ready(function() {
 		afterTagRemoved: function(event, ui) {
 			if(!ui.duringInitialization) save_tags($(this));
 		}
+	});
+	
+	// Save on clear change
+	$(".clear").live("change", function() {
+		update_widget_checkbox($(this), "clear");
 	});
 
 	//Save on amount change

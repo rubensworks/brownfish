@@ -20,6 +20,9 @@
 				}
 	    	?></span>
 	    </p>
+	    <p>
+	    	<?php echo Yii::t('messages', 'model.widget.clear') ?>:<?php echo CHtml::checkBox("clear", $widget != NULL && $widget->clear, array("class"=>"clear")) ?>
+	    </p>
 		<p>
 			<?php echo CHtml::radioButton("widget_type_".($widget==NULL?"":$widget->id), $widget == NULL || $widget->widget_type==Widget::$TYPE_LIST, array("class"=>"widget_type_list")) ?>
 			<? echo Yii::t('messages', 'form.general.list') ?>

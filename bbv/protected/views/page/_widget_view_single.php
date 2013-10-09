@@ -7,6 +7,7 @@ if($data != NULL) {
 		'compact' => true,
 		'overrideTitle' => $widget->name,
 		'data' => $data,
+		'widget' => $widget,
 	));
 } else {
 	?><i><? echo Yii::t('messages', 'form.widgets.invalidItemForWidget') ?></i><?php

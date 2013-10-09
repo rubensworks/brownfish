@@ -1,5 +1,5 @@
 <?php
-$this->beginWidget('WidgetWidget', array('name'=>$widget->name, 'id'=>$widget->id));	
+$this->beginWidget('WidgetWidget', array('name'=>$widget->name, 'id'=>$widget->id, 'clear'=>$widget->clear));	
 	$items = Item::findListByWidget($widget);
 	$class = lcfirst($widget->item_type);
 	$displayItems = array();

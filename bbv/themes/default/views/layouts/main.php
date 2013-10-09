@@ -54,8 +54,8 @@
 
 		<footer>
 			<div class="container">
-				Bredense Bruinvissen VZW
-				<?php echo date('Y'); ?><br />
+				Bredense Bruinvissen vzw <?php echo date('Y'); ?><br />
+				Ondernemingsnummer: 0464.961.481<br />
 				<?php echo Yii::powered(); ?>
 			</div>	
 		</footer>

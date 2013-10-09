@@ -195,6 +195,7 @@ return array(
     'model.widget.itemType' => 'Item Type',
     'model.widget.widgetType' => 'Widget Type',
     'model.widget.itemId' => 'Item ID',
+    'model.widget.clear' => 'Clear',
     
     // items
     'model.items.navigation.navigation' => 'Navigation',

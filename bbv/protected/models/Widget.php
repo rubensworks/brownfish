@@ -17,6 +17,7 @@
  * @property string $tags
  * @property integer $amount
  * @property integer $item_id
+ * @property integer $clear
  */
 class Widget extends WActiveRecord
 {	
@@ -95,6 +96,7 @@ class Widget extends WActiveRecord
 			'amount' => Yii::t('messages', 'form.widgets.amount'),
 			'item_id' => Yii::t('messages', 'model.widget.itemId'),
 			'item_type_display' => Yii::t('messages', 'model.widget.itemType'),
+			'clear' => Yii::t('messages', 'model.widget.clear'),
 		);
 	}
 	

@@ -192,7 +192,7 @@ CREATE TABLE `tbl_item` (
   KEY `author_id` (`author_id`),
   CONSTRAINT `tbl_item_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `tbl_category` (`category_id`),
   CONSTRAINT `tbl_item_ibfk_2` FOREIGN KEY (`author_id`) REFERENCES `tbl_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -201,7 +201,7 @@ CREATE TABLE `tbl_item` (
 
 LOCK TABLES `tbl_item` WRITE;
 /*!40000 ALTER TABLE `tbl_item` DISABLE KEYS */;
-INSERT INTO `tbl_item` VALUES (1,'XYZ','qsdsssaaaaaXXXxxxaaa',3,10,1374056783,1,'test,test2a,aaa,eentagje'),(2,'ulu','',3,10,10,2,'aaa'),(3,'nnn','',4,1371653202,1371654167,2,'ttt'),(4,'nnn','',3,1371653221,1371653221,2,'ttt'),(6,'aaa','',4,1371654176,1371657424,1,'bbb,uuuuu'),(7,'a','',3,1371658410,1371658410,1,''),(8,'a','',3,1371658413,1371658413,1,''),(9,'a','',3,1371658416,1371658777,1,''),(10,'a','',3,1371658421,1371658421,1,''),(11,'a','',3,1371658426,1371658426,1,''),(12,'a','',3,1371658435,1371658435,1,''),(13,'a','',3,1371658439,1371669748,1,'bla,blabla,blablabla'),(14,'a','',3,1371658463,1371658486,1,''),(15,'bbb','',3,1371658473,1371658473,1,''),(16,'testnews','<h3><b>This is a test</b></h3>',3,1371896430,1373890903,2,'hallo,test'),(17,'gggg','',3,1371896456,1371896456,1,''),(18,'RUBEN','',3,1371896544,1371896544,1,''),(19,'Rppppqsdqsd','',5,1371896637,1373030244,1,'test'),(20,'another1@','',3,1371896707,1373209221,1,''),(21,'xyz','',3,1371896828,1373030261,1,''),(22,'a','',3,1371901535,1371901535,1,''),(23,'test','',3,1371901667,1371901667,1,''),(24,'a','',3,1371901959,1371901959,1,''),(25,'dfghj','',3,1371975047,1371975047,5,'dfghj'),(32,'HALLO','',3,1372603270,1372603270,1,''),(33,'HALLO','',3,1372603324,1372603324,1,''),(34,'HALLo','',3,1372603346,1372603346,1,''),(35,'HALLO','',3,1372603478,1372603478,1,''),(37,'test','',3,1373804738,1373804738,1,'a'),(38,'aaa','',3,1373805085,1373805085,1,'a'),(39,'aaa','',3,1373806283,1373806283,1,'a'),(40,'aaa','',3,1373808150,1373808150,1,'a'),(41,'aaa','',3,1373808449,1373808449,1,'a'),(42,'aaa','',3,1373808499,1373808499,1,'a'),(43,'aaa','',3,1373808516,1373808516,1,'a'),(44,'aa','',3,1373808524,1373808524,1,'aaaa'),(45,'aaa','',3,1373808612,1373808612,1,'aa'),(46,'a','',3,1373808629,1373808629,1,'a'),(47,'a','',3,1373808662,1373808662,1,'a'),(49,'a','',3,1373822349,1373822349,1,''),(50,'aa','',3,1373822640,1373822640,1,''),(52,'x','',3,1373824820,1373824820,1,''),(53,'Test','',3,1373886789,1373886941,1,'hallo'),(54,'Inleiding','Haallo, dit is de index die aangepast kan worden in de Dashboard, admin rechten zijn vereist.<br><ul><li><a rel=\"nofollow\" target=\"_blank\" href=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/FileItem/download/90\">Download undefined</a><br></li><li><a rel=\"nofollow\" target=\"_blank\" href=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/FileItem/download/89\">Download 89</a><br></li><li><a rel=\"nofollow\" target=\"_blank\" href=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/FileItem/download/88\">github</a><br></li><li><a rel=\"nofollow\" target=\"_blank\" href=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/FileItem/download/67\">pinterest_logo</a><br></li><li><a rel=\"nofollow\" target=\"_blank\" href=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/FileItem/download/94\">bruinvis2013-03</a><br></li><li><a rel=\"nofollow\" target=\"_blank\" href=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/ImageFileItem/93\"><img alt=\"smiley\" src=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/assets/easyimage/f/f2d3d25762be3c47f0cab3455c788ce2.png\"></a><br></li></ul>',3,1373890008,1374915426,1,''),(55,'a','',3,1373967036,1373967036,1,''),(56,'aaaa','',3,1373967112,1373967112,1,''),(57,'Testfile','',3,1374153513,1374153513,1,'sss'),(58,'Github','',3,1374153527,1374153527,1,'git'),(59,'a','',3,1374153580,1374153580,1,''),(62,'github','Dit is het logo va <b>GITHUB</b>',3,1374153747,1374493575,1,'git'),(63,'pinterest','',3,1374325055,1374325055,1,''),(64,'github.png','',3,1374488681,1374488681,1,''),(65,'pinterest_logo','',3,1374488906,1374488906,1,''),(90,'github','',3,1374604052,1374604052,7,''),(91,'github','',3,1374743896,1374743896,7,''),(92,'allectro_channel_art','',3,1374744015,1374744015,7,''),(93,'smiley','',3,1374744029,1374744029,7,''),(94,'bruinvis2013-03','',3,1374832844,1374832844,7,'');
+INSERT INTO `tbl_item` VALUES (1,'XYZ','qsdsssaaaaaXXXxxxaaa',3,10,1374056783,1,'test,test2a,aaa,eentagje'),(2,'ulu','',3,10,10,2,'aaa'),(3,'nnn','',4,1371653202,1371654167,2,'ttt'),(4,'nnn','',3,1371653221,1371653221,2,'ttt'),(6,'aaa','',4,1371654176,1371657424,1,'bbb,uuuuu'),(7,'a','',3,1371658410,1371658410,1,''),(8,'a','',3,1371658413,1371658413,1,''),(9,'a','',3,1371658416,1371658777,1,''),(10,'a','',3,1371658421,1371658421,1,''),(11,'a','',3,1371658426,1371658426,1,''),(12,'a','',3,1371658435,1371658435,1,''),(13,'a','',3,1371658439,1371669748,1,'bla,blabla,blablabla'),(14,'a','',3,1371658463,1371658486,1,''),(15,'bbb','',3,1371658473,1371658473,1,''),(16,'testnews','<h3><b>This is a test</b></h3>',3,1371896430,1375517879,2,'hallo,test'),(17,'gggg','',3,1371896456,1371896456,1,''),(18,'RUBEN','',3,1371896544,1371896544,1,''),(19,'Rppppqsdqsd','',5,1371896637,1373030244,1,'test'),(20,'another1@','',3,1371896707,1373209221,1,''),(21,'xyz','',3,1371896828,1373030261,1,''),(22,'a','',3,1371901535,1371901535,1,''),(23,'test','',3,1371901667,1371901667,1,''),(24,'a','',3,1371901959,1371901959,1,''),(25,'dfghj','',3,1371975047,1371975047,5,'dfghj'),(32,'HALLO','',3,1372603270,1372603270,1,''),(33,'HALLO','',3,1372603324,1372603324,1,''),(34,'HALLo','',3,1372603346,1372603346,1,''),(35,'HALLO','',3,1372603478,1372603478,1,''),(37,'test','',3,1373804738,1373804738,1,'a'),(38,'aaa','',3,1373805085,1373805085,1,'a'),(39,'aaa','',3,1373806283,1373806283,1,'a'),(40,'aaa','',3,1373808150,1373808150,1,'a'),(41,'aaa','',3,1373808449,1373808449,1,'a'),(42,'aaa','',3,1373808499,1373808499,1,'a'),(43,'aaa','',3,1373808516,1373808516,1,'a'),(44,'aa','',3,1373808524,1373808524,1,'aaaa'),(45,'aaa','',3,1373808612,1373808612,1,'aa'),(46,'a','',3,1373808629,1373808629,1,'a'),(47,'a','',3,1373808662,1373808662,1,'a'),(49,'a','',3,1373822349,1373822349,1,''),(50,'aa','',3,1373822640,1373822640,1,''),(52,'x','',3,1373824820,1373824820,1,''),(53,'Test','',3,1373886789,1373886941,1,'hallo'),(54,'Inleiding','Haallo, dit is de index die aangepast kan worden in de Dashboard, admin rechten zijn vereist.<br><ul><li><a rel=\"nofollow\" target=\"_blank\" href=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/FileItem/download/90\">Download undefined</a><br></li><li><a rel=\"nofollow\" target=\"_blank\" href=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/FileItem/download/89\">Download 89</a><br></li><li><a rel=\"nofollow\" target=\"_blank\" href=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/FileItem/download/88\">github</a><br></li><li><a rel=\"nofollow\" target=\"_blank\" href=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/FileItem/download/67\">pinterest_logo</a><br></li><li><a rel=\"nofollow\" target=\"_blank\" href=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/FileItem/download/94\">bruinvis2013-03</a><br></li><li><a rel=\"nofollow\" target=\"_blank\" href=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/ImageFileItem/93\"><img alt=\"smiley\" src=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/assets/easyimage/f/f2d3d25762be3c47f0cab3455c788ce2.png\"></a><br></li><li><a rel=\"nofollow\" target=\"_blank\" href=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/ImageFileItem/95\"><img alt=\"github\" src=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/assets/easyimage/c/c8bdfc48876c6fc4830405f0f2a4b7cf.png\"></a><br></li></ul>',3,1373890008,1375513569,1,''),(55,'a','',3,1373967036,1373967036,1,''),(56,'aaaa','',3,1373967112,1373967112,1,''),(57,'Testfile','',3,1374153513,1374153513,1,'sss'),(58,'Github','',3,1374153527,1374153527,1,'git'),(59,'a','',3,1374153580,1374153580,1,''),(62,'github','Dit is het logo va <b>GITHUB</b>',3,1374153747,1374493575,1,'git'),(63,'pinterest','',3,1374325055,1374325055,1,''),(64,'github.png','',3,1374488681,1374488681,1,''),(65,'pinterest_logo','',3,1374488906,1374488906,1,''),(90,'github','',3,1374604052,1374604052,7,''),(91,'github','',3,1374743896,1374743896,7,''),(92,'allectro_channel_art','',3,1374744015,1374744015,7,''),(93,'smiley','',3,1374744029,1374744029,7,''),(94,'bruinvis2013-03','',3,1374832844,1374832844,7,''),(95,'github','',3,1375513542,1375513542,7,''),(96,'Bestuur','<a rel=\"nofollow\" target=\"_blank\" href=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/ImageFileItem/93\"><img alt=\"smiley\" src=\"http://localhost:8888/Users/kroeser/Documents/BBV/bbv/bbv/assets/easyimage/f/f2d3d25762be3c47f0cab3455c788ce2.png\"></a>&nbsp;aaaaaaaaaaaa',3,1375514972,1375514972,1,'bestuur'),(97,'test222','qsd',3,1375517889,1375517889,1,'');
 /*!40000 ALTER TABLE `tbl_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -252,7 +252,7 @@ CREATE TABLE `tbl_item_file` (
 
 LOCK TABLES `tbl_item_file` WRITE;
 /*!40000 ALTER TABLE `tbl_item_file` DISABLE KEYS */;
-INSERT INTO `tbl_item_file` VALUES (62,'png','image/png'),(63,'gif','image/gif'),(64,'png','image/png'),(65,'gif','image/gif'),(90,'png','doc/x'),(91,'png','image/png'),(92,'jpg','image/jpeg'),(93,'jpg','image/jpeg'),(94,'pdf','application/pdf');
+INSERT INTO `tbl_item_file` VALUES (62,'png','image/png'),(63,'gif','image/gif'),(64,'png','image/png'),(65,'gif','image/gif'),(90,'png','doc/x'),(91,'png','image/png'),(92,'jpg','image/jpeg'),(93,'jpg','image/jpeg'),(94,'pdf','application/pdf'),(95,'png','image/png');
 /*!40000 ALTER TABLE `tbl_item_file` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -291,6 +291,10 @@ DROP TABLE IF EXISTS `tbl_item_news`;
 CREATE TABLE `tbl_item_news` (
   `id` int(7) NOT NULL,
   `excerpt` varchar(500) NOT NULL,
+  `conditional_date` int(1) NOT NULL,
+  `startdate` date NOT NULL,
+  `enddate` date NOT NULL,
+  `hide` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   CONSTRAINT `tbl_item_news_ibfk_1` FOREIGN KEY (`id`) REFERENCES `tbl_item` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -302,7 +306,7 @@ CREATE TABLE `tbl_item_news` (
 
 LOCK TABLES `tbl_item_news` WRITE;
 /*!40000 ALTER TABLE `tbl_item_news` DISABLE KEYS */;
-INSERT INTO `tbl_item_news` VALUES (16,'blublusss'),(19,'Dit is een korte inleiding!'),(21,'korte inhoud'),(59,'');
+INSERT INTO `tbl_item_news` VALUES (16,'blublusss',1,'2013-08-08','2013-02-08',0),(19,'Dit is een korte inleiding!',0,'0000-00-00','0000-00-00',0),(21,'korte inhoud',0,'0000-00-00','0000-00-00',0),(59,'',0,'0000-00-00','0000-00-00',0),(97,'zz',0,'2013-03-08','2013-03-08',0);
 /*!40000 ALTER TABLE `tbl_item_news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -327,7 +331,7 @@ CREATE TABLE `tbl_item_text` (
 
 LOCK TABLES `tbl_item_text` WRITE;
 /*!40000 ALTER TABLE `tbl_item_text` DISABLE KEYS */;
-INSERT INTO `tbl_item_text` VALUES (54);
+INSERT INTO `tbl_item_text` VALUES (54),(96);
 /*!40000 ALTER TABLE `tbl_item_text` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -375,7 +379,7 @@ CREATE TABLE `tbl_page` (
   PRIMARY KEY (`id`),
   KEY `author_id` (`author_id`),
   CONSTRAINT `tbl_page_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `tbl_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -384,7 +388,7 @@ CREATE TABLE `tbl_page` (
 
 LOCK TABLES `tbl_page` WRITE;
 /*!40000 ALTER TABLE `tbl_page` DISABLE KEYS */;
-INSERT INTO `tbl_page` VALUES (4,'pagina 123',4,2),(7,'xyz',3,1),(8,'Home',3,1);
+INSERT INTO `tbl_page` VALUES (4,'pagina 123',4,2),(7,'xyz',3,1),(8,'Home',3,1),(13,'aaa',3,1);
 /*!40000 ALTER TABLE `tbl_page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -464,7 +468,7 @@ CREATE TABLE `tbl_user` (
 
 LOCK TABLES `tbl_user` WRITE;
 /*!40000 ALTER TABLE `tbl_user` DISABLE KEYS */;
-INSERT INTO `tbl_user` VALUES (3,'admin','admin@admin.be',7,'21232f297a57a5a743894a0e4a801fc3','','','M',''),(4,'test','a',6,'bc18a007185593423a61f573be365f6d','','','M',''),(5,'test2','rubensworks@gmail.com',7,'9589f46d46ad079911a79b7b1ec6f084','aha!','huh?','M',''),(6,'aap','aap@aap.be',7,'be8c5618210c6079f0997f77a9d6479f','aap','aap','M','');
+INSERT INTO `tbl_user` VALUES (3,'admin','admin@admin.be',8,'21232f297a57a5a743894a0e4a801fc3','','','M',''),(4,'test','a',6,'bc18a007185593423a61f573be365f6d','','','M',''),(5,'test2','rubensworks@gmail.com',7,'9589f46d46ad079911a79b7b1ec6f084','aha!','huh?','M',''),(6,'aap','aap@aap.be',7,'be8c5618210c6079f0997f77a9d6479f','aap','aap','M','');
 /*!40000 ALTER TABLE `tbl_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -489,10 +493,11 @@ CREATE TABLE `tbl_widget` (
   `tags` varchar(50) NOT NULL,
   `amount` int(5) NOT NULL DEFAULT '1',
   `item_id` int(7) NOT NULL,
+  `clear` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `page_id` (`page_id`),
   CONSTRAINT `tbl_widget_ibfk_1` FOREIGN KEY (`page_id`) REFERENCES `tbl_page` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=137 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -501,7 +506,7 @@ CREATE TABLE `tbl_widget` (
 
 LOCK TABLES `tbl_widget` WRITE;
 /*!40000 ALTER TABLE `tbl_widget` DISABLE KEYS */;
-INSERT INTO `tbl_widget` VALUES (85,'a',4,1,0,'DummyItem','SINGLE',1,5,0,'tag1,tag2,tag3,tag4',4,18),(126,'Een nieuws dinges',4,1,1,'NewsItem','SINGLE',0,1,0,'',1,16),(127,'Allemaal Nieuws Dingen',4,1,2,'NewsItem','LIST',0,1,0,'test,hallo',5,0),(128,'Allemaal dummy dingen',4,0,1,'DummyItem','LIST',0,1,1,'',5,0),(130,'Nieuwe Widget',4,0,3,'NewsItem','LIST',0,1,0,'',1,0),(131,'Nieuwe Widget',4,1,3,'NavigationItem','SINGLE',0,1,0,'',1,53),(132,'Inleiding',8,0,0,'TextItem','SINGLE',0,1,0,'',1,54),(133,'Laatste Nieuws',8,0,2,'NewsItem','LIST',0,1,0,'',5,0),(134,'Nieuwe Widget',4,0,2,'NewsItem','SINGLE',1,0,0,'',5,16),(135,'Afbeeldingen',8,0,1,'ImageFileItem','LIST',0,1,0,'',5,0);
+INSERT INTO `tbl_widget` VALUES (85,'a',4,1,0,'DummyItem','SINGLE',1,5,0,'tag1,tag2,tag3,tag4',4,18,0),(126,'Een nieuws dinges',4,1,1,'NewsItem','SINGLE',0,1,0,'',1,16,0),(127,'Allemaal Nieuws Dingen',4,1,2,'NewsItem','LIST',0,1,0,'test,hallo',5,0,0),(128,'Allemaal dummy dingen',4,0,1,'DummyItem','LIST',0,1,1,'',5,0,0),(130,'Nieuwe Widget',4,0,3,'NewsItem','LIST',0,1,0,'',1,0,0),(131,'Nieuwe Widget',4,1,3,'NavigationItem','SINGLE',0,1,0,'',1,53,0),(132,'Inleiding',8,0,1,'TextItem','SINGLE',0,1,0,'',1,54,0),(133,'Laatste Nieuws',8,0,3,'NewsItem','LIST',0,1,0,'',5,0,0),(134,'Nieuwe Widget',4,0,2,'NewsItem','SINGLE',1,0,0,'',5,16,0),(135,'Afbeeldingen',8,0,2,'ImageFileItem','LIST',0,1,0,'',5,0,0),(136,'Een naam',8,0,0,'TextItem','SINGLE',0,1,0,'',1,96,0);
 /*!40000 ALTER TABLE `tbl_widget` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -514,4 +519,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-07-30 12:08:24
+-- Dump completed on 2013-10-09 18:57:37
