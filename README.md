@@ -44,3 +44,7 @@ Third-party software
 ==
 * [Yii Framework](http://www.yiiframework.com/)
 * [Bootstrap](http://getbootstrap.com/2.3.2/)
+
+Copyright and license
+==
+Copyright 2013 Brownfish and licensed under the BSD 3 license
