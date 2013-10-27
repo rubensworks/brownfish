@@ -2,9 +2,9 @@ BrownFish CMS
 ===
 
 A simple, yet advanced PHP Content Management System built on top of the [Yii Framework](http://www.yiiframework.com/).
-Flexibility and abstraction for further extensions are central in this application.
+Flexibility, efficiency and abstraction for further extensions are central in this application.
 Pull requests for new (core) features and/or improvements are always welcome, features that don't belong in the core
-should be created as plugin and submitted to the BrownFish Plugin database.
+should be created as plugin and submitted to the BrownFish Plugin database (coming soon).
 
 Requirements
 ==
@@ -12,7 +12,18 @@ PHP 5.3 or higher
 
 Features
 ==
-A list should appear here...
+* Easy to use role-system for managing rights of users.
+* Advanced Item-system:
+    * Text
+    * Files
+    * News
+    * Images
+    * Links
+* Pages that contain widgets with high customization possibilities. A widget is linked
+to one of the various Items.
+* Flexible navigation system
+
+More detailed feature-list is coming later.
 
 Installation
 ==
@@ -24,3 +35,12 @@ Installation
 Tests
 ==
 No tests yet, but there will be someday!
+
+BrownFish in action
+==
+* [BBV](http://www.bredensebruinvissen.be)
+
+Third-party software
+==
+* [Yii Framework](http://www.yiiframework.com/)
+* [Bootstrap](http://getbootstrap.com/2.3.2/)
