@@ -54,8 +54,7 @@
 
 		<footer>
 			<div class="container">
-				Bredense Bruinvissen vzw <?php echo date('Y'); ?><br />
-				Ondernemingsnummer: 0464.961.481<br />
+				Powered by Brownfish CMS.
 				<?php echo Yii::powered(); ?>
 			</div>	
 		</footer>
