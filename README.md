@@ -1,4 +1,4 @@
-BrownFish CMS
+BrownFish CMS (Early Preview)
 ===
 
 A simple, yet advanced PHP Content Management System built on top of the [Yii Framework](http://www.yiiframework.com/).
